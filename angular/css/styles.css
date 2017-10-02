@@ -1,19 +1,49 @@
 .container{
-height: 100%;
-width: 100%;
+height: 100vh;
+width: 100vw;
 display: flex
 
 }
 
 .login {
+    height: 50vh;
+    width: 50vw;
     align-content: center;
     justify-content: center;
     padding: 20px;
+    background-color: mediumturquoise;
 
 }
 
 .sessionFixedColumn{
     display: flex;
     flex-flow: row;
-    justify-content: flex-start
+    justify-content: flex-start;
+    height: 100vh;
+    width: 25vw;
+    background-color: papayawhip;
+    border: 2px solid black;
 }
+
+.tweet{
+    border-radius: 10px;
+    height: 30vh;
+    width: 20vw;
+    text-align: center;
+    margin-bottom: 1vh;
+    padding: 3px 3px 3px 3px; 
+    background-color: mediumturquoise;
+}
+
+.sessionTitle{
+    align-self: center;
+    text-align: center;
+    height: 5vh;
+    width: 75vw;
+}
+
+.sessionPanel{
+    background-color: papayawhip;
+   margin: 0 auto;
+}
+
