@@ -1,4 +1,9 @@
-<div class="btn-group-vertical sessionFixedColumns ">
+<div class="sessionPanel2" >
+<div class="sessionTitle">
+    Feed
+</div>
+
+<div class="btn-group-vertical sessionFixedColumn ">
     <button type="button" class="btn btn-primary glyphicon glyphicon-home">Jay Mansmann<br>jaymansmann@yahoo.com</button>
     <span class="glyphicon glyphicon-send"></span><button type="button" class="btn btn-primary">Tweet</button>
     <span class="glyphicon glyphicon-search"></span><input type="text" value="search" />
@@ -7,10 +12,9 @@
     <button type="button" class="btn btn-primary">Account</button>
 </div>
 
-<div class="sessionTitle">
-    Feed
-</div>
 
-<div class="sessionPane">
-    My feed goes here
+
+<div class="sessionPanel">
+    <ui-view></ui-view>
+</div>
 </div>
