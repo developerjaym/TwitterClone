@@ -10,17 +10,22 @@ width: 100vw;
 display: flex;
 background-color: red;
 
+
+
 }
 
 
 .login {
     display: flex;
-    height: 50vh;
-    width: 50vw;
-    align-content: center;
+    flex-direction: column;
+    height: 40vh;
+    width: 25vw;
+    align-items: center;
     justify-content: center;
     padding: 20px;
-    background-color: mediumturquoise;
+    color: white;
+    background-color: rgb(21, 188, 171);
+    font-size: large;
 
 }
 
@@ -47,16 +52,45 @@ background-color: red;
 .sessionTitle{
     align-self: center;
     text-align: center;
-    background-color: mediumturquoise;
+    
     height: 5vh;
     width: 100vw;
-    font-size: xx-large;
-    color: #170909;
+    font-size: large;
+    align-items: center;
+
+    color: white;
+    background-color: rgb(21, 188, 171);
+}
+    
+
+strong {
     font-family: 'Bird Feather';
+    font-size: xx-large;
+    text-align: right;
+    /* padding-right: 30px; */
+    font-size: xx-large;
+    color: white;
+
+    text-shadow: #000 1px 1px 4px;
 }
 
 .sessionPanel{
+    display: flex;
     background-color: papayawhip;
    margin: 0 auto;
+   width: 100vw;
+   height: 100vh;
+   align-items: center;
+   justify-content: center;
+   background-image: url("/img/peacock.jpg");
+   background-size: cover;
+   background-repeat: repeat;
+   background-position: center; 
+   flex-direction: column;
+  
 }
 
+
+#newUserButton{
+color: white;
+}
