@@ -1,5 +1,5 @@
-angular.module('twitterClone').controller('loginController',[function(){
-    
-    
-    
-    }])
+angular.module('twitterClone').controller('loginController', [function () {
+
+
+
+}])

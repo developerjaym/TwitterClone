@@ -1,4 +1,5 @@
-angular.module('twitterClone').componenet('titleComponent',{
+angular.module('twitterClone').componenet('titleComponent', {
 
-    templateUrl : './js/states/title/titleTemplate.html'
+    templateUrl: './js/states/title/titleTemplate.html'
+
 })
