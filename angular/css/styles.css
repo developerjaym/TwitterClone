@@ -28,11 +28,14 @@ background-color: red;
     font-size: large;
 
 }
-
+.sessionPanel2 {
+    display: flex;
+    flex-direction: row;
+}
 .sessionFixedColumn{
     display: flex;
-    flex-flow: row;
-    justify-content: flex-start;
+    /* flex-direction: row;
+    justify-content: flex-start; */
     height: 100vh;
     width: 25vw;
     background-color: papayawhip;
@@ -90,7 +93,21 @@ strong {
   
 }
 
+.createNewUser{
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 25vw;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: white;
+    background-color: rgb(21, 188, 171);
+    font-size: large;
+}
 
-#newUserButton{
+
+#newUserButton, #existingAccount{
 color: white;
 }
+
