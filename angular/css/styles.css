@@ -1,0 +1,19 @@
+.container{
+height: 100%;
+width: 100%;
+display: flex
+
+}
+
+.login {
+    align-content: center;
+    justify-content: center;
+    padding: 20px;
+
+}
+
+.sessionFixedColumn{
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start
+}
