@@ -38,6 +38,7 @@ display: flex
 .sessionTitle{
     align-self: center;
     text-align: center;
+    background-color: mediumturquoise;
     height: 5vh;
     width: 75vw;
 }
