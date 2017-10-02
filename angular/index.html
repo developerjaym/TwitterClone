@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Twitter Clone</title>
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js">
+    </script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="/js/app.js"></script>
+
+    <script src="/js/states/login/loginService.js"></script>
+    <script src="/js/states/login/loginController.js"></script>
+    <script src="/js/states/login/loginComponent.js"></script>
+
+    <script src="/js/states/session/sessionComponent.js"></script>
+
+    <script src="/js/states/session/search/searchService.js"></script>
+    <script src="/js/states/session/search/searchController.js"></script>
+    <script src="/js/states/session/search/searchComponent.js"></script>
+
+    <script src="/js/states/session/account/accountService.js"></script>
+    <script src="/js/states/session/account/accountController.js"></script>
+    <script src="/js/states/session/account/accountComponent.js"></script>
+
+    <script src="/js/states/session/feed/feedService.js"></script>
+    <script src="/js/states/session/feed/feedController.js"></script>
+    <script src="/js/states/session/feed/feedComponent.js"></script>
+
+    <script src="/js/states/session/followers/followersService.js"></script>
+    <script src="/js/states/session/followers/followersController.js"></script>
+    <script src="/js/states/session/followers/followersComponent.js"></script>
+
+    <script src="/js/states/session/following/followingService.js"></script>
+    <script src="/js/states/session/following/followingController.js"></script>
+    <script src="/js/states/session/following/followingComponent.js"></script>
+  </head>
+
+  <body ng-app="TwitterCloneApp" class="app">
+    <ui-view></ui-view>
+  </body>
+
+</html>
