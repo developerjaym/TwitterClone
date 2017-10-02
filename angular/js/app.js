@@ -1,33 +1,62 @@
-angular.module('twitterClone').config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+angular.module('twitterClone', ['ui.router']).config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     const titleState = {
+        abstract: true,
         name: 'title',
         url: '/title',
         component: 'titleComponent'
     }
+
     const loginState = {
-        name: 'login',
+        name: 'title.login',
         url: '/login',
         component: 'loginComponent'
     }
-//     const menuState = {
-//         name: 'menu',
-//         url: '/menu',
-//         component: 'menuComponent'
-//     }
+
+    const newUserState = {
+        name: 'title.newuser',
+        url: '/newuser',
+        component: 'newUserComponent'
+    }
+
     const sessionState = {
+        abstract: true,
         name: 'session',
         url: '/session',
         component: 'sessionComponent'
     }
-//     // const highscoreState = {
-//     //     name: 'highscore',
-//     //     url: '/highscore',
-//     //     component: 'highscoreComponent'
-//     // }
+
+    const accountState = {
+        name: 'session.account',
+        url: '/account',
+        component: 'accountComponent'
+    }
+
+    const feedState = {
+        name: 'session.feed',
+        url: '/feed',
+        component: 'feedComponent'
+    }
+
+    const tweetState = {
+        name: 'session.tweet',
+        url: '/tweet',
+        component: 'tweetComponent'
+    }
+
+    const userListState = {
+        name: 'session.userlist',
+        url: '/userlist',
+        component: 'userListComponent'
+    }
+
     $stateProvider.state(titleState)
-    $stateProvider.state(loginState)
-//     $stateProvider.state(menuState)
-    $stateProvider.state(sessionState)
-//     // $stateProvider.state(highscoreState)
-    $urlRouterProvider.otherwise('/session')
+        .state(loginState)
+        .state(newUserState)
+        .state(sessionState)
+        .state(accountState)
+        .state(feedState)
+        .state(tweetState)
+        .state(userListState)
+
+    $urlRouterProvider.otherwise('/title/login')
 }])

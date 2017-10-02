@@ -1,19 +1,113 @@
-.container{
-height: 100%;
-width: 100%;
-display: flex
+@font-face 
+{
+    font-family: "Bird Feather";
+    src: url(BirdFeather.ttf);
+}
+
+body{
+height: 100vh;
+width: 100vw;
+display: flex;
+background-color: red;
+
+
 
 }
+
 
 .login {
-    align-content: center;
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    width: 25vw;
+    align-items: center;
     justify-content: center;
     padding: 20px;
+    color: white;
+    background-color: rgb(21, 188, 171);
+    font-size: large;
 
 }
-
+.sessionPanel2 {
+    display: flex;
+    flex-direction: row;
+}
 .sessionFixedColumn{
     display: flex;
-    flex-flow: row;
-    justify-content: flex-start
+    /* flex-direction: row;
+    justify-content: flex-start; */
+    height: 100vh;
+    width: 25vw;
+    background-color: papayawhip;
+    border: 2px solid black;
 }
+
+.tweet{
+    border-radius: 10px;
+    height: 30vh;
+    width: 20vw;
+    text-align: center;
+    margin-bottom: 1vh;
+    padding: 3px 3px 3px 3px; 
+    background-color: mediumturquoise;
+}
+
+.sessionTitle{
+    align-self: center;
+    text-align: center;
+    
+    height: 5vh;
+    width: 100vw;
+    font-size: large;
+    align-items: center;
+
+    color: white;
+    background-color: rgb(21, 188, 171);
+}
+    
+
+strong {
+    font-family: 'Bird Feather';
+    font-size: xx-large;
+    text-align: right;
+    /* padding-right: 30px; */
+    font-size: xx-large;
+    color: white;
+
+    text-shadow: #000 1px 1px 4px;
+}
+
+.sessionPanel{
+    display: flex;
+    background-color: papayawhip;
+   margin: 0 auto;
+   width: 100vw;
+   height: 100vh;
+   align-items: center;
+   justify-content: center;
+   background-image: url("/img/peacock.jpg");
+   background-size: cover;
+   background-repeat: repeat;
+   background-position: center; 
+   flex-direction: column;
+  
+}
+
+.createNewUser{
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 25vw;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: white;
+    background-color: rgb(21, 188, 171);
+    font-size: large;
+}
+
+
+#newUserButton, #existingAccount{
+color: white;
+}
+

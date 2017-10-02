@@ -1,4 +1,5 @@
-angular.module('twitterClone').component('sessionComponent',{
+angular.module('twitterClone').component('sessionComponent', {
 
-    urlTemplate : './js/states/session/sessionTemplate.html'
+    templateUrl: './js/states/session/sessionTemplate.html'
+
 })
