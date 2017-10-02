@@ -1,5 +1,5 @@
-angular.module('twitterClone').controller('feedController',[function(){
-    
-    
-    
-    }])
+angular.module('twitterClone').controller('feedController', [function () {
+
+
+
+}])

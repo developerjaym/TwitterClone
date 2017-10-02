@@ -1,4 +1,4 @@
-angular.module('twitterClone').controller('newUserCcontroller',[function(){
+angular.module('twitterClone').controller('newUserController', [function () {
 
 
 
