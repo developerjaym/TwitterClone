@@ -1,53 +1,62 @@
 angular.module('twitterClone', ['ui.router']).config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     const titleState = {
+        abstract: true,
         name: 'title',
         url: '/title',
         component: 'titleComponent'
     }
 
     const loginState = {
-        name: 'login',
-        url: '/title/login',
+        name: 'title.login',
+        url: '/login',
         component: 'loginComponent'
     }
 
     const newUserState = {
-        name: 'newuser',
-        url: '/title/newuser',
+        name: 'title.newuser',
+        url: '/newuser',
         component: 'newUserComponent'
     }
 
     const sessionState = {
+        abstract: true,
         name: 'session',
         url: '/session',
         component: 'sessionComponent'
     }
 
     const accountState = {
-        name: 'account',
-        url: '/session/account',
+        name: 'session.account',
+        url: '/account',
         component: 'accountComponent'
     }
 
     const feedState = {
-        name: 'feed',
-        url: '/session/feed',
+        name: 'session.feed',
+        url: '/feed',
         component: 'feedComponent'
     }
 
     const tweetState = {
-        name: 'tweet',
-        url: '/session/tweet',
+        name: 'session.tweet',
+        url: '/tweet',
         component: 'tweetComponent'
     }
 
     const userListState = {
-        name: 'userlist',
-        url: '/session/userlist',
+        name: 'session.userlist',
+        url: '/userlist',
         component: 'userListComponent'
     }
 
     $stateProvider.state(titleState)
+        .state(loginState)
+        .state(newUserState)
+        .state(sessionState)
+        .state(accountState)
+        .state(feedState)
+        .state(tweetState)
+        .state(userListState)
 
-    $urlRouterProvider.otherwise('/title')
+    $urlRouterProvider.otherwise('/title/login')
 }])
