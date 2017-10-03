@@ -1,6 +1,6 @@
 angular.module('twitterClone', ['ui.router']).config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
-        
+
         const titleState = {
             abstract: true,
             name: 'title',
@@ -27,9 +27,14 @@ angular.module('twitterClone', ['ui.router']).config(['$stateProvider', '$urlRou
             component: 'sessionComponent'
         }
 
+        // url: '/session/{username}',
+
         const accountState = {
             name: 'session.account',
             url: '/account',
+            params: {
+                param1: 'username'
+            },
             component: 'accountComponent'
         }
 

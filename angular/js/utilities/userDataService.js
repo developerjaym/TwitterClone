@@ -1,6 +1,7 @@
 angular.module('twitterClone').service('userDataService', [function () {
 
-    this.credentials = new Credentials(undefined, undefined)
+    // this.credentials = new Credentials(undefined, undefined)
+    this.credentials = new Credentials('guest', 'guest')
 
     this.setUserCredentials = (username, password) => {
         credentials.username = username

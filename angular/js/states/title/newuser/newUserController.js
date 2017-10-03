@@ -37,17 +37,17 @@ angular.module('twitterClone').controller('newUserController', ['newUserService'
             }, (error) => {
                 // Change some html to make it clear that there was an error and clear fields
 
-                if(error === 409) {
+                if (error === 409) {
                     // Username taken
                     this.submission.username = ''
                     this.usernameError = true
                 }
 
-                if(error === 406) {
+                if (error === 406) {
                     // Required field missing
                 }
-                
-                if(error === 401) {
+
+                if (error === 401) {
                     // Tried to reactivate account and password incorrect
                     this.submission.password = ''
                     this.usernameError = false

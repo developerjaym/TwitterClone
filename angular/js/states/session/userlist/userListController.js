@@ -1,27 +1,33 @@
-angular.module('twitterClone').controller('userListController', ['userListService', 'userDataService',
-    function (userListService, userDataService) {
+angular.module('twitterClone').controller('userListController', ['userListService', 'userDataService', '$state',
+    function (userListService, userDataService, $state) {
+
+        if (userDataService.credentials.username === undefined ||
+            userDataService.credentials.password === undefined) {
+            // User is not logged in
+            $state.go('title.login')
+        }
 
         this.userListTypeEnum = {
-            ALL,
-            SINGLE,
-            FOLLOWERS,
-            FOLLOWING
+            ALL: 'ALL',
+            SINGLE: 'SINGLE',
+            FOLLOWERS: 'FOLLOWERS',
+            FOLLOWING: 'FOLLOWING'
         }
 
         this.switchFeed = (userListType, dependency) => {
             if (userListType !== undefined) {
                 switch (userListType) {
-                    case userListType.ALL:
+                    case this.userListType.ALL:
                         // dependency isn't needed here, gets all users
                         break;
-                    case userListType.SINGLE:
+                    case this.userListType.SINGLE:
                         // dependency here the user to display
                         break;
-                    case userListType.FOLLOWERS:
+                    case this.userListType.FOLLOWERS:
                         // dependency here would be the user whose followers we want
                         // if no dependency, then gets the uses the logged in user as source
                         break;
-                    case userListType.FOLLOWING:
+                    case this.userListType.FOLLOWING:
                         // dependency here would be the source user
                         // if no dependency, then gets the uses the logged in user as source
                         break;
