@@ -25,12 +25,12 @@
         </div>
         
         <div class="formbody" >
-                <div class="formlabel">Username</div> <input type="text" class="form-control" id="content">
-                <div class="formlabel">Password</div> <input type="password" class="form-control" id="pwd">
+                <div class="formlabel">Username</div> <input type="text" class="form-control" id="content" ng-style="{'border-color': $ctrl.usernameErrorCss }" ng-model="$ctrl.submission.username">
+                <div class="formlabel">Password</div> <input type="password" class="form-control" id="pwd" ng-style="{'border-color': $ctrl.passwordErrorCss }" ng-model="$ctrl.submission.password">
         </div>
         <div class="formfooter" > 
-                <button class='formbutton'> Guest</button>   
-                <button class='formbutton'>Login</button>
+                <button class='formbutton' ng-click='$ctrl.guest()'> Guest</button>   
+                <button class='formbutton' ng-click='$ctrl.login()'>Login</button>
         </div>
         <button class='btn btn-link' id = 'newUserButton' ui-sref = 'title.newuser' >Create New User</button>
         
