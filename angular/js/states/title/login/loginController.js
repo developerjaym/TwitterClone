@@ -1,38 +1,37 @@
 angular.module('twitterClone').controller('loginController', ['loginService', 'userDataService', '$state',
     function (loginService, userDataService, $state) {
-
         this.submission = {}
-        this.submission.username = 'hey'
-        this.submission.password = 'hey'
 
-        if (this.submission.username !== '') {
-            this.usernameError = false
-        }
+        this.usernameErrorCss = "black"
+        this.passwordErrorCss = "black"
 
-        if (this.submission.password !== '') {
-            this.passwordError = false
+        this.guest = () => {
+            this.submission.username = 'guest'
+            this.submission.password = 'guest'
+            this.login()
         }
 
         this.login = () => {
             loginService.login(this.submission).then((succeedResponse) => {
-                userDataService.setUserCredentials(submission.username, submission.password)
+                userDataService.setUserCredentials(this.submission.username, this.submission.password)
+                this.usernameErrorCss = "black"
+                this.passwordErrorCss = "black"
                 $state.go('session.feed')
             }, (errorResponse) => {
-                // TODO: Link html borders to username and password error booleans
-
-                if (errorResponse === 404) {
+                console.dir(errorResponse.status)
+                if (errorResponse.status === 404) {
                     // Username not found, shows error on username field
                     this.submission.username = ''
                     this.submission.password = ''
-                    this.usernameError = true
-                    this.passwordError = false
+                    this.usernameErrorCss = "red"
+                    this.passwordErrorCss = "black"
                 }
 
-                if (errorResponse === 401) {
+                if (errorResponse.status === 401) {
                     // Password not found, shows error on password field
                     this.submission.password = ''
-                    this.usernameError = false
-                    this.passwordError = true
+                    this.passwordErrorCss = "red"
+                    this.usernameErrorCss = "black"
                 }
 
             })
