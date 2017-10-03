@@ -8,16 +8,16 @@ angular.module('twitterClone').controller('accountController', ['accountService'
         }
 
         this.deactivateUser = () => {
-            accountService.deactivateUser().then((data) => {
+            accountService.deactivateUser().then((succeedResponse) => {
                 // User deactivated, add some confirmation here and then redirects to login
                 $state.go('title.login')
-            }, (error) => {
+            }, (errorResponse) => {
                 // There should never really be an error here unless the user got to the account page without logging in
-                if (error === 404) {
+                if (errorResponse === 404) {
                     // User doesn't exist (but somehow is logged in)
                 }
 
-                if (error === 401) {
+                if (errorResponse === 401) {
                     // Incorrect password (but somehow is logged in)
                 }
             })
@@ -41,18 +41,18 @@ angular.module('twitterClone').controller('accountController', ['accountService'
                 this.submission.email,
                 this.submission.phone)
 
-            accountService.modifyProfile(user).then((data) => {
+            accountService.modifyProfile(user).then((succeedResponse) => {
                 // Profile information modified, reloads state to display new data? Does that make sense?
                 // Probably, since profile info isn't kept locally, it requires a pull
                 $state.reload()
-            }, (error) => {
+            }, (errorResponse) => {
                 // Since all non-null data is valid, and null data silently just doesn't change a field, these shouldnt trigger
 
-                if (error === 404) {
+                if (errorResponse === 404) {
                     // User doesn't exist (but is logged in somehow)
                 }
 
-                if (error === 401) {
+                if (errorResponse === 401) {
                     // Password is incorrect (but is logged in somehow)
                 }
             })
