@@ -33,22 +33,6 @@ angular.module('twitterClone').service('userListService', ['userDataService', '$
             }
         }
 
-        this.getFeed = (username) => {
-            if (username !== undefined) {
-                return $http.get('http://localhost:8888/api/users/@' + username + '/feed/')
-            } else {
-                return $http.get('http://localhost:8888/api/users/@' + userDataService.credentials.username + '/feed/')
-            }
-        }
-
-        this.getTweets = (username) => {
-            if (username !== undefined) {
-                return $http.get('http://localhost:8888/api/users/@' + username + '/tweets/')
-            } else {
-                return $http.get('http://localhost:8888/api/users/@' + userDataService.credentials.username + '/tweets/')
-            }
-        }
-
         this.getMentions = (username) => {
             if (username !== undefined) {
                 return $http.get('http://localhost:8888/api/users/@' + username + '/mentions/')

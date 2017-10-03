@@ -1,6 +1,7 @@
 angular.module('twitterClone').controller('userListController', ['userListService', 'userDataService', '$state',
     function (userListService, userDataService, $state) {
 
+        // The pool of users to display in the user list state
         this.userPool = []
 
         if (userDataService.credentials.username === undefined ||
@@ -22,23 +23,37 @@ angular.module('twitterClone').controller('userListController', ['userListServic
                     case this.userListType.ALL:
                         // dependency isn't needed here, gets all users
                         this.userPool = []
-                        // populate userPool through a http request
+                        userListService.getAllUsers().then((succeedResponse) => {
+                            userPool = succeedResponse.data
+                        })
                         break;
                     case this.userListType.SINGLE:
                         // dependency here the user to display
-                        this.userPool = user
+                        this.userPool = [dependency]
                         break;
                     case this.userListType.FOLLOWERS:
                         // dependency here would be the user whose followers we want
-                        // if no dependency, then gets the uses the logged in user as source
+                        // if no dependency, then uses the logged in user as source
                         this.userPool = []
-                        // populate userPool through a http request
+                        userListService.getFollowers(dependency).then((succeedResponse) => {
+                            userPool = succeedResponse.data
+                        }, (errorResponse) => {
+                            if(errorResponse === 404) {
+                                // Source user not found
+                            }
+                        })
                         break;
                     case this.userListType.FOLLOWING:
                         // dependency here would be the source user
-                        // if no dependency, then gets the uses the logged in user as source
+                        // if no dependency, then uses the logged in user as source
                         this.userPool = []
-                        // populate userPool through a http request
+                        userListService.getFollowers(dependency).then((succeedResponse) => {
+                            userPool = succeedResponse.data
+                        }, (errorResponse) => {
+                            if(errorResponse === 404) {
+                                // Source user not found
+                            }
+                        })
                         break;
                     default:
                         // Shouldn't happen unless we misspelled something

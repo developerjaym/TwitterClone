@@ -31,23 +31,23 @@ angular.module('twitterClone').controller('newUserController', ['newUserService'
                 this.submission.email,
                 this.submission.phone)
 
-            newUserService.createNewUser(user).then((data) => {
+            newUserService.createNewUser(user).then((succeedResponse) => {
                 // User created, data will contain dto of user without its password
                 $state.go('title.login')
-            }, (error) => {
+            }, (errorResponse) => {
                 // Change some html to make it clear that there was an error and clear fields
 
-                if (error === 409) {
+                if (errorResponse === 409) {
                     // Username taken
                     this.submission.username = ''
                     this.usernameError = true
                 }
 
-                if (error === 406) {
+                if (errorResponse === 406) {
                     // Required field missing
                 }
 
-                if (error === 401) {
+                if (errorResponse === 401) {
                     // Tried to reactivate account and password incorrect
                     this.submission.password = ''
                     this.usernameError = false

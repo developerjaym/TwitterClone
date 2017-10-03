@@ -14,13 +14,13 @@ angular.module('twitterClone').controller('loginController', ['loginService', 'u
         }
 
         this.login = () => {
-            loginService.login(this.submission).then((data) => {
+            loginService.login(this.submission).then((succeedResponse) => {
                 userDataService.setUserCredentials(submission.username, submission.password)
                 $state.go('session.feed')
-            }, (error) => {
+            }, (errorResponse) => {
                 // TODO: Link html borders to username and password error booleans
 
-                if (error === 404) {
+                if (errorResponse === 404) {
                     // Username not found, shows error on username field
                     this.submission.username = ''
                     this.submission.password = ''
@@ -28,7 +28,7 @@ angular.module('twitterClone').controller('loginController', ['loginService', 'u
                     this.passwordError = false
                 }
 
-                if (error === 401) {
+                if (errorResponse === 401) {
                     // Password not found, shows error on password field
                     this.submission.password = ''
                     this.usernameError = false
