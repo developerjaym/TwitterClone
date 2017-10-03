@@ -1,16 +1,35 @@
-<form>
-        <div class="title">Change Account Details</div>
+<div class="account">
+    <div class="formtitle">Account settings
 
-        <div class="form-group">
-            <label for="first">First Name:</label> <input type="text" class="form-control" id="first">
+            <!-- <div class="formsubtitle"> -->
+                    <div class="formbuttonsmall">Deactivate</div>
+                <!-- </div> -->
+    </div>
+   
+    <div class="formbody">
+
+        <div class="formlabel">First Name
+
+            <span class="formlabel" editable-text="$ctrl.submission.firstName"> {{ $ctrl.submission.firstName || "empty" }} </span>
+
         </div>
-        <div class="form-group">
-            <label for="last">Last Name:</label> <input type="text" class="form-control" id="last">
+
+
+        <div class="formlabel">Last Name
+            <span class="formlabel" editable-text="$ctrl.submission.lastName"> {{ $ctrl.submission.lastName || "empty" }} </span>
+
         </div>
-        <div class="form-group">
-            <label for="phn">Phone Number:</label> <input type="text" class="form-control" id="phn">
+
+
+        <div class="formlabel">Email Address
+            <span class="formlabel" editable-text="$ctrl.submission.email"> {{ $ctrl.submission.email || "empty" }}
         </div>
-        <div class="form-group">
-            <label for="email">Email address:</label> <input type="email" class="form-control" id="email"> </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+
+        <div class="formlabel">Phone 
+            <span class="formlabel" editable-text="$ctrl.submission.phone"> {{ $ctrl.submission.phone || "empty" }} </span>
+        </div>
+    </div>
+    <div class="formfooter">
+        <button class="formbutton">Save</button>
+    </div>
+</div>

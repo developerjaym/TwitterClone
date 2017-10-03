@@ -15,65 +15,234 @@ background-color: red;
 }
 
 
+label
+{
+    color: white;
+    font-size: medium;
+}
+
 .login {
     display: flex;
     flex-direction: column;
-    height: 40vh;
+    height: 50vh;
     width: 25vw;
+    margin-top: 10vh;
     align-items: center;
     justify-content: center;
     padding: 20px;
     color: white;
-    background-color: rgb(21, 188, 171);
+    /* background-color: rgb(21, 188, 171); */
     font-size: large;
+
+    /* border-radius: 2vh;
+    box-shadow: 0px 0px 0px 1px white; */
 
 }
 .sessionPanel2 {
     display: flex;
     flex-direction: row;
+    
+}
+
+.changeArea
+{
+    display: flex;
+    background-color: papayawhip;
+   margin: 0 auto;
+   /* width: 100vw;
+   height: 100vh; */
+   align-items: center;
+   /* justify-content: center; */
+   background-image: url("/img/peacock.jpg");
+   /* background-size: cover; */
+   background-repeat: repeat;
+   background-position: center; 
+   flex-direction: column;
+}
+.search-bar
+{
+    width: 12vw;
+    min-width: 85px;
+    height: 5%;
+    min-height: 30px;
+
+    border-color: transparent;
+    border-width: 0px;
+    border-radius: 3px;
+}
+.search-button
+{
+    width: 3vw;
+    height: 5%;
+    background-color: rgb(64, 108, 55);
+    color: white;
+    border: none;
+    margin-top: 1px;
+    margin-bottom: 1px;
 }
 .sessionFixedColumn{
     display: flex;
-    /* flex-direction: row;
-    justify-content: flex-start; */
+    flex-direction: row;
+    justify-content: flex-start;
     height: 100vh;
-    width: 25vw;
-    background-color: papayawhip;
-    border: 2px solid black;
-}
-
-.tweet{
-    border-radius: 10px;
-    height: 30vh;
     width: 20vw;
-    text-align: center;
-    margin-bottom: 1vh;
-    padding: 3px 3px 3px 3px; 
-    background-color: mediumturquoise;
+    min-width: 100px;
+    background-color: transparent;
+    border-right: 1px;
+    border-color: white;
+    order: -1;
 }
 
-.sessionTitle{
+
+.tweet, .jay-box{
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    min-height: 200px;
+    width: 25vw;
+    align-items: center;
+    justify-content: center;
+    
+    border-radius: 1vh;
+    margin-top: 25vh;
+
+    padding: 20px;
+    color: white;
+    background-color: rgb(21, 188, 171);
+    font-size: large;
+}
+
+.sessionTitle, .sessionTitle2{
     align-self: center;
     text-align: center;
     
-    height: 5vh;
+    /* height: 5vh; */
+    min-height: 40px;
     width: 100vw;
     font-size: large;
     align-items: center;
 
     color: white;
-    background-color: rgb(21, 188, 171);
-}
-    
+    /* background-color: rgb(21, 188, 171); */
+    /* background-color: rgba(118, 53, 23, 0.5); */
+    background:  linear-gradient(rgba(118, 53, 23, 0.75), rgba(118, 53, 23, 0.15));
+    /* background-color: transparent; */
 
-strong {
-    font-family: 'Bird Feather';
-    font-size: xx-large;
-    text-align: right;
-    /* padding-right: 30px; */
-    font-size: xx-large;
+}
+ 
+.sessionTitle2
+{
+    width: 80vw;
+    align-self: flex-start;
+
+    padding-top: 1vh;
+}
+.jay-li
+{
+}
+.jay-box, .login, .createNewUser
+{
+    border-radius: 2vh;
+    box-shadow: 1px 1px 0px 1px rgba(8, 37, 105, 0.8);
+    /* background: radial-gradient(rgb(4, 92, 120), rgb(21, 188, 170));  */
+    background-color: rgb(4, 92, 120);
+}
+.usertemplate
+{
+    height: 50vh;
+    width: 25vw;
+}
+.formtitle
+{
+    font-size: x-large;
+    height: 18%;
+    text-align: center;
+    text-justify: center;
+    padding-top: 0px;
+}
+.formsubtitle
+{
+    font-size: small;
+    text-align: center;
+    text-justify: center;
+}
+.formbody
+{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    /* margin-bottom: 1vh;
+    margin-top: 1vh; */
+    /* padding-top: 4vh;
+    padding-bottom: 2vh; */
+    font-size: x-large;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    
+    height: 64%;
+}
+.formlabel
+{
+    font-size: large;
+    margin-top: 1vh;
+}
+.formfooter
+{
+    font-size: x-large;   
+    height: 18%; 
+}
+.formfooterFeed
+{
+    font-size: small;
+    padding-bottom: 1px;
+    padding-top: 10px; 
+}
+.formbutton, .jnavbutton, .formbuttonsmall
+{
+    font-size: large;
     color: white;
 
+    background-color: rgb(8, 37, 105);
+    background-color: rgb(64, 108, 55);
+    border:none;
+    
+    padding: 4px 1vh 4px 1vh;
+
+    cursor: pointer;
+    
+}
+.formbuttonsmall
+{
+    background-color: red;
+    font-size: small;
+    color: white;
+    align-self: center;
+    margin-top: 2px;
+    padding: 1px 1px 1px 1px;
+    border-radius: 3px;
+}
+.jnavbutton
+{
+    height: 15%;
+    width: 20vw;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.formbutton
+{
+    margin-top: 2vh;
+    border-radius: 3px;
+}
+strong {
+    font-family: 'Bird Feather';
+    font-size: 100px;
+    text-align: right;
+    /* padding-right: 30px; */
+    /* font-size: xx-large; */
+    color: white;
+    
     text-shadow: #000 1px 1px 4px;
 }
 
@@ -84,30 +253,62 @@ strong {
    width: 100vw;
    height: 100vh;
    align-items: center;
-   justify-content: center;
+   justify-content: flex-start;
+   
    background-image: url("/img/peacock.jpg");
-   background-size: cover;
+   /* background-size: cover; */
    background-repeat: repeat;
    background-position: center; 
    flex-direction: column;
   
 }
 
-.createNewUser{
+.createNewUser,.userlist{
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 80vh;
     width: 25vw;
     align-items: center;
     justify-content: center;
     padding: 20px;
     color: white;
-    background-color: rgb(21, 188, 171);
+    /* background-color: rgb(21, 188, 171); */
     font-size: large;
+
+    /* border-radius: 2vh;
+    box-shadow: 0px 0px 0px 1px white; */
 }
 
+.sidebtn
+{
+    height: 14vh;
+}
 
 #newUserButton, #existingAccount{
 color: white;
+}
+
+.userlist{
+    
+    height: 50vh;
+    width: 40vw;    
+    background-color: rgb(8, 37, 105);
+}
+
+.account{
+    display: flex;
+    flex-direction: column;
+    height: 45vh;
+    width: 40vw;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: white;
+    background-color: rgb(21, 188, 171);
+    font-size: large;
+    margin-top: 20vh;
+
+    border-radius: 2vh;
+    box-shadow: 0px 0px 0px 1px white;
 }
 
