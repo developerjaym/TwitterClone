@@ -3,7 +3,7 @@ angular.module('twitterClone').controller('loginController', ['loginService', 'u
 
         this.submission = {}
         this.submission.username = 'hey'
-        this.submission.username = 'hey'
+        this.submission.password = 'hey'
 
         if (this.submission.username !== '') {
             this.usernameError = false
