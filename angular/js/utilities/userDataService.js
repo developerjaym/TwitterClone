@@ -1,17 +1,18 @@
 angular.module('twitterClone').service('userDataService', [function () {
 
-    this.credentials = new Credentials(undefined, undefined)
+    // this.credentials = new Credentials(undefined, undefined)
+    this.credentials = new Credentials('guest', 'guest')
 
-    this.setThisUserCredentials = (username, password) => {
+    this.setUserCredentials = (username, password) => {
         credentials.username = username
         credentials.password = password
     }
 
     this.buildUser = (username, password, firstName, lastName, email, phone) => {
-        const profile = new Profile(firstName, lastName, email, phone)
         const cred = new Credentials(username, password)
+        const profile = new Profile(firstName, lastName, email, phone)
 
-        return new User(profile, cred)
+        return new User(cred, profile)
     }
 
     this.buildTweet = (content) => {
@@ -22,42 +23,45 @@ angular.module('twitterClone').service('userDataService', [function () {
 
 class Profile {
     constructor(firstName, lastName, email, phone) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
+        this.firstName = firstName
+        this.lastName = lastName
+        this.email = email
+        this.phone = phone
     }
-    getFirstName = () => this.firstName
-    getLastName = () => this.lastName
-    getEmail = () => this.email
-    getPhone = () => this.phone
+
+    getFirstName() { this.firstName }
+    getLastName() { this.lastName }
+    getEmail() { this.email }
+    getPhone() { this.phone }
 }
 
 class User {
-    constructor(profile, credentials) {
-        this.profile = profile;
-        this.credentials = credentials;
+    constructor(credentials, profile) {
+        this.credentials = credentials
+        this.profile = profile
     }
-    getProfile = () => this.profile
-    getUsername = () => this.credentials.getUsername()
-    getPassword = () => this.credentials.getPassword()
+
+    getProfile() { this.profile }
+    getCredentials() { this.credentials }
 }
 
 class Credentials {
     constructor(username, password) {
-        this.username = username;
-        this.password = password;
+        this.username = username
+        this.password = password
     }
-    getUsername = () => this.username
-    getPassword = () => this.password
+
+    getUsername() { this.username }
+    getPassword() { this.password }
 }
 
 class Tweet {
     constructor(content, credentials) {
-        this.content = content;
-        this.credentials = credentials;
+        this.content = content
+        this.credentials = credentials
     }
-    getContent = () => this.content
-    getUsername = () => this.credentials.getUsername()
-    getPassword = () => this.credentials.getPassword()
+
+    getContent() { this.content }
+    getUsername() { this.credentials.getUsername() }
+    getPassword() { this.credentials.getPassword() }
 }

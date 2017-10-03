@@ -5,6 +5,7 @@ package com.cooksys.twitterclone.service;
 
 import org.springframework.stereotype.Service;
 
+import com.cooksys.twitterclone.dto.CredentialsDto;
 import com.cooksys.twitterclone.entity.HashtagEntity;
 import com.cooksys.twitterclone.entity.TweetEntity;
 import com.cooksys.twitterclone.entity.UserEntity;
@@ -48,6 +49,21 @@ public class ValidateService {
 		this.hashtagJpaRepository = hashtagJpaRepository;
 		this.userJpaRepository = userJpaRepository;
 		this.tweetJpaRepository = tweetJpaRepository;
+	}
+	
+	/**
+	 * @param credentials
+	 * @throws TwitterException
+	 */
+	public void login(CredentialsDto credentials) throws TwitterException {
+		UserEntity user = pullUser(credentials.getUsername());
+		
+		// Log for error checking
+		System.out.println(user.getCredentials().getPassword() + " " + credentials.getPassword() + " " + user.getCredentials().getPassword().equals(credentials.getPassword()));
+		
+		if(!user.getCredentials().getPassword().equals(credentials.getPassword())) {
+			throw new TwitterException(ErrorType.NOT_AUTHORIZED);
+		}
 	}
 	
 	/**

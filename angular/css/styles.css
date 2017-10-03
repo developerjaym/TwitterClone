@@ -232,3 +232,28 @@ strong {
 color: white;
 }
 
+.account{
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: 40vw;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: white;
+    background-color: rgb(8, 37, 105);
+    font-size: large;
+}
+
+.userlist{
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: 40vw;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: white;
+    background-color: rgb(8, 37, 105);
+    font-size: large;
+}
