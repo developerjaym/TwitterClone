@@ -10,19 +10,16 @@
     
     <div class="btn-group-vertical sessionFixedColumn ">
         <button type="button" class="jnavbutton glyphicon glyphicon-home">Jay Mansmann<br>jaymansmann@yahoo.com</button>
-            <!-- <span class="glyphicon glyphicon-search"></span>
-            <input type="text" value="search" class="search-bar"/> -->
-            <!-- <button class="glyphicon glyphicon-send search-button tooltip"><span class="tooltiptext">Tooltip text</span></button> 
-            <button class="glyphicon glyphicon-user search-button tooltip"> <span class="tooltiptext">Tooltip text</span></button> -->
-            <!-- <div class="tooltip">Hover
-                    <span class="tooltiptext">Tooltip text</span>
-            </div> -->
-            <!-- <div ng-mouseover="hi" ng-init="hello">Mouse over me!</div> -->
-            <div ng-mouseover="open = true" ng-mouseleave="open = false">
-                    Mouseover me!!!
-                 <button class="btn btn-primary" type="text" ng-show="open"   >
-                        <i class="fa fa-plus">Hi there</i>
-                 </button>
+            
+            <div  ng-mouseover="open = true" ng-mouseleave="open = false">
+                    
+                    <span class="checkbox ">
+                    <label>
+                            <input type="checkbox" checked data-toggle="toggle" data-on="User" data-off="Tweet">                 
+                    </label>
+                    <input class="search-bar" type ="text" placeholder="search" />
+                </span>
+                   
                     </div>
             <button type="button" class="jnavbutton">Tweet</button>
         <button type="button" class="jnavbutton">Followers</button>
