@@ -31,11 +31,11 @@ label
     justify-content: center;
     padding: 20px;
     color: white;
-    background-color: rgb(21, 188, 171);
+    /* background-color: rgb(21, 188, 171); */
     font-size: large;
 
-    border-radius: 2vh;
-    box-shadow: 0px 0px 0px 1px white;
+    /* border-radius: 2vh;
+    box-shadow: 0px 0px 0px 1px white; */
 
 }
 .sessionPanel2 {
@@ -61,8 +61,24 @@ label
 }
 .search-bar
 {
-    width: 19vw;
+    width: 12vw;
     min-width: 85px;
+    height: 5%;
+    min-height: 30px;
+
+    border-color: transparent;
+    border-width: 0px;
+    border-radius: 3px;
+}
+.search-button
+{
+    width: 3vw;
+    height: 5%;
+    background-color: rgb(64, 108, 55);
+    color: white;
+    border: none;
+    margin-top: 1px;
+    margin-bottom: 1px;
 }
 .sessionFixedColumn{
     display: flex;
@@ -122,10 +138,17 @@ label
     padding-top: 1vh;
 }
 
-.jay-box
+.jay-box, .login, .createNewUser
 {
     border-radius: 2vh;
-    box-shadow: 0px 0px 0px 1px white;
+    box-shadow: 1px 1px 0px 1px rgba(8, 37, 105, 0.8);
+    /* background: radial-gradient(rgb(4, 92, 120), rgb(21, 188, 170));  */
+    background-color: rgb(4, 92, 120);
+}
+.usertemplate
+{
+    height: 50vh;
+    width: 25vw;
 }
 .formtitle
 {
@@ -168,7 +191,7 @@ label
 }
 .jnavbutton
 {
-    height: 18vh;
+    height: 15%;
     width: 20vw;
     margin-top: 1px;
     margin-bottom: 1px;
@@ -216,11 +239,11 @@ strong {
     justify-content: center;
     padding: 20px;
     color: white;
-    background-color: rgb(21, 188, 171);
+    /* background-color: rgb(21, 188, 171); */
     font-size: large;
 
-    border-radius: 2vh;
-    box-shadow: 0px 0px 0px 1px white;
+    /* border-radius: 2vh;
+    box-shadow: 0px 0px 0px 1px white; */
 }
 
 .sidebtn
