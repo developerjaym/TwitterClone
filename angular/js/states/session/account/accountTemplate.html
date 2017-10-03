@@ -1,31 +1,35 @@
-<div class = "account">
-    <div class="title">Account settings</div>
+<div class="account">
+    <div class="formtitle">Account settings
 
-    <div class="form-group">
-        <label>First Name   :</label> 
-        <span><button type="button" class="btn btn-primary btn-xs">Edit</button></span>
+            <!-- <div class="formsubtitle"> -->
+                    <div class="formbuttonsmall">Deactivate</div>
+                <!-- </div> -->
     </div>
+   
+    <div class="formbody">
 
-    <div class="form-group">
-        <label>Last Name    :</label> 
-        <span><button type="button" class="btn btn-primary btn-xs">Edit</button></span>
-    </div>
+        <div class="formlabel">First Name
 
-    <div class="form-group">
-            <label>Email address    :</label> 
-            <span><button type="button" class="btn btn-primary btn-xs">Edit</button></span> 
+            <span class="formlabel" editable-text="$ctrl.submission.firstName"> {{ $ctrl.submission.firstName || "empty" }} </span>
+
         </div>
-    
 
-    <div class="form-group">
-        <label>Phone Number     :</label> 
-        <span><button type="button" class="btn btn-primary btn-xs">Edit</button></span>
+
+        <div class="formlabel">Last Name
+            <span class="formlabel" editable-text="$ctrl.submission.lastName"> {{ $ctrl.submission.lastName || "empty" }} </span>
+
+        </div>
+
+
+        <div class="formlabel">Email Address
+            <span class="formlabel" editable-text="$ctrl.submission.email"> {{ $ctrl.submission.email || "empty" }}
+        </div>
+
+        <div class="formlabel">Phone 
+            <span class="formlabel" editable-text="$ctrl.submission.phone"> {{ $ctrl.submission.phone || "empty" }} </span>
+        </div>
     </div>
-    
-    <button type="save" class="btn btn-primary btn-lg">Save</button>
-
-
-    
-
-
+    <div class="formfooter">
+        <button class="formbutton">Save</button>
+    </div>
 </div>
