@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -30,6 +31,7 @@ import com.cooksys.twitterclone.service.UserService;
  */
 @RestController
 @RequestMapping("/users/")
+@CrossOrigin(origins = "http://localhost:8080")
 public class UserController {
 	
 	private UserService userService;

@@ -3,11 +3,17 @@
  */
 package com.cooksys.twitterclone.controller;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cooksys.twitterclone.dto.CredentialsDto;
 import com.cooksys.twitterclone.exception.TwitterException;
 import com.cooksys.twitterclone.service.ValidateService;
 
@@ -17,6 +23,7 @@ import com.cooksys.twitterclone.service.ValidateService;
  */
 @RestController
 @RequestMapping("/validate/")
+@CrossOrigin(origins = "http://localhost:8080")
 public class ValidateController {
 	
 	private ValidateService validateService;
@@ -27,6 +34,19 @@ public class ValidateController {
 	 */
 	public ValidateController(ValidateService validateService) {
 		this.validateService = validateService;
+	}
+	
+	/**
+	 * @param credentials
+	 * @param response
+	 */
+	@PostMapping("/login/")
+	public void login(@RequestBody CredentialsDto credentials, HttpServletResponse response) {
+		try {
+			validateService.login(credentials);
+		} catch (TwitterException twitterException) {
+			response.setStatus(twitterException.getResponse());
+		}
 	}
 	
 	/**
