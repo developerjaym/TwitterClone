@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import com.cooksys.twitterclone.service.HashtagService;
  */
 @RestController
 @RequestMapping("/tags/")
+@CrossOrigin(origins = "http://localhost:8080")
 public class HashtagController {
 
 	private HashtagService hashtagService;

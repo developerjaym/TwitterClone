@@ -59,10 +59,6 @@ public class TweetService {
 	
 	private UserService userService;
 	
-	private final TweetGetDto ERROR = null;
-	
-	private final TweetRepostDto ERROR_REPOST = null;
-	
 	private final TweetEntity ERROR_ENTITY = null;
 	
 	private final Set<TweetGetDto> ERROR_SET = null;

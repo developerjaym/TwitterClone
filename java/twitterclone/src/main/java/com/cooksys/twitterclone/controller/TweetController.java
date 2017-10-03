@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,7 @@ import com.cooksys.twitterclone.service.ValidateService;
  */
 @RestController
 @RequestMapping("/tweets/")
+@CrossOrigin(origins = "http://localhost:8080")
 public class TweetController {
 	
 	private TweetService tweetService;
@@ -39,8 +41,6 @@ public class TweetController {
 	private ValidateService validateService;
 	
 	private final TweetGetDto ERROR = null;
-	
-	private final TweetGetDto SUCCESS = null;
 	
 	private final TweetRepostDto ERROR_REPOST = null;
 

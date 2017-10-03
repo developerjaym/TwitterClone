@@ -20,7 +20,6 @@ import com.cooksys.twitterclone.entity.embeddable.ProfileEmbeddable;
 import com.cooksys.twitterclone.exception.ErrorType;
 import com.cooksys.twitterclone.exception.TwitterException;
 import com.cooksys.twitterclone.mapper.CredentialsMapper;
-import com.cooksys.twitterclone.mapper.ProfileMapper;
 import com.cooksys.twitterclone.mapper.TweetMapper;
 import com.cooksys.twitterclone.mapper.UserMapper;
 import com.cooksys.twitterclone.repository.UserJpaRepository;
@@ -39,8 +38,6 @@ public class UserService {
 	
 	private CredentialsMapper credentialsMapper;
 	
-	private ProfileMapper profileMapper;
-	
 	private TweetMapper tweetMapper;
 	
 	private ValidateService validateService;
@@ -58,11 +55,10 @@ public class UserService {
 	 * @param validateService
 	 */
 	public UserService(UserJpaRepository userJpaRepository, UserMapper userMapper, CredentialsMapper credentialsMapper,
-			ProfileMapper profileMapper, TweetMapper tweetMapper, ValidateService validateService) {
+			TweetMapper tweetMapper, ValidateService validateService) {
 		this.userJpaRepository = userJpaRepository;
 		this.userMapper = userMapper;
 		this.credentialsMapper = credentialsMapper;
-		this.profileMapper = profileMapper;
 		this.tweetMapper = tweetMapper;
 		this.validateService = validateService;
 	}
@@ -123,7 +119,7 @@ public class UserService {
 				throw new TwitterException(ErrorType.NOT_AUTHORIZED);
 			}
 		} else {
-			throw new TwitterException(ErrorType.NOT_ACCEPTABLE);
+			throw new TwitterException(ErrorType.CONFLICT);
 		}
 	}
 
