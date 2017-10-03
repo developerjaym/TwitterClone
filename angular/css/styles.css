@@ -31,11 +31,11 @@ label
     justify-content: center;
     padding: 20px;
     color: white;
-    background-color: rgb(21, 188, 171);
+    /* background-color: rgb(21, 188, 171); */
     font-size: large;
 
-    border-radius: 2vh;
-    box-shadow: 0px 0px 0px 1px white;
+    /* border-radius: 2vh;
+    box-shadow: 0px 0px 0px 1px white; */
 
 }
 .sessionPanel2 {
@@ -61,8 +61,24 @@ label
 }
 .search-bar
 {
-    width: 19vw;
+    width: 12vw;
     min-width: 85px;
+    height: 5%;
+    min-height: 30px;
+
+    border-color: transparent;
+    border-width: 0px;
+    border-radius: 3px;
+}
+.search-button
+{
+    width: 3vw;
+    height: 5%;
+    background-color: rgb(64, 108, 55);
+    color: white;
+    border: none;
+    margin-top: 1px;
+    margin-bottom: 1px;
 }
 .sessionFixedColumn{
     display: flex;
@@ -121,29 +137,51 @@ label
 
     padding-top: 1vh;
 }
-
-.jay-box
+.jay-li
+{
+}
+.jay-box, .login, .createNewUser
 {
     border-radius: 2vh;
-    box-shadow: 0px 0px 0px 1px white;
+    box-shadow: 1px 1px 0px 1px rgba(8, 37, 105, 0.8);
+    /* background: radial-gradient(rgb(4, 92, 120), rgb(21, 188, 170));  */
+    background-color: rgb(4, 92, 120);
+}
+.usertemplate
+{
+    height: 50vh;
+    width: 25vw;
 }
 .formtitle
 {
     font-size: x-large;
+    height: 18%;
+    text-align: center;
+    text-justify: center;
+    padding-top: 0px;
 }
 .formsubtitle
 {
     font-size: small;
+    text-align: center;
+    text-justify: center;
 }
 .formbody
 {
-    margin-bottom: 1vh;
-    margin-top: 1vh;
-    padding-top: 4vh;
-    padding-bottom: 4vh;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    /* margin-bottom: 1vh;
+    margin-top: 1vh; */
+    /* padding-top: 4vh;
+    padding-bottom: 2vh; */
     font-size: x-large;
     border-bottom: 1px solid white;
     border-top: 1px solid white;
+    
+    height: 64%;
 }
 .formlabel
 {
@@ -152,9 +190,16 @@ label
 }
 .formfooter
 {
-    font-size: x-large;    
+    font-size: x-large;   
+    height: 18%; 
 }
-.formbutton, .jnavbutton
+.formfooterFeed
+{
+    font-size: small;
+    padding-bottom: 1px;
+    padding-top: 10px; 
+}
+.formbutton, .jnavbutton, .formbuttonsmall
 {
     font-size: large;
     color: white;
@@ -164,11 +209,23 @@ label
     border:none;
     
     padding: 4px 1vh 4px 1vh;
+
+    cursor: pointer;
     
+}
+.formbuttonsmall
+{
+    background-color: red;
+    font-size: small;
+    color: white;
+    align-self: center;
+    margin-top: 2px;
+    padding: 1px 1px 1px 1px;
+    border-radius: 3px;
 }
 .jnavbutton
 {
-    height: 18vh;
+    height: 15%;
     width: 20vw;
     margin-top: 1px;
     margin-bottom: 1px;
@@ -177,7 +234,6 @@ label
 {
     margin-top: 2vh;
     border-radius: 3px;
-    background-color: rgb(64, 108, 55);
 }
 strong {
     font-family: 'Bird Feather';
@@ -207,7 +263,7 @@ strong {
   
 }
 
-.createNewUser{
+.createNewUser,.userlist{
     display: flex;
     flex-direction: column;
     height: 80vh;
@@ -216,11 +272,11 @@ strong {
     justify-content: center;
     padding: 20px;
     color: white;
-    background-color: rgb(21, 188, 171);
+    /* background-color: rgb(21, 188, 171); */
     font-size: large;
 
-    border-radius: 2vh;
-    box-shadow: 0px 0px 0px 1px white;
+    /* border-radius: 2vh;
+    box-shadow: 0px 0px 0px 1px white; */
 }
 
 .sidebtn
@@ -232,28 +288,27 @@ strong {
 color: white;
 }
 
+.userlist{
+    
+    height: 50vh;
+    width: 40vw;    
+    background-color: rgb(8, 37, 105);
+}
+
 .account{
     display: flex;
     flex-direction: column;
-    height: 50vh;
+    height: 45vh;
     width: 40vw;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
     color: white;
-    background-color: rgb(8, 37, 105);
+    background-color: rgb(21, 188, 171);
     font-size: large;
+    margin-top: 20vh;
+
+    border-radius: 2vh;
+    box-shadow: 0px 0px 0px 1px white;
 }
 
-.userlist{
-    display: flex;
-    flex-direction: column;
-    height: 50vh;
-    width: 40vw;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    color: white;
-    background-color: rgb(8, 37, 105);
-    font-size: large;
-}

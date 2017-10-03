@@ -1,4 +1,6 @@
-angular.module('twitterClone', ['ui.router']).config(['$stateProvider', '$urlRouterProvider',
+angular.module('twitterClone', ['ui.router', 'xeditable']).run(function (editableOptions) {
+    editableOptions.theme = 'bs3';
+}).config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
 
         const titleState = {

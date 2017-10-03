@@ -7,14 +7,27 @@
             <ui-view></ui-view>
         </div>
     </div>
-
+    
     <div class="btn-group-vertical sessionFixedColumn ">
         <button type="button" class="jnavbutton glyphicon glyphicon-home">Jay Mansmann<br>jaymansmann@yahoo.com</button>
-        <span class="glyphicon glyphicon-search"></span><input type="text" value="search" class="search-bar"/>
-        <button type="button" class="jnavbutton">Tweet</button>
+            <!-- <span class="glyphicon glyphicon-search"></span>
+            <input type="text" value="search" class="search-bar"/> -->
+            <!-- <button class="glyphicon glyphicon-send search-button tooltip"><span class="tooltiptext">Tooltip text</span></button> 
+            <button class="glyphicon glyphicon-user search-button tooltip"> <span class="tooltiptext">Tooltip text</span></button> -->
+            <!-- <div class="tooltip">Hover
+                    <span class="tooltiptext">Tooltip text</span>
+            </div> -->
+            <!-- <div ng-mouseover="hi" ng-init="hello">Mouse over me!</div> -->
+            <div ng-mouseover="open = true" ng-mouseleave="open = false">
+                    Mouseover me!!!
+                 <button class="btn btn-primary" type="text" ng-show="open"   >
+                        <i class="fa fa-plus">Hi there</i>
+                 </button>
+                    </div>
+            <button type="button" class="jnavbutton">Tweet</button>
         <button type="button" class="jnavbutton">Followers</button>
         <button type="button" class="jnavbutton">Following</button>
-        <button type="button" class="jnavbutton">Account</button>
+        <button type="button" class="jnavbutton" ng-click="">Account</button>
     </div>
 
 </div>
