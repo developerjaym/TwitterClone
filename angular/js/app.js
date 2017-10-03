@@ -58,5 +58,5 @@ angular.module('twitterClone', ['ui.router']).config(['$stateProvider', '$urlRou
         .state(tweetState)
         .state(userListState)
 
-    $urlRouterProvider.otherwise('/title/login')
+    $urlRouterProvider.otherwise('/title')
 }])
