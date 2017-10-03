@@ -3,60 +3,58 @@ angular.module('twitterClone').controller('newUserController', ['newUserService'
 
         // Testing cases vvv
         this.submission = {}
-        this.submission.username = 'testUser22'
-        this.submission.password = 'testUser22'
-        this.submission.firstName = 'testUser'
-        this.submission.lastName = 'testUser'
-        this.submission.email = 'testUser'
-        this.submission.phone = 'testUser'
+        // this.submission.username = 'testUser22'
+        // this.submission.password = 'testUser22'
+        // this.submission.firstName = 'testUser'
+        // this.submission.lastName = 'testUser'
+        // this.submission.email = 'testUser'
+        // this.submission.phone = 'testUser'
 
-        if (this.submission.username !== '') {
-            this.usernameError = false
-        }
-
-        if (this.submission.password !== '') {
-            this.passwordError = false
-        }
-
-        if (this.submission.email !== '') {
-            this.emailError = false
-        }
+        this.usernameErrorCss = "black"
+        this.passwordErrorCss = "black"
+        this.emailErrorCss = "black"
 
         this.createNewUser = () => {
-            const user = userDataService.buildUser(
-                this.submission.username,
-                this.submission.password,
-                this.submission.firstName,
-                this.submission.lastName,
-                this.submission.email,
-                this.submission.phone)
+            if (this.submission.username !== '' &&
+                this.submission.password !== '' &&
+                this.submission.email !== '') {
 
-            newUserService.createNewUser(user).then((succeedResponse) => {
-                // User created, data will contain dto of user without its password
-                $state.go('title.login')
-            }, (errorResponse) => {
-                // Change some html to make it clear that there was an error and clear fields
+                const user = userDataService.buildUser(
+                    this.submission.username,
+                    this.submission.password,
+                    this.submission.firstName,
+                    this.submission.lastName,
+                    this.submission.email,
+                    this.submission.phone)
 
-                if (errorResponse === 409) {
-                    // Username taken
-                    this.submission.username = ''
-                    this.usernameError = true
-                }
+                newUserService.createNewUser(user).then((succeedResponse) => {
+                    // User created, data will contain dto of user without its password
+                    $state.go('title.login')
+                }, (errorResponse) => {
+                    if (errorResponse.status === 409) {
+                        // Username taken
+                        this.submission.username = ''
+                        this.usernameErrorCss = "red"
+                        this.passwordErrorCss = "black"
+                        this.emailErrorCss = "black"
+                    }
 
-                if (errorResponse === 406) {
-                    // Required field missing
-                }
+                    if (errorResponse.status === 406) {
+                        // Required field missing
+                        this.usernameErrorCss = "red"
+                        this.passwordErrorCss = "red"
+                        this.emailErrorCss = "red"
+                    }
 
-                if (errorResponse === 401) {
-                    // Tried to reactivate account and password incorrect
-                    this.submission.password = ''
-                    this.usernameError = false
-                    this.passwordError = true
-                }
-            })
+                    if (errorResponse.status === 401) {
+                        // Tried to reactivate account and password incorrect
+                        this.submission.password = ''
+                        this.passwordErrorCss = "red"
+                        this.usernameErrorCss = "black"
+                        this.emailErrorCss = "black"
+                    }
+                })
+            }
         }
-
-        // this.createNewUser()
-
     }
 ])

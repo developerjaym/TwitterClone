@@ -18,6 +18,6 @@
 <div class="jay-box">
         <div class="formtitle">Post Tweet</div>
         <div class="formsubtitle">What's up?</div>
-        <div class="formbody" ><input type="text" class="form-control" id="content"></div>
-        <div class="formfooter" > <button type="submit" class="formbutton">Post</button></div>
+        <div class="formbody" ><input type="text" class="form-control" id="content" ng-model="$ctrl.content"></div>
+        <div class="formfooter" > <button type="submit" class="formbutton" ng-click="$ctrl.createNewTweet()">Post</button></div>
 </div>
