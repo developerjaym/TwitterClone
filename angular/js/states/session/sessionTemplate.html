@@ -3,16 +3,19 @@
         <div class="sessionTitle2 ">
             Feed
         </div>
-        <div class="sessionPanel2">
+        <div class="sessionPanel3">
             <ui-view></ui-view>
         </div>
         
     </div>
     
-    <div class="btn-group-vertical sessionFixedColumn navbar-fixed-top " >
-        <button type="button" class="jnavbutton glyphicon glyphicon-home">Jay Mansmann<br>jaymansmann@yahoo.com</button>
-            <div   ng-mouseover="open = true" ng-mouseleave="open = false">                    
-                <span class="checkbox" >
+    <div class="sessionFixedColumn ">
+        <button type="button" class="jnavbutton"><span class=" glyphicon glyphicon-home"></span>Jay Mansmann<br>jaymansmann@yahoo.com</button>
+            
+            <div class="search" ng-mouseover="open = true" ng-mouseleave="open = false">
+                    
+                    <span class="checkbox ">
+
                     <label>
                             <input type="checkbox" checked data-toggle="toggle" data-on="User" data-off="Tweet">  
                             <input class="search-bar" type ="text" placeholder="search" />               
