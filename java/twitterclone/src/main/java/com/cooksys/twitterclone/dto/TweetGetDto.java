@@ -17,6 +17,10 @@ public class TweetGetDto implements Comparable<TweetGetDto>{
 	
 	private String content;
 	
+	private Integer repostOf;
+	
+	private Integer inReplyTo;
+	
 	/**
 	 * Default Constructor
 	 */
@@ -90,6 +94,34 @@ public class TweetGetDto implements Comparable<TweetGetDto>{
 	 */
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	/**
+	 * @return the repostOf
+	 */
+	public Integer getRepostOf() {
+		return repostOf;
+	}
+
+	/**
+	 * @param repostOf the repostOf to set
+	 */
+	public void setRepostOf(Integer repostOf) {
+		this.repostOf = repostOf;
+	}
+
+	/**
+	 * @return the inReplyTo
+	 */
+	public Integer getInReplyTo() {
+		return inReplyTo;
+	}
+
+	/**
+	 * @param inReplyTo the inReplyTo to set
+	 */
+	public void setInReplyTo(Integer inReplyTo) {
+		this.inReplyTo = inReplyTo;
 	}
 
 	/* (non-Javadoc)

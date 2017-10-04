@@ -19,6 +19,29 @@ angular.module('twitterClone').service('userDataService', [function () {
         return new Tweet(content, this.credentials)
     }
 
+    this.feedTypeEnum = {
+        MAIN: 'MAIN',
+        CUSTOM: 'CUSTOM',
+        SINGLE: 'SINGLE',
+        CONTEXT: 'CONTEXT',
+        USER: 'USER',
+        HASHTAG: 'HASHTAG'
+    }
+
+    this.activeFeed = this.feedTypeEnum.MAIN
+    this.feedDependency = undefined
+
+    this.userListTypeEnum = {
+        ALL: 'ALL',
+        CUSTOM: 'CUSTOM',
+        SINGLE: 'SINGLE',
+        FOLLOWERS: 'FOLLOWERS',
+        FOLLOWING: 'FOLLOWING'
+    }
+
+    this.activeUserList = this.userListTypeEnum.ALL
+    this.userListDependency = undefined
+
 }])
 
 class Profile {
@@ -29,10 +52,18 @@ class Profile {
         this.phone = phone
     }
 
-    getFirstName() { this.firstName }
-    getLastName() { this.lastName }
-    getEmail() { this.email }
-    getPhone() { this.phone }
+    getFirstName() {
+        this.firstName
+    }
+    getLastName() {
+        this.lastName
+    }
+    getEmail() {
+        this.email
+    }
+    getPhone() {
+        this.phone
+    }
 }
 
 class User {
@@ -41,8 +72,12 @@ class User {
         this.profile = profile
     }
 
-    getProfile() { this.profile }
-    getCredentials() { this.credentials }
+    getProfile() {
+        this.profile
+    }
+    getCredentials() {
+        this.credentials
+    }
 }
 
 class Credentials {
@@ -51,8 +86,12 @@ class Credentials {
         this.password = password
     }
 
-    getUsername() { this.username }
-    getPassword() { this.password }
+    getUsername() {
+        this.username
+    }
+    getPassword() {
+        this.password
+    }
 }
 
 class Tweet {
@@ -61,7 +100,13 @@ class Tweet {
         this.credentials = credentials
     }
 
-    getContent() { this.content }
-    getUsername() { this.credentials.getUsername() }
-    getPassword() { this.credentials.getPassword() }
+    getContent() {
+        this.content
+    }
+    getUsername() {
+        this.credentials.getUsername()
+    }
+    getPassword() {
+        this.credentials.getPassword()
+    }
 }

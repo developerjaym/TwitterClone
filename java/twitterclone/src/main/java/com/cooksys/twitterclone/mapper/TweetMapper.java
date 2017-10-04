@@ -8,25 +8,25 @@ import java.util.TreeSet;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 
 import com.cooksys.twitterclone.dto.TweetGetDto;
 import com.cooksys.twitterclone.dto.TweetRepostDto;
 import com.cooksys.twitterclone.dto.TweetSaveDto;
-import com.cooksys.twitterclone.dto.UserGetDto;
 import com.cooksys.twitterclone.entity.TweetEntity;
-import com.cooksys.twitterclone.entity.UserEntity;
 
 /**
  * @author Greg Hill
  *
  */
-@Mapper(componentModel="spring")
+@Mapper(componentModel="spring", uses=UserMapper.class)
 public interface TweetMapper {
-
-	TweetGetDto toDtoGet(TweetEntity tweet);
 	
-	@Mapping(source = "credentials.username", target = "username")
-	UserGetDto toUserDtoGet(UserEntity user);
+	@Mappings ({
+		@Mapping(source = "inReplyTo.id", target = "inReplyTo"),
+		@Mapping(source = "repostOf.id", target = "repostOf")
+	})
+	TweetGetDto toDtoGet(TweetEntity tweet);
 	
 	TweetEntity fromDtoSave(TweetSaveDto tweetGetDto);
 

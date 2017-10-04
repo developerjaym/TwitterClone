@@ -259,4 +259,20 @@ public class UserController {
 		}
 	}
 	
+	/**
+	 * @param username
+	 * @param response
+	 * @return all tweets in which the given user is mentioned
+	 */
+	@GetMapping("/@{username}/likes/")
+	public Set<TweetGetDto> getLikes(@PathVariable String username, HttpServletResponse response) {
+		try {
+			userService.getUser(username);
+			return userService.getLikes(username);
+		} catch (TwitterException twitterException) {
+			response.setStatus(twitterException.getResponse());
+			return ERROR_TSET;
+		}
+	}
+	
 }
