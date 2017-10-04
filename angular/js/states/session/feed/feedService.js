@@ -1,5 +1,5 @@
 angular.module('twitterClone').service('feedService', ['userDataService', '$http',
-    function ($http, userDataService) {
+    function (userDataService, $http) {
 
         this.getAllTweets = () => {
             return $http.get('http://localhost:8888/api/tweets/')
@@ -43,6 +43,14 @@ angular.module('twitterClone').service('feedService', ['userDataService', '$http
 
         this.getTweetsByHashtag = (hashtagLabel) => {
             return $http.get('http://localhost:8888/api/tags/' + hashtagLabel + '/')
+        }
+
+        this.replyToTweet = (tweet, tweetId) => {
+            return $http.post('http://localhost:8888/api/tweets/' + tweetId + '/reply/', tweet)
+        }
+
+        this.repostTweet = (tweetId) => {
+            return $http.post('http://localhost:8888/api/tweets/' + tweetId + '/repost/', userDataService.credentials)
         }
 
         this.getFeed = (username) => {

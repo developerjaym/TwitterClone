@@ -17,20 +17,20 @@
         </div>
 </div> -->
 
-<div class="jay-box">
-        <div class="formtitle">@jaymansmann
-                <div class="formsubtitle">Sept 21, 2017</div>
+<div class="jay-box" ng-repeat="tweet in $ctrl.tweetPool">
+        <div class="formtitle"> {{ tweet.author.username }}
+                <div class="formsubtitle">{{ tweet.posted | date }}</div>
         </div>
 
-        <div class="formbody">How is everyone?</div>
-        <div class="formsubtitle">#java #cooksys @thanuja @greg</div>
+        <div class="formbody">{{ tweet.content }}</div>
+        <!-- <div class="formsubtitle">#java #cooksys @thanuja @greg</div> -->
         <div class="formfooter">
                 <!-- <div>     -->
                 <ul class="nav nav-pills formsubtitle">
-                        <li class="jay-li"><a href="#" id="likebutton" title="Like by Greg, Thanuja, Michael, Will">Like</a></li>
-                        <li class="jay-li"><a href="#">Reply</a></li>
-                        <li class="jay-li"><a href="#">Repost</a></li>
-                        <li class="jay-li"><a href="#" class="glyphicon glyphicon-trash">
+                        <li class="jay-li"><a id="likebutton" title="Like by Greg, Thanuja, Michael, Will">Like</a></li>
+                        <li class="jay-li"><a>Reply</a></li>
+                        <li class="jay-li"><a ng-click="$ctrl.repostTweet(tweet.id)">{{tweet.id}}Repost</a></li>
+                        <li class="jay-li"><a class="glyphicon glyphicon-trash">
                               </a></li>
                 </ul>
                 <!-- <button class="btn btn-danger navbar-btn btn btn-xs">Button</button> -->

@@ -16,7 +16,7 @@ angular.module('twitterClone').service('userDataService', [function () {
     }
 
     this.buildTweet = (content) => {
-        return new Tweet(content, credentials)
+        return new Tweet(content, this.credentials)
     }
 
 }])
