@@ -366,4 +366,13 @@ public class UserService {
 	public Set<TweetGetDto> getMentions(String username) throws TwitterException {
 		return tweetMapper.toDto(new TreeSet<>(pullUser(username).getMentionedInTweets())).descendingSet();
 	}
+
+	/**
+	 * @param username
+	 * @return all tweets that the user liked
+	 * @throws TwitterException 
+	 */
+	public Set<TweetGetDto> getLikes(String username) throws TwitterException {
+		return tweetMapper.toDto(new TreeSet<>(pullUser(username).getLikedTweets())).descendingSet();
+	}
 }

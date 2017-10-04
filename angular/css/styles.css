@@ -25,6 +25,8 @@ label
 .sessionPanel2 {
     display: flex;
     flex-direction: row;
+    width: 100vw;
+    height: 100vh;
     
 }
 
@@ -276,4 +278,19 @@ color: white;
 ::selection {
     background-color: rgb(99, 138, 23);
     color: #fff;
+}
+
+
+
+
+
+  
+.fa {
+    font-size: 50px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.fa:hover {
+  color: darkblue;
 }

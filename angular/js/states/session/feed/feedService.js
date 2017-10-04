@@ -10,7 +10,7 @@ angular.module('twitterClone').service('feedService', ['userDataService', '$http
         }
 
         this.deleteTweet = (tweetId) => {
-            return $http.delete('http://localhost:8888/api/tweets/' + tweetId + '/', userDataService.credentials)
+            return $http.delete('http://localhost:8888/api/tweets/' + tweetId + '/delete/', userDataService.credentials)
         }
 
         this.likeTweet = (tweetId) => {
@@ -51,6 +51,14 @@ angular.module('twitterClone').service('feedService', ['userDataService', '$http
 
         this.repostTweet = (tweetId) => {
             return $http.post('http://localhost:8888/api/tweets/' + tweetId + '/repost/', userDataService.credentials)
+        }
+
+        this.getLikesOfUser = (username) => {
+            if (username !== undefined) {
+                return $http.get('http://localhost:8888/api/users/@' + username + '/likes/')
+            } else {
+                return $http.get('http://localhost:8888/api/users/@' + userDataService.credentials.username + '/likes/')
+            }
         }
 
         this.getFeed = (username) => {

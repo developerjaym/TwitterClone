@@ -29,8 +29,6 @@ angular.module('twitterClone', ['ui.router', 'xeditable']).run(function (editabl
             component: 'sessionComponent'
         }
 
-        // url: '/session/{username}',
-
         const accountState = {
             name: 'session.account',
             url: '/account',
