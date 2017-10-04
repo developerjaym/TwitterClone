@@ -3,13 +3,19 @@
     font-family: "Bird Feather";
     src: url(BirdFeather.ttf);
 }
-
 body{
 height: 100vh;
 width: 100vw;
 display: flex;
+background-image: url("/img/peacock.jpg");
+/* background-size: cover; */
+background-repeat: repeat;
+background-position: center; 
 }
-
+div
+{
+    background-color: transparent;
+}
 
 label
 {
@@ -30,16 +36,18 @@ label
     align-items: center;
     height: 95%;
 }
+
 .changeArea
 {
     display: flex;
-    background-color: papayawhip;
-
-   background-image: url("/img/peacock.jpg");
-   /* background-size: cover; */
-   background-repeat: repeat;
-   background-position: center; 
+    
+    background-color: transparent;
    flex-direction: column;
+   
+}
+.search
+{
+    background-color: white;
 }
 .search-bar
 {
@@ -63,17 +71,23 @@ label
 }
 .sessionFixedColumn{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     height: 100vh;
     width: 20vw;
     min-width: 100px;
     background-color: transparent;
+    
     border-right: 1px;
     border-color: white;
     order: -1;
+    
 }
-
+.sessionTitle2, .sessionFixedColumn
+{
+    position: sticky;
+    top: 0px;
+}
 .sessionTitle, .sessionTitle2{
     align-self: flex-start;
     text-align: center;
@@ -85,11 +99,10 @@ label
 
     color: white;
     /* background:  linear-gradient(rgba(118, 53, 23, 0.75), rgba(118, 53, 23, 0.15)); */
-    background: radial-gradient(rgba(8, 37, 105, 0.9), rgba(4, 92, 120,0.9));
-}
-.sessionTitle
-{
-    margin-bottom: 5vh;
+    background: radial-gradient(rgba(8, 37, 105, 0.95), rgba(4, 92, 120,0.92));
+    margin-bottom: 3vh;
+
+    font-size: x-large;
 }
 .jay-li, a
 {
@@ -110,7 +123,7 @@ label
     box-shadow: 1px 1px 0px 1px rgba(8, 37, 105, 0.8);
     background-color: rgb(4, 92, 120);
     /* background: radial-gradient(rgb(8, 37, 105), rgb(4, 92, 120)); */
-    background: radial-gradient(rgba(8, 37, 105, 0.95), rgba(4, 92, 120,0.9));
+    background: radial-gradient(rgba(8, 37, 105, 0.95), rgba(4, 92, 120,0.92));
 
     display: flex;
     flex-direction: column;
@@ -136,6 +149,7 @@ label
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
 
 }
 .formsubtitle
@@ -211,10 +225,11 @@ input
 }
 .jnavbutton
 {
-    height: 15%;
+    height: 19%;
     width: 20vw;
-    margin-top: 1px;
-    margin-bottom: 1px;
+    
+    box-shadow: 0px 0px 0px 1px white inset;
+   
 }
 .formbutton
 {
