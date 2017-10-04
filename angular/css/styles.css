@@ -3,40 +3,24 @@
     font-family: "Bird Feather";
     src: url(BirdFeather.ttf);
 }
-
 body{
 height: 100vh;
 width: 100vw;
 display: flex;
-background-color: red;
-
-
-
+background-image: url("/img/peacock.jpg");
+/* background-size: cover; */
+background-repeat: repeat;
+background-position: center; 
 }
-
+div
+{
+    background-color: transparent;
+}
 
 label
 {
     color: white;
     font-size: medium;
-}
-
-.login {
-    display: flex;
-    flex-direction: column;
-    height: 50vh;
-    width: 25vw;
-    margin-top: 10vh;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    color: white;
-    /* background-color: rgb(21, 188, 171); */
-    font-size: large;
-
-    /* border-radius: 2vh;
-    box-shadow: 0px 0px 0px 1px white; */
-
 }
 .sessionPanel2 {
     display: flex;
@@ -46,20 +30,26 @@ label
     
 }
 
+.sessionPanel3, .sessionPanel
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 95%;
+}
+
 .changeArea
 {
     display: flex;
-    background-color: papayawhip;
-   margin: 0 auto;
-   /* width: 100vw;
-   height: 100vh; */
-   align-items: center;
-   /* justify-content: center; */
-   background-image: url("/img/peacock.jpg");
-   /* background-size: cover; */
-   background-repeat: repeat;
-   background-position: center; 
+    
+    background-color: transparent;
    flex-direction: column;
+   
+}
+.search
+{
+    background-color: white;
 }
 .search-bar
 {
@@ -67,7 +57,6 @@ label
     min-width: 85px;
     height: 5%;
     min-height: 30px;
-    /* margin-left: 2vw; */
     border-color: transparent;
     border-width: 0px;
     border-radius: 3px;
@@ -83,90 +72,94 @@ label
     margin-bottom: 1px;
 }
 .sessionFixedColumn{
-    display: flex;    
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     height: 100vh;
     width: 20vw;
     min-width: 100px;
     background-color: transparent;
+    
     border-right: 1px;
     border-color: white;
     order: -1;
-}
-
-
-.tweet, .jay-box{
-    display: flex;
-    flex-direction: column;
-    height: 40vh;
-    min-height: 200px;
-    width: 25vw;
-    align-items: center;
-    justify-content: center;
     
-    border-radius: 1vh;
-    margin-top: 25vh;
-    margin-left: 40vw;
-    padding: 20px;
-    color: white;
-    background-color: rgb(21, 188, 171);
-    font-size: large;
 }
-
+.sessionTitle2, .sessionFixedColumn
+{
+    position: sticky;
+    top: 0px;
+}
 .sessionTitle, .sessionTitle2{
-    align-self: center;
+    align-self: flex-start;
     text-align: center;
-    
-    /* height: 5vh; */
+
     min-height: 40px;
     width: 100vw;
     font-size: large;
     align-items: center;
 
     color: white;
-    /* background-color: rgb(21, 188, 171); */
-    /* background-color: rgba(118, 53, 23, 0.5); */
-    background:  linear-gradient(rgba(118, 53, 23, 0.75), rgba(118, 53, 23, 0.15));
-    /* background-color: transparent; */
+    /* background:  linear-gradient(rgba(118, 53, 23, 0.75), rgba(118, 53, 23, 0.15)); */
+    background: linear-gradient(rgba(8, 37, 105, 0.95), rgba(4, 92, 120,0.1));
+    margin-bottom: 3vh;
 
+    font-size: x-large;
 }
- 
+.jay-li, a
+{
+    color: white !important;
+    background-color: transparent !important;
+    cursor: pointer;
+} 
 .sessionTitle2
 {
     width: 80vw;
     align-self: flex-start;
-
     padding-top: 1vh;
 }
-.jay-li
+.jay-box, .tweet,  .login, .createNewUser, .account, .userlist
 {
-}
-.jay-box, .login, .createNewUser
-{
+    color: white;
     border-radius: 2vh;
     box-shadow: 1px 1px 0px 1px rgba(8, 37, 105, 0.8);
-    /* background: radial-gradient(rgb(4, 92, 120), rgb(21, 188, 170));  */
     background-color: rgb(4, 92, 120);
-}
-.usertemplate
-{
-    height: 50vh;
-    width: 25vw;
+    /* background: radial-gradient(rgb(8, 37, 105), rgb(4, 92, 120)); */
+    background: radial-gradient(rgba(8, 37, 105, 0.95), rgba(4, 92, 120,0.92));
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    font-size: large;
 }
 .formtitle
 {
     font-size: x-large;
-    height: 18%;
     text-align: center;
     text-justify: center;
     padding-top: 0px;
+    padding-bottom: 1vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+
 }
 .formsubtitle
 {
     font-size: small;
     text-align: center;
     text-justify: center;
+    color: white;
 }
 .formbody
 {
@@ -175,15 +168,14 @@ label
     align-content: center;
     flex-direction: column;
     justify-content: center;
-    /* margin-bottom: 1vh;
-    margin-top: 1vh; */
-    /* padding-top: 4vh;
-    padding-bottom: 2vh; */
+    padding-bottom: 1vh;
     font-size: x-large;
     border-bottom: 1px solid white;
     border-top: 1px solid white;
     
-    height: 64%;
+    min-width: 20vw;
+    max-width: 20vw;
+    min-height: 20vh;
 }
 .formlabel
 {
@@ -193,7 +185,11 @@ label
 .formfooter
 {
     font-size: x-large;   
-    height: 18%; 
+
+    display: flex;
+    justify-content: center;
+    padding-bottom: 0px;
+    padding-top: 1vh;
 }
 .formfooterFeed
 {
@@ -215,41 +211,46 @@ label
     cursor: pointer;
     
 }
+input
+{
+    text-align: center;
+}
 .formbuttonsmall
 {
-    background-color: red;
+    background-color: rgb(118, 53, 23);
+    /* max-width: 40px; */
     font-size: small;
     color: white;
     align-self: center;
     margin-top: 2px;
-    padding: 1px 1px 1px 1px;
     border-radius: 3px;
 }
 .jnavbutton
 {
-    height: 15%;
+    height: 19%;
     width: 20vw;
-    margin-top: 1px;
-    margin-bottom: 1px;
+    
+    box-shadow: 0px 0px 0px 1px white inset;
+   
 }
 .formbutton
 {
     margin-top: 2vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
     border-radius: 3px;
 }
 strong {
     font-family: 'Bird Feather';
     font-size: 100px;
     text-align: right;
-    /* padding-right: 30px; */
-    /* font-size: xx-large; */
     color: white;
     
     text-shadow: #000 1px 1px 4px;
 }
 
 .sessionPanel{
-    display: flex;
+   display: flex;
     background-color: papayawhip;
    margin: 0 auto;
    width: 100vw;
@@ -258,27 +259,11 @@ strong {
    justify-content: flex-start;
    
    background-image: url("/img/peacock.jpg");
-   /* background-size: cover; */
+   background-size: cover;
    background-repeat: repeat;
    background-position: center; 
    flex-direction: column;
   
-}
-
-.createNewUser,.userlist{
-    display: flex;
-    flex-direction: column;
-    height: 80vh;
-    width: 25vw;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    color: white;
-    /* background-color: rgb(21, 188, 171); */
-    font-size: large;
-
-    /* border-radius: 2vh;
-    box-shadow: 0px 0px 0px 1px white; */
 }
 
 .sidebtn
@@ -290,29 +275,12 @@ strong {
 color: white;
 }
 
-.userlist{
-    
-    height: 50vh;
-    width: 40vw;    
-    background-color: rgb(8, 37, 105);
+::selection {
+    background-color: rgb(99, 138, 23);
+    color: #fff;
 }
 
-.account{
-    display: flex;
-    flex-direction: column;
-    height: 45vh;
-    width: 40vw;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    color: white;
-    background-color: rgb(21, 188, 171);
-    font-size: large;
-    margin-top: 20vh;
-    margin-left: 35vw;
-    border-radius: 2vh;
-    box-shadow: 0px 0px 0px 1px white;
-}
+
 
 
 
@@ -326,4 +294,3 @@ color: white;
 .fa:hover {
   color: darkblue;
 }
-
