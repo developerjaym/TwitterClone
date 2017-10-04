@@ -31,7 +31,7 @@
 
                                 
 
-                                <a id="likebutton" title="Like by Greg, Thanuja, Michael, Will">Like</a>
+                                <a ng-click="$ctrl.likeTweet(tweet)" ng-style="{'color': $ctrl.checkIfLiked(tweet) }" id="likebutton" title="Like by Greg, Thanuja, Michael, Will"> {{ $ctrl.textIfLiked(tweet) }} </a>
                         </li>
                         <li class="jay-li">
                                 <a editable-textarea="Reply" e-rows="7" e-cols="40">
@@ -44,10 +44,10 @@
                                         Reply </a>
                                 </li>
                         <li class="jay-li">
-                                <a ng-click="$ctrl.repostTweet(tweet.id)">{{tweet.id}}Repost</a>
+                                <a ng-click="$ctrl.repostTweet(tweet.id)">Repost</a>
                         </li>
                         <li class="jay-li">
-                                <a class="glyphicon glyphicon-trash"> </a>
+                                <a ng-click="$ctrl.deleteTweet(tweet.id)" class="glyphicon glyphicon-trash"> </a>
                         </li>
                 </ul>
                 <!-- <button class="btn btn-danger navbar-btn btn btn-xs">Button</button> -->
