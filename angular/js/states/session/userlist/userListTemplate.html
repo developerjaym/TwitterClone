@@ -1,21 +1,21 @@
 
-<div class="jay-box usertemplate">
+<div class="jay-box usertemplate" ng-repeat="user in $ctrl.userPool">
     <div id="tester" class="formtitle">
-        @jaymansmann
+        {{ user.username }}
     </div>
     <div class="formsubtitle">
-        Since Sept 21, 2017
+        Since {{ user.joined | date }}
     </div>
     
     <div class="formbody">
         <div class='formlabel'>
-            Jay Mansmann
+            {{ user.profile.firstName }} {{ user.profile.lastName }}
         </div>  
         <div class='formlabel'>
-            jaymansmann@yahoo.com
+            {{ user.profile.email }}
         </div> 
         <div class='formlabel'>
-            (317)555-5555
+            {{ user.profile.phone }}
         </div> 
     </div>
     
