@@ -1,5 +1,5 @@
-angular.module('twitterClone').controller('accountController', ['accountService', 'userDataService', '$state',
-    function (accountService, userDataService, $state) {
+angular.module('twitterClone').controller('accountController', ['userListService', 'accountService', 'userDataService', '$state',
+    function (userListService, accountService, userDataService, $state) {
 
         if (userDataService.credentials.username === undefined ||
             userDataService.credentials.password === undefined) {
@@ -10,6 +10,8 @@ angular.module('twitterClone').controller('accountController', ['accountService'
         this.deactivateUser = () => {
             accountService.deactivateUser().then((succeedResponse) => {
                 // User deactivated, add some confirmation here and then redirects to login
+                userDataService.credentials.username = undefined
+                userDataService.credentials.password = undefined
                 $state.go('title.login')
             }, (errorResponse) => {
                 // There should never really be an error here unless the user got to the account page without logging in
@@ -27,10 +29,12 @@ angular.module('twitterClone').controller('accountController', ['accountService'
         this.submission = {}
         this.submission.username = userDataService.credentials.username
         this.submission.password = userDataService.credentials.password
-        this.submission.firstName = 'modified'
-        this.submission.lastName = 'modified'
-        this.submission.email = 'modified'
-        this.submission.phone = 'modified'
+        userListService.getUser(userDataService.credentials.username).then((succeedResponse) => {
+            this.submission.firstName = succeedResponse.data.profile.firstName
+            this.submission.lastName = succeedResponse.data.profile.lastName
+            this.submission.email = succeedResponse.data.profile.email
+            this.submission.phone = succeedResponse.data.profile.phone
+        })
 
         this.modifyProfile = () => {
             const user = userDataService.buildUser(

@@ -132,7 +132,7 @@ public class UserController {
 	 * @param response
 	 * @return the user that was deleted
 	 */
-	@DeleteMapping("/@{username}/")
+	@PostMapping("/delete/@{username}/")
 	public UserGetDto deleteUser(@PathVariable String username, @RequestBody CredentialsDto credentialsDto, HttpServletResponse response) {
 		try {
 			UserGetDto deletedUser = userService.deleteUser(username, credentialsDto);

@@ -1,11 +1,11 @@
 <div class="account">
     <div class="formtitle">Account settings
 
-            <!-- <div class="formsubtitle"> -->
-                    <div class="formbuttonsmall">Deactivate</div>
-                <!-- </div> -->
+        <!-- <div class="formsubtitle"> -->
+        <div class="formbuttonsmall" ng-click="$ctrl.deactivateUser()">Deactivate</div>
+        <!-- </div> -->
     </div>
-   
+
     <div class="formbody">
 
         <div class="formlabel">First Name
@@ -30,6 +30,6 @@
         </div>
     </div>
     <div class="formfooter">
-        <button class="formbutton">Save</button>
+        <button class="formbutton" ng-click="$ctrl.modifyProfile()">Save</button>
     </div>
 </div>
