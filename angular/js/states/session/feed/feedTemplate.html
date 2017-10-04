@@ -27,11 +27,28 @@
         <div class="formfooter">
                 <!-- <div>     -->
                 <ul class="nav nav-pills formsubtitle">
-                        <li class="jay-li"><a id="likebutton" title="Like by Greg, Thanuja, Michael, Will">Like</a></li>
-                        <li class="jay-li"><a>Reply</a></li>
-                        <li class="jay-li"><a ng-click="$ctrl.repostTweet(tweet.id)">{{tweet.id}}Repost</a></li>
-                        <li class="jay-li"><a class="glyphicon glyphicon-trash">
-                              </a></li>
+                        <li class="jay-li">
+
+                                
+
+                                <a id="likebutton" title="Like by Greg, Thanuja, Michael, Will">Like</a>
+                        </li>
+                        <li class="jay-li">
+                                <a editable-textarea="Reply" e-rows="7" e-cols="40">
+                                        <!-- <pre>{{ user.desc || 'no description' }}</pre> -->
+                  
+                  
+                  
+                  
+                  
+                                        Reply </a>
+                                </li>
+                        <li class="jay-li">
+                                <a ng-click="$ctrl.repostTweet(tweet.id)">{{tweet.id}}Repost</a>
+                        </li>
+                        <li class="jay-li">
+                                <a class="glyphicon glyphicon-trash"> </a>
+                        </li>
                 </ul>
                 <!-- <button class="btn btn-danger navbar-btn btn btn-xs">Button</button> -->
                 <!-- </div>              -->
