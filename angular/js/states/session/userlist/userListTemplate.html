@@ -1,4 +1,3 @@
-
 <div class="jay-box usertemplate" ng-repeat="user in $ctrl.userPool">
     <div id="tester" class="formtitle">
         {{ user.username }}
@@ -6,46 +5,40 @@
     <div class="formsubtitle">
         Since {{ user.joined | date }}
     </div>
-    
+
     <div class="formbody">
         <div class='formlabel'>
             {{ user.profile.firstName }} {{ user.profile.lastName }}
-        </div>  
+        </div>
         <div class='formlabel'>
             {{ user.profile.email }}
-        </div> 
+        </div>
         <div class='formlabel'>
             {{ user.profile.phone }}
-        </div> 
+        </div>
     </div>
-    
+
     <div class="formfooter">
-            <span class="dropdown">
-                <button class="formbutton dropdown-toggle" type="button" data-toggle="dropdown">
-                    Followings
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-center">
-                    <li><a href="#">user1</a></li>
-                    <li><a href="#">user2</a></li>
-                    <li><a href="#">user3</a></li>
-                </ul>
-            </span>
-            <span class="dropdown">
-                    <button class="formbutton dropdown-toggle" type="button" data-toggle="dropdown">
-                        Followers
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-center">
-                        <li><a href="#">user1</a></li>
-                        <li><a href="#">user2</a></li>
-                        <li><a href="#">user3</a></li>
-                    </ul>
-                </span>
+        <ul class="nav nav-pills formsubtitle">
+
+            <li class="jay-li">
+                <a ng-click="$ctrl.followUser(user)" ng-style="{'color': $ctrl.checkIfFollowed(user) }"> {{ $ctrl.textIfFollowed(user) }} </a>
+            </li>
+            <li class="jay-li">
+                <a ng-click="$ctrl.goToTweets(user.id)">
+                                Tweets </a>
+            </li>
+            <li class="jay-li">
+                <a ng-click="$ctrl.goToFollowers(user.id)">Followers</a>
+            </li>
+            <li class="jay-li">
+                <a ng-click="$ctrl.goToFollowings(user.id)"> Following </a>
+            </li>
+        </ul>
     </div>
-    
-    
-</div>    
+
+
+</div>
 <!-- 
 <div class="userlist">
 

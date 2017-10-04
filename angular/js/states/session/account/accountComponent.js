@@ -1,9 +1,9 @@
-angular.module('twitterClone').component('accountComponent',{
+angular.module('twitterClone').component('accountComponent', {
 
-    templateUrl : './js/states/session/account/accountTemplate.html',
-    controller : 'accountController',
-    bindings : {
-        submission : '='
+    templateUrl: './js/states/session/account/accountTemplate.html',
+    controller: 'accountController',
+    bindings: {
+        submission: '='
     }
 
 })

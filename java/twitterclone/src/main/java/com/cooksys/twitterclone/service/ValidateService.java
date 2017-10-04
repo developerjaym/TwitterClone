@@ -58,11 +58,12 @@ public class ValidateService {
 	public void login(CredentialsDto credentials) throws TwitterException {
 		UserEntity user = pullUser(credentials.getUsername());
 		
-		// Log for error checking
-		System.out.println(user.getCredentials().getPassword() + " " + credentials.getPassword() + " " + user.getCredentials().getPassword().equals(credentials.getPassword()));
-		
 		if(!user.getCredentials().getPassword().equals(credentials.getPassword())) {
 			throw new TwitterException(ErrorType.NOT_AUTHORIZED);
+		}
+		
+		if(!user.getActive()) {
+			throw new TwitterException(ErrorType.NOT_FOUND);
 		}
 	}
 	

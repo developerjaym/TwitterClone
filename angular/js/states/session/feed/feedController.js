@@ -113,6 +113,26 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
             })
         }
 
+        this.tag = (tweet) => {
+            return feedService.getTagsOfTweet(tweet.id).then((succeedResponse) => {
+                return succeedResponse.data
+            })
+        }
+
+        this.mentions = (tweet) => {
+            return feedService.getUserMentionsInTweet(tweet.id).then((succeedResponse) => {
+                return succeedResponse.data
+            })
+        }
+
+        this.findTweetsByTag = (tag) => {
+            this.switchFeed(userDataService.feedTypeEnum.HASHTAG, tag.label)
+        }
+
+        this.findTweetsByMention = (mention) => {
+            this.switchFeed(userDataService.feedTypeEnum.USER, mention.username)
+        }
+
         this.repostTweet = (tweetId) => {
             feedService.repostTweet(tweetId).then((succeedResponse) => {
                 this.switchFeed(userDataService.feedTypeEnum.MAIN)

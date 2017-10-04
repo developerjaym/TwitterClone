@@ -1,49 +1,25 @@
-<!-- <div class="panel panel-default new-tweet" style=" background-color: rgb(21, 188, 170);">
-        <div class="panel-heading"  style=" background-color: rgb(21, 188, 170); color: white;">@jaymansmann | timestamp</div>
-        <div class="panel-body" >How is everyone?</div>
-        <div class="panel-footer"  style=" background-color: rgb(21, 188, 170); color: white;"> 
-                <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="tweetMenu" data-toggle="dropdown">More
-                                <span class="caret"></span></button>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Context</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Like</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Reply</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Repost</a></li>
-                            <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                        </ul>
-                    </div>
-        </div>
-</div> -->
-
 <div class="jay-box" ng-repeat="tweet in $ctrl.tweetPool">
         <div class="formtitle"> {{ tweet.author.username }}
                 <div class="formsubtitle">{{ tweet.posted | date }}</div>
         </div>
 
         <div class="formbody">{{ tweet.content }}</div>
-        <!-- <div class="formsubtitle">#java #cooksys @thanuja @greg</div> -->
         <div class="formfooter">
-                <!-- <div>     -->
+                <!-- <a class="jay-li" ng-repeat="tag in $ctrl.tag(tweet)" ng-click="$ctrl.findTweetsByTag(tag)">
+                    {{tag.label}}    
+                </a> -->
+                <!-- <a class="jay-li" ng-repeat="mention in $ctrl.mentions(tweet)" ng-click="$ctrl.findTweetsByMention(mention)">
+                        {{mention.username}}    
+                </a> -->
                 <ul class="nav nav-pills formsubtitle">
 
                         <li class="jay-li">
-
-                                
-
                                 <a ng-click="$ctrl.likeTweet(tweet)" ng-style="{'color': $ctrl.checkIfLiked(tweet) }" id="likebutton" title="Liked by Greg, Thanuja, Michael, Will"> {{ $ctrl.textIfLiked(tweet) }} </a>
                         </li>
                         <li class="jay-li">
                                 <a editable-textarea="Reply" e-rows="7" e-cols="40">
-                                        <!-- <pre>{{ user.desc || 'no description' }}</pre> -->
-                  
-                  
-                  
-                  
-                  
                                         Reply </a>
-                                </li>
+                        </li>
                         <li class="jay-li">
                                 <a ng-click="$ctrl.repostTweet(tweet.id)">Repost</a>
                         </li>
@@ -51,43 +27,5 @@
                                 <a ng-click="$ctrl.deleteTweet(tweet.id)" class="glyphicon glyphicon-trash"> </a>
                         </li>
                 </ul>
-                <!-- <button class="btn btn-danger navbar-btn btn btn-xs">Button</button> -->
-                <!-- </div>              -->
-
-                <!-- <div class="dropdown">
-                        <button class="formbutton dropdown-toggle" type="button" id="tweetMenu" data-toggle="dropdown">Options
-                                <span class="caret"></span></button>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Context</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Like</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Reply</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Repost</a></li>
-                            <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                        </ul>
-                    </div> -->
         </div>
 </div>
-
-<!-- <div class='tweet'>
-    <div class='individual-tweet'>
-        <div class="panel-heading">Author</div>
-        <div class="panel-body">
-
-        Content
-        <br> Timestamp
-        </div>
-    </div>
-    <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="tweetMenu" data-toggle="dropdown">More
-                <span class="caret"></span></button>
-        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Context</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Like</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Reply</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Repost</a></li>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-        </ul>
-    </div>
-</div> -->
