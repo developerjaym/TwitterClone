@@ -10,7 +10,7 @@ angular.module('twitterClone').service('feedService', ['userDataService', '$http
         }
 
         this.deleteTweet = (tweetId) => {
-            return $http.delete('http://localhost:8888/api/tweets/' + tweetId + '/delete/', userDataService.credentials)
+            return $http.post('http://localhost:8888/api/tweets/delete/' + tweetId + '/', userDataService.credentials)
         }
 
         this.likeTweet = (tweetId) => {

@@ -1,22 +1,25 @@
 <div class="createNewUser">
-        <div class="formtitle">Create New Acccount
-            <div class="formsubtitle">*required</div>
-        </div>
-        
-        <div class="formbody" >
+    <div class="formtitle">Create New Acccount
+        <div class="formsubtitle">*required</div>
+    </div>
 
-               <div class="formlabel">Username*</div> <input type="text" class="form-control" id="content" ng-style="{'border-color': $ctrl.usernameErrorCss }" ng-model="$ctrl.submission.username">
-                <div class="formlabel">Password*</div> <input type="password" class="form-control" id="pwd" ng-style="{'border-color': $ctrl.passwordErrorCss }" ng-model="$ctrl.submission.password">
-                <div class="formlabel">First Name</div> <input type="text" class="form-control" id="content" ng-style="{'border-color': 'black' }" ng-model="$ctrl.submission.firstName">
-                <div class="formlabel">Last Name</div> <input type="text" class="form-control" id="content" ng-style="{'border-color': 'black' }" ng-model="$ctrl.submission.lastName">
-                <div class="formlabel">Email*</div> <input type="text" class="form-control" id="content" ng-style="{'border-color': $ctrl.emailErrorCss }" ng-model="$ctrl.submission.email">
-                <div class="formlabel">Phone</div> <input type="text" class="form-control" id="content" ng-style="{'border-color': 'black' }" ng-model="$ctrl.submission.phone">
-        </div>
-        <div class="formfooter" > 
-                <button class='formbutton' ng-click='$ctrl.createNewUser()'>Create Account</button>   
-        </div>
-        <button class='btn btn-link' id = 'existingAccount' ui-sref = 'title.login' >Already have an account?</button>
-        
+    <div class="formbody">
+
+        <div class="formlabel">Username*</div> <input type="text" class="form-control" id="content" ng-style="{'border-color': $ctrl.usernameErrorCss }"
+            ng-model="$ctrl.submission.username">
+        <div class="formlabel">Password*</div> <input type="password" class="form-control" id="pwd" ng-style="{'border-color': $ctrl.passwordErrorCss }"
+            ng-model="$ctrl.submission.password">
+        <div class="formlabel">First Name</div> <input type="text" class="form-control" id="content" ng-style="{'border-color': 'black' }" ng-model="$ctrl.submission.firstName">
+        <div class="formlabel">Last Name</div> <input type="text" class="form-control" id="content" ng-style="{'border-color': 'black' }" ng-model="$ctrl.submission.lastName">
+        <div class="formlabel">Email*</div> <input type="text" class="form-control" id="content" ng-style="{'border-color': $ctrl.emailErrorCss }"
+            ng-model="$ctrl.submission.email">
+        <div class="formlabel">Phone</div> <input type="text" class="form-control" id="content" ng-style="{'border-color': 'black' }" ng-model="$ctrl.submission.phone">
+    </div>
+    <div class="formfooter">
+        <button class='formbutton' ng-click='$ctrl.createNewUser()'>Create Account</button>
+    </div>
+    <button class='btn btn-link' id='existingAccount' ui-sref='title.login'>Already have an account?</button>
+
 </div>
 <!-- 
 <div class="createNewUser">

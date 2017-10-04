@@ -1,557 +1,273 @@
-@font-face 
-
-{
-
+@font-face {
     font-family: "Bird Feather";
-
     src: url(BirdFeather.ttf);
-
 }
 
-body{
-
-height: 100vh;
-
-width: 100vw;
-
-display: flex;
-
-background-image: url("/img/peacock.jpg");
-
-/* background-size: cover; */
-
-background-repeat: repeat;
-
-background-position: center; 
-
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-image: url("/img/peacock.jpg");
+    /* background-size: cover; */
+    background-repeat: repeat;
+    background-position: center;
 }
 
-div
-
-{
-
+div {
     background-color: transparent;
-
 }
 
-
-
-label
-
-{
-
+label {
     color: white;
-
     font-size: medium;
-
 }
 
 .sessionPanel2 {
-
     display: flex;
-
     flex-direction: row;
-
-    
-
 }
 
-
-
-.sessionPanel3, .sessionPanel
-
-{
-
+.sessionPanel3,
+.sessionPanel {
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     align-items: center;
-
     height: 95%;
-
 }
 
 
+/* 
+.sessionPanel3 {
+    margin-top: 6vh;
+} */
 
-.changeArea
-
-{
-
+.changeArea {
     display: flex;
-
-    
-
     background-color: transparent;
-
-   flex-direction: column;
-
-   
-
+    flex-direction: column;
 }
 
-.search
-
-{
-
-    background-color: white;
-
+.search {
+    background-color: rgb(64, 108, 55);
 }
 
-.search-bar
-
-{
-
-    width: 12vw;
-
+.search-bar {
+    width: 13vw;
     min-width: 85px;
-
     height: 5%;
-
     min-height: 30px;
-
-    border-color: transparent;
-
     border-width: 0px;
-
     border-radius: 3px;
-
 }
 
-.search-button
-
-{
-
+.search-button {
+    height: 100%;
     width: 3vw;
-
-    height: 5%;
-
     background-color: rgb(64, 108, 55);
-
     color: white;
-
-    border: none;
-
+    border-color: rgb(158, 75, 35);
+    border-width: 0px 0px 0px 1px;
     margin-top: 1px;
-
     margin-bottom: 1px;
-
+    margin-left: 1px;
 }
 
-.sessionFixedColumn{
-
+.sessionFixedColumn {
     display: flex;
-
     flex-direction: column;
-
     justify-content: flex-start;
-
     height: 100vh;
-
     width: 20vw;
-
     min-width: 100px;
-
-    background-color: transparent;
-
-    
-
-    border-right: 1px;
-
-    border-color: white;
-
-    order: -1;
-
-    
-
-}
-
-.sessionTitle2, .sessionFixedColumn
-
-{
-
-    position: sticky;
-
-    top: 0px;
-
-}
-
-.sessionTitle, .sessionTitle2{
-
-    align-self: flex-start;
-
-    text-align: center;
-
-
-
-    min-height: 40px;
-
-    width: 100vw;
-
-    font-size: large;
-
-    align-items: center;
-
-
-
-    color: white;
-
-    /* background:  linear-gradient(rgba(118, 53, 23, 0.75), rgba(118, 53, 23, 0.15)); */
-
-    background: linear-gradient(rgba(8, 37, 105, 0.95), rgba(4, 92, 120,0.1));
-
-    margin-bottom: 3vh;
-
-
-
-    font-size: x-large;
-
-}
-
-.jay-li, a
-
-{
-
-    color: white !important;
-
-    background-color: transparent !important;
-
-    cursor: pointer;
-
-} 
-
-.sessionTitle2
-
-{
-
-    width: 80vw;
-
-    align-self: flex-start;
-
-    padding-top: 1vh;
-
-}
-
-.jay-box, .tweet,  .login, .createNewUser, .account, .userlist
-
-{
-
-    color: white;
-
-    border-radius: 2vh;
-
-    box-shadow: 1px 1px 0px 1px rgba(8, 37, 105, 0.8);
-
-    background-color: rgb(4, 92, 120);
-
-    /* background: radial-gradient(rgb(8, 37, 105), rgb(4, 92, 120)); */
-
-    background: radial-gradient(rgba(8, 37, 105, 0.95), rgba(4, 92, 120,0.92));
-
-
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-around;
-
-
-
-
-
-    margin-top: 2vh;
-
-    margin-bottom: 2vh;
-
-    padding-left: 2vw;
-
-    padding-right: 2vw;
-
-    padding-top: 1vh;
-
-    padding-bottom: 1vh;
-
-    font-size: large;
-
-}
-
-.formtitle
-
-{
-
-    font-size: x-large;
-
-    text-align: center;
-
-    text-justify: center;
-
-    padding-top: 0px;
-
-    padding-bottom: 1vh;
-
-
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-around;
-
-
-
-
-
-}
-
-.formsubtitle
-
-{
-
-    font-size: small;
-
-    text-align: center;
-
-    text-justify: center;
-
-    color: white;
-
-}
-
-.formbody
-
-{
-
-    display: flex;
-
-    align-items: center;
-
-    align-content: center;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    padding-bottom: 1vh;
-
-    font-size: x-large;
-
-    border-bottom: 1px solid white;
-
-    border-top: 1px solid white;
-
-    
-
-    min-width: 20vw;
-
-    max-width: 20vw;
-
-    min-height: 20vh;
-
-}
-
-.formlabel
-
-{
-
-    font-size: large;
-
-    margin-top: 1vh;
-
-}
-
-.formfooter
-
-{
-
-    font-size: x-large;   
-
-
-
-    display: flex;
-
-    justify-content: center;
-
-    padding-bottom: 0px;
-
-    padding-top: 1vh;
-
-}
-
-.formfooterFeed
-
-{
-
-    font-size: small;
-
-    padding-bottom: 1px;
-
-    padding-top: 10px; 
-
-}
-
-.formbutton, .jnavbutton, .formbuttonsmall
-
-{
-
-    font-size: large;
-
-    color: white;
-
-
-
-    background-color: rgb(8, 37, 105);
-
     background-color: rgb(64, 108, 55);
-
-    border:none;
-
-    
-
-    padding: 4px 1vh 4px 1vh;
-
-
-
-    cursor: pointer;
-
-    
-
+    border-right: 1px;
+    border-color: rgb(118, 53, 23);
+    order: -1;
 }
 
-input
+.sessionTitle2,
+.sessionFixedColumn {
+    position: sticky;
+    top: 0px;
+}
 
-{
-
+.sessionTitle,
+.sessionTitle2 {
+    align-self: flex-start;
     text-align: center;
-
-}
-
-.formbuttonsmall
-
-{
-
-    background-color: rgb(118, 53, 23);
-
-    /* max-width: 40px; */
-
-    font-size: small;
-
+    min-height: 40px;
+    width: 100vw;
+    font-size: large;
+    align-items: center;
     color: white;
-
-    align-self: center;
-
-    margin-top: 2px;
-
-    border-radius: 3px;
-
+    /* background:  linear-gradient(rgba(118, 53, 23, 0.75), rgba(118, 53, 23, 0.15)); */
+    background: linear-gradient(rgba(8, 37, 105, 0.95), rgba(4, 92, 120, 0.1));
+    margin-bottom: 3vh;
+    font-size: x-large;
 }
 
-.jnavbutton
-
-{
-
-    height: 19%;
-
-    width: 20vw;
-
-    
-
-    box-shadow: 0px 0px 0px 1px white inset;
-
-   
-
+.jay-li,
+a {
+    color: white !important;
+    background-color: transparent !important;
+    cursor: pointer;
 }
 
-.formbutton
+.sessionTitle2 {
+    width: 80vw;
+    align-self: flex-start;
+    padding-top: 1vh;
+}
 
-{
-
+.jay-box,
+.tweet,
+.login,
+.createNewUser,
+.account,
+.userlist {
+    color: white;
+    border-radius: 2vh;
+    box-shadow: 1px 1px 0px 1px rgba(8, 37, 105, 0.8);
+    background-color: rgb(4, 92, 120);
+    /* background: radial-gradient(rgb(8, 37, 105), rgb(4, 92, 120)); */
+    background: radial-gradient(rgba(8, 37, 105, 0.95), rgba(4, 92, 120, 0.92));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     margin-top: 2vh;
+    margin-bottom: 2vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    font-size: large;
+}
 
-    margin-left: 1vw;
+.formtitle {
+    font-size: x-large;
+    text-align: center;
+    text-justify: center;
+    padding-top: 0px;
+    padding-bottom: 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 
-    margin-right: 1vw;
+.formsubtitle {
+    font-size: small;
+    text-align: center;
+    text-justify: center;
+    color: white;
+}
 
+.formbody {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 1vh;
+    font-size: x-large;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    min-width: 20vw;
+    max-width: 20vw;
+    min-height: 20vh;
+}
+
+.formlabel {
+    font-size: large;
+    margin-top: 1vh;
+}
+
+.formfooter {
+    font-size: x-large;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 0px;
+    padding-top: 1vh;
+}
+
+.formfooterFeed {
+    font-size: small;
+    padding-bottom: 1px;
+    padding-top: 10px;
+}
+
+.formbutton,
+.jnavbutton,
+.formbuttonsmall {
+    font-size: large;
+    color: white;
+    background-color: rgb(8, 37, 105);
+    background-color: rgb(64, 108, 55);
+    border: none;
+    padding: 4px 1vh 4px 1vh;
+    cursor: pointer;
+}
+
+input {
+    text-align: center;
+}
+
+.formbuttonsmall {
+    background-color: rgb(118, 53, 23);
+    /* max-width: 40px; */
+    font-size: small;
+    color: white;
+    align-self: center;
+    margin-top: 2px;
     border-radius: 3px;
+}
 
+.jnavbutton {
+    height: 15%;
+    width: 20vw;
+    box-shadow: 0px 0px 0px 1px rgb(158, 75, 35) inset;
+}
+
+.formbutton {
+    margin-top: 2vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    border-radius: 3px;
 }
 
 strong {
-
     font-family: 'Bird Feather';
-
     font-size: 100px;
-
     text-align: right;
-
     color: white;
-
-    
-
     text-shadow: #000 1px 1px 4px;
-
 }
 
-
-
-.sessionPanel{
-
-   display: flex;
-
-    background-color: papayawhip;
-
-   margin: 0 auto;
-
-   width: 100vw;
-
-   height: 100vh;
-
-   align-items: center;
-
-   justify-content: flex-start;
-
-   
-
-   background-image: url("/img/peacock.jpg");
-
-   background-size: cover;
-
-   background-repeat: repeat;
-
-   background-position: center; 
-
-   flex-direction: column;
-
-  
-
+.sessionPanel {
+    display: flex;
+    background-color: transparent;
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: url("/img/peacock.jpg");
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center;
+    flex-direction: column;
 }
 
-
-
-.sidebtn
-
-{
-
+.sidebtn {
     height: 14vh;
-
 }
 
-
-
-#newUserButton, #existingAccount{
-
-color: white;
-
+#newUserButton,
+#existingAccount {
+    color: white;
 }
-
-
 
 ::selection {
-
     background-color: rgb(99, 138, 23);
-
     color: #fff;
-
 }

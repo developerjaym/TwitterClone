@@ -47,7 +47,7 @@ angular.module('twitterClone').controller('userListController', ['userListServic
                     // dependency here would be the source user
                     // if no dependency, then uses the logged in user as source
                     this.userPool = []
-                    userListService.getFollowers(dependency).then((succeedResponse) => {
+                    userListService.getFollowing(dependency).then((succeedResponse) => {
                         this.userPool = succeedResponse.data
                     }, (errorResponse) => {
                         if (errorResponse.status === 404) {

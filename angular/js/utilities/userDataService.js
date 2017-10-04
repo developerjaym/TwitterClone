@@ -1,4 +1,26 @@
-angular.module('twitterClone').service('userDataService', [function () {
+angular.module('twitterClone').service('userDataService', ['$state', function ($state) {
+
+    this.followersNum = 0
+    this.followingNum = 0
+
+    this.sessionTitleEnum = {
+        FEED: 'Feed',
+        USERS: 'Users',
+        ACCOUNT: 'Account',
+        FOLLOWERS: 'Followers',
+        FOLLOWING: 'Following',
+        SEARCH: 'Search Results'
+    }
+
+    this.sessionTitle = this.sessionTitleEnum.FEED;
+
+    this.setSessionTitle = (sessionType, optionalPrefix) => {
+        if (optionalPrefix === undefined) {
+            optionalPrefix = ''
+        }
+
+        this.sessionTitle = optionalPrefix + sessionType;
+    }
 
     this.credentials = new Credentials(undefined, undefined)
     // this.credentials = new Credentials('guest', 'guest')
@@ -6,6 +28,11 @@ angular.module('twitterClone').service('userDataService', [function () {
     this.setUserCredentials = (username, password) => {
         this.credentials.username = username
         this.credentials.password = password
+    }
+
+    this.logout = () => {
+        this.credentials.username = undefined
+        this.credentials.password = undefined
     }
 
     this.buildUser = (username, password, firstName, lastName, email, phone) => {
@@ -41,6 +68,32 @@ angular.module('twitterClone').service('userDataService', [function () {
 
     this.activeUserList = this.userListTypeEnum.ALL
     this.userListDependency = undefined
+
+    this.reloadIfNecessary = (stateName, optionalPrefix) => {
+
+        switch (stateName) {
+            case 'session.tweet':
+                this.setSessionTitle('Compose Tweet')
+                break;
+            case 'session.account':
+                this.setSessionTitle('My Account')
+                break;
+            case 'session.userlist':
+                this.setSessionTitle('', optionalPrefix)
+                break;
+            case 'session.feed':
+                this.setSessionTitle('Feed', optionalPrefix)
+                break;
+            default:
+                break;
+        }
+
+        if ($state.is(stateName)) {
+            $state.reload()
+        } else {
+            $state.go(stateName)
+        }
+    }
 
 }])
 

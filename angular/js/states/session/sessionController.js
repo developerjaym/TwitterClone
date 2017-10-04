@@ -1,8 +1,11 @@
 angular.module('twitterClone').controller('sessionController', ['userDataService', 'userListService', 'feedService', '$state',
     function (userDataService, userListService, feedService, $state) {
 
+        this.userDataService = userDataService
+
+
+
         this.search = ''
-        this.toggle = 'user'
 
         if (userDataService.credentials.username === undefined ||
             userDataService.credentials.password === undefined) {
@@ -10,7 +13,7 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
             $state.go('title.login')
         }
 
-        this.submitSearch = () => {
+        this.submitSearch = (searchType) => {
             // Parse search and see if we can direct the user somewhere
             // If not, then change css border to red
 
@@ -25,8 +28,8 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
             let arrayOfHashtags = arrayOfSearchWords.filter((word) => word.charAt(0) === '#')
             arrayOfHashtags = arrayOfHashtags.map((word) => word.slice(1))
 
-            if (this.toggle === 'user') {
-                arrayOfUsers.forEach((username) => {
+            if (searchType === 'USER') {
+                arrayOfUsernames.forEach((username) => {
                     // Get users matching the username
                     // Adds each user to resultPool
                     userListService.getUser(username).then((succeedResponse) => {
@@ -36,12 +39,12 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
 
                 this.search = ''
                 this.goToCustomUserList(resultPool)
-            } else if (this.toggle === 'tweet') {
-                arrayOfUsers.forEach((username) => {
+            } else if (searchType === 'TWEET') {
+                arrayOfUsernames.forEach((username) => {
                     // Get tweets by mention
                     // Adds each tweet to resultPool
                     userListService.getMentions(username).then((succeedResponse) => {
-                        resultPool.push(succeedResponse.data)
+                        resultPool.push(...succeedResponse.data)
                     })
                 })
 
@@ -49,7 +52,7 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
                     // Get tweets by tag
                     // Adds each tweet to resultPool
                     feedService.getTweetsByHashtag(hashtag).then((succeedResponse) => {
-                        resultPool.push(succeedResponse.data)
+                        resultPool.push(...succeedResponse.data)
                     })
                 })
 
@@ -61,44 +64,76 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
             }
         }
 
+        this.goToMainFeed = () => {
+            userDataService.feedDependency = undefined
+            userDataService.activeFeed = userDataService.feedTypeEnum.MAIN
+            userDataService.reloadIfNecessary('session.feed', 'My ')
+        }
+
+
         this.goToCustomFeed = (resultPool) => {
             userDataService.activeFeed = userDataService.feedTypeEnum.CUSTOM
             userDataService.feedDependency = resultPool
-            $state.go('session.feed')
+            userDataService.reloadIfNecessary('session.feed', 'Search Result ')
         }
 
-        this.goToMainFeed = () => {
-            userDataService.activeFeed = userDataService.feedTypeEnum.MAIN
-            $state.go('session.feed')
-        }
+
 
         this.goToTweet = () => {
-            $state.go('session.tweet')
+            userDataService.reloadIfNecessary('session.tweet')
+        }
+
+        this.goToMeMentioned = () => {
+            userListService.getMentions().then((succeedResponse) => {
+                userDataService.activeFeed = userDataService.feedTypeEnum.CUSTOM
+                userDataService.feedDependency = succeedResponse.data
+                userDataService.reloadIfNecessary('session.feed', 'My Mentions ')
+            })
         }
 
         this.goToCustomUserList = (resultPool) => {
             userDataService.activeUserList = userDataService.userListTypeEnum.CUSTOM
             userDataService.userListDependency = resultPool
-            $state.go('session.userlist')
+            userDataService.reloadIfNecessary('session.userlist', 'User Search Results')
         }
 
         this.goToUsersUserList = () => {
+            userDataService.userListDependency = undefined
             userDataService.activeUserList = userDataService.userListTypeEnum.ALL
-            $state.go('session.userlist')
+            userDataService.reloadIfNecessary('session.userlist', 'All Users')
         }
 
         this.goToFollowersUserList = () => {
+            userDataService.userListDependency = undefined
             userDataService.activeUserList = userDataService.userListTypeEnum.FOLLOWERS
-            $state.go('session.userlist')
+            userDataService.reloadIfNecessary('session.userlist', 'My Followers')
         }
 
         this.goToFollowingUserList = () => {
+            userDataService.userListDependency = undefined
             userDataService.activeUserList = userDataService.userListTypeEnum.FOLLOWING
-            $state.go('session.userlist')
+            userDataService.reloadIfNecessary('session.userlist', 'Users I\'m Following')
         }
 
         this.goToAccount = () => {
-            $state.go('session.tweet')
+            userDataService.reloadIfNecessary('session.account')
+        }
+
+
+        this.logout = () => {
+            userDataService.logout()
+            userDataService.reloadIfNecessary('title.login')
+        }
+
+        if (userDataService.credentials.username !== undefined &&
+            userDataService.credentials.password !== undefined) {
+            userListService.getFollowers().then((succeedResponse) => {
+                userDataService.followersNum = succeedResponse.data.length
+            })
+
+            userListService.getFollowing().then((succeedResponse) => {
+                userDataService.followingNum = succeedResponse.data.length
+            })
         }
 
     }
