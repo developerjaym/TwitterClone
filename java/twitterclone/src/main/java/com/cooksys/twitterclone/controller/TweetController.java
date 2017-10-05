@@ -33,7 +33,7 @@ import com.cooksys.twitterclone.service.ValidateService;
  */
 @RestController
 @RequestMapping("/tweets/")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin//(origins = "http://localhost:8080")
 public class TweetController {
 	
 	private TweetService tweetService;

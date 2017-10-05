@@ -25,14 +25,14 @@
                 <a ng-click="$ctrl.followUser(user)" ng-style="{'color': $ctrl.checkIfFollowed(user) }"> {{ $ctrl.textIfFollowed(user) }} </a>
             </li>
             <li class="jay-li">
-                <a ng-click="$ctrl.goToTweets(user.id)">
+                <a ng-click="$ctrl.goToTweets(user)">
                                 Tweets </a>
             </li>
             <li class="jay-li">
-                <a ng-click="$ctrl.goToFollowers(user.id)">Followers</a>
+                <a ng-click="$ctrl.goToFollowers(user)">Followers</a>
             </li>
             <li class="jay-li">
-                <a ng-click="$ctrl.goToFollowings(user.id)"> Following </a>
+                <a ng-click="$ctrl.goToFollowings(user)"> Following </a>
             </li>
         </ul>
     </div>
