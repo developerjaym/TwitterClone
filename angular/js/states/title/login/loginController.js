@@ -19,7 +19,7 @@ angular.module('twitterClone').controller('loginController', ['loginService', 'u
 
                 userDataService.activeFeed = userDataService.feedTypeEnum.MAIN
                 userDataService.feedDependency = undefined
-                $state.go('session.feed')
+                userDataService.reloadIfNecessary('session.feed', "My ")
             }, (errorResponse) => {
                 console.dir(errorResponse.status)
                 if (errorResponse.status === 404) {

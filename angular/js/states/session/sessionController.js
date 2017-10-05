@@ -6,13 +6,7 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
         this.search = ''
 
         this.submitSearch = (searchType) => {
-            // Parse search and see if we can direct the user somewhere
-            // If not, then change css border to red
-
-            // Will either contain an array of users or tweets at the end
             let resultPool = []
-
-
 
             let arrayOfUsernames = []
             let arrayOfHashtags = []
@@ -35,7 +29,7 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
                     // Get users matching the username
                     // Adds each user to resultPool
                     userListService.getUser(username).then((succeedResponse) => {
-                        resultPool.push(...succeedResponse.data)
+                        resultPool.push(succeedResponse.data)
                     })
                 })
 

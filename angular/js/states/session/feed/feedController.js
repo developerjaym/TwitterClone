@@ -1,10 +1,10 @@
 angular.module('twitterClone').controller('feedController', ['feedService', 'userListService', 'userDataService', '$state',
     function (feedService, userListService, userDataService, $state) {
 
-        this.getBackground = (tweet)=>{
-            if(tweet.repostOf)
+        this.getBackground = (tweet) => {
+            if (tweet.repostOf)
                 return 'radial-gradient(rgba(108, 43, 15, 0.95), rgba(158, 103, 63, 0.9))'
-            else if(tweet.inReplyTo)
+            else if (tweet.inReplyTo)
                 return 'radial-gradient(rgba(70, 52, 30, 0.95), rgba(135, 90, 70, 0.9))'
             else
                 return ''
@@ -39,7 +39,7 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
                     }
                     break;
                 case userDataService.feedTypeEnum.CONTEXT:
-                    // dependency here would be the source tweet
+                    // dependency here would be the source tweet id
                     this.tweetPool = []
                     feedService.getContextOfTweet(dependency).then((succeedResponse) => {
                         this.tweetPool.push(...succeedResponse.data.before)
@@ -49,7 +49,7 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
                     })
                     break;
                 case userDataService.feedTypeEnum.USER:
-                    // dependency here would be the user
+                    // dependency here would be the username
                     this.tweetPool = []
                     feedService.getTweets(dependency).then((succeedResponse) => {
                         this.tweetPool = succeedResponse.data
@@ -104,6 +104,24 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
                             }
                         })
                     })
+
+                    let contentArrayWords = tweet.content.split(" ")
+
+                    contentArrayWords = contentArrayWords.map((word) => {
+                        if (word.charAt(0) !== '#' && word.charAt(0) !== '@' && word.length >= 30) {
+                            let slicedWord = ''
+                            while (word.length >= 30) {
+                                slicedWord += word.slice(0, 29) + '-\n'
+                                word = word.slice(30, -1)
+                            }
+                            slicedWord += word.slice(0, -1)
+                            return slicedWord
+                        } else {
+                            return word
+                        }
+                    })
+
+                    tweet.content = contentArrayWords.join(' ')
                 })
             })
         }
@@ -120,6 +138,12 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
             })
         }
 
+        this.goToUser = (user) => {
+            userDataService.userListDependency = user
+            userDataService.activeUserList = userDataService.userListTypeEnum.SINGLE
+            userDataService.reloadIfNecessary('session.userlist', user.username)
+        }
+
         this.findTweetsByTag = (tag) => {
             this.switchFeed(userDataService.feedTypeEnum.HASHTAG, tag)
         }
@@ -128,7 +152,7 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
             userListService.getUser(mention).then((succeedResponse) => {
                 userDataService.activeUserList = userDataService.userListTypeEnum.SINGLE
                 userDataService.userListDependency = succeedResponse.data
-                $state.go('session.userlist')
+                userDataService.reloadIfNecessary('session.userlist', mention)
             })
         }
 
@@ -144,9 +168,9 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
             })
         }
 
-        this.replyToTweet = (tweetId) => {
+        this.replyToTweet = (tweet) => {
             if (this.replyContent.length < 255) {
-                feedService.replyToTweet(tweetId, userDataService.buildTweet(this.replyContent)).then((succeedResponse) => {
+                feedService.replyToTweet(tweet.id, userDataService.buildTweet(this.replyContent)).then((succeedResponse) => {
                     this.switchFeed(userDataService.feedTypeEnum.MAIN)
                     this.replyContent = ''
                     tweet.visibility = true
@@ -178,7 +202,5 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
             $state.go('title.login')
         }
     }
-
-
 
 ])
