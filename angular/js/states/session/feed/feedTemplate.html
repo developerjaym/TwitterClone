@@ -4,31 +4,31 @@
         </div>
 
         <div class="formbody">{{ tweet.content }}</div>
-        <div class="tagsAndMentions">
-                <a ng-repeat="tag in tweet.tags" ng-click="$ctrl.findTweetsByTag(tag)">#{{tag}}&nbsp</a>
-                <a ng-repeat="user in tweet.mentions" ng-click="$ctrl.findUserByMention(user)">@{{user}}&nbsp</a>
+        <div class="nav nav-pills formsubtitle tagsAndMentions">
+                <div class = "tag" ng-repeat="tag in tweet.tags" ng-click="$ctrl.findTweetsByTag(tag)">#{{tag}}&nbsp</div>
+                <div class = "tag" ng-repeat="user in tweet.mentions" ng-click="$ctrl.findUserByMention(user)">@{{user}}&nbsp</div>
         </div>
         <div class="formfooter">
                 <ul class="nav nav-pills formsubtitle">
 
                         <li class="jay-li">
-                                <a ng-click="$ctrl.likeTweet(tweet)" ng-style="{'color': tweet.likedStyle }" id="likebutton" title="Liked by Greg, Thanuja, Michael, Will"> {{ tweet.likedText }} </a>
+                                <a class="jay-a" ng-click="$ctrl.likeTweet(tweet)" ng-style="{'color': tweet.likedStyle }" id="likebutton" title="Liked by Greg, Thanuja, Michael, Will"> {{ tweet.likedText }} </a>
                         </li>
                         <li class="jay-li">
-                                <a ng-click="$ctrl.goToContext(tweet.id)">Context</a>
+                                <a class="jay-a" ng-click="$ctrl.goToContext(tweet.id)">Context</a>
                         </li>
                         <li class="jay-li">
-                                <a ng-click="$ctrl.replyToggle(tweet)">Reply</a>
+                                <a class="jay-a" ng-click="$ctrl.replyToggle(tweet)">Reply</a>
                                 <div id="text" ng-hide="tweet.visibility">
                                         <input type="text" class="search" id="inputfield" ng-model="$ctrl.replyContent" />
                                         <button class="search-button" ng-click="$ctrl.replyToTweet(tweet.id)">Post</button>
                                 </div>
                         </li>
                         <li class="jay-li">
-                                <a ng-click="$ctrl.repostTweet(tweet.id)">Repost</a>
+                                <a class="jay-a" ng-click="$ctrl.repostTweet(tweet.id)">Repost</a>
                         </li>
                         <li class="jay-li">
-                                <a ng-click="$ctrl.deleteTweet(tweet.id)" class="glyphicon glyphicon-trash"> </a>
+                                <a ng-click="$ctrl.deleteTweet(tweet.id)" class="jay-a glyphicon glyphicon-trash"> </a>
                         </li>
                 </ul>
         </div>

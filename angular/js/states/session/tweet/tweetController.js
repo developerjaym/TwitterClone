@@ -5,13 +5,32 @@ angular.module('twitterClone').controller('tweetController', ['tweetService', 'u
 
         this.createNewTweet = () => {
             if (this.content.length < 255) {
-                tweetService.createNewTweet(userDataService.buildTweet(this.content)).then((succeedResponse) => {
-                    userDataService.activeFeed = userDataService.feedTypeEnum.MAIN
-                    userDataService.feedDependency = undefined
-                    userDataService.reloadIfNecessary('session.feed', 'My ');
-                }, (errorResponse) => {
-                    alert('Error: ' + errorResponse.status)
-                })
+              let contentArray = []
+
+              let contentArrayWords = this.content.split(" ")
+
+              contentArrayWords = contentArrayWords.map((word) => {
+                  if (word.charAt(0) !== '#' && word.charAt(0) !== '@' && word.length >= 20) {
+                      let slicedWord = ''
+                      while(word.length >= 20) {
+                          slicedWord += word.slice(0, 19) + '-\n'
+                          word = word.slice(20, -1)
+                      }
+                      slicedWord += word.slice(0, -1)                    
+                      return slicedWord
+                  } else {
+                      return word
+                  }
+              })
+
+
+              tweetService.createNewTweet(userDataService.buildTweet(contentArrayWords.join(' '))).then((succeedResponse) => {
+                  userDataService.activeFeed = userDataService.feedTypeEnum.MAIN
+                  userDataService.feedDependency = undefined
+                  userDataService.reloadIfNecessary('session.feed', 'My ');
+              }, (errorResponse) => {
+                  alert('Error: ' + errorResponse.status)
+              })
             } else {
                 this.content = 'Your Message Is Too Long'
             }

@@ -1,11 +1,11 @@
 angular.module('twitterClone').controller('feedController', ['feedService', 'userListService', 'userDataService', '$state',
     function (feedService, userListService, userDataService, $state) {
 
-        this.getBackground = (tweet) => {
-            if (tweet.repostOf)
-                return 'rgba(118, 53, 23, 0.9)'
-            else if (tweet.reply)
-                return 'rgba(4, 92, 120, 0.9)'
+        this.getBackground = (tweet)=>{
+            if(tweet.repostOf)
+                return 'radial-gradient(rgba(108, 43, 15, 0.95), rgba(158, 103, 63, 0.9))'
+            else if(tweet.inReplyTo)
+                return 'radial-gradient(rgba(70, 52, 30, 0.95), rgba(135, 90, 70, 0.9))'
             else
                 return ''
         }

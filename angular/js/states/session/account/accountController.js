@@ -37,5 +37,9 @@ angular.module('twitterClone').controller('accountController', ['userListService
             $state.go('title.login')
         }
 
+        this.reload = () => {
+            $state.go('session.account')
+        }
+
     }
 ])

@@ -8,9 +8,8 @@ body {
     width: 100vw;
     display: flex;
     background-image: url("/img/peacock.jpg");
-    background-size: cover;
     background-attachment: fixed;
-    /* background-repeat: repeat; */
+    background-repeat: repeat;
     background-position: center;
     cursor: url('featherIcon48x48.png');
 }
@@ -18,6 +17,8 @@ body {
 div {
     background-color: transparent;
 }
+
+
 
 label {
     color: white;
@@ -29,20 +30,12 @@ label {
     flex-direction: row;
 }
 
-.sessionPanel3,
-.sessionPanel {
+.sessionPanel3{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: 95%; */
 }
-
-
-/* 
-.sessionPanel3 {
-    margin-top: 6vh;
-} */
 
 .changeArea {
     display: flex;
@@ -103,14 +96,13 @@ label {
     font-size: large;
     align-items: center;
     color: white;
-    /* background:  linear-gradient(rgba(118, 53, 23, 0.75), rgba(118, 53, 23, 0.15)); */
     background: linear-gradient(rgba(8, 37, 105, 0.95), rgba(4, 92, 120, 0.1));
     margin-bottom: 3vh;
     font-size: x-large;
+    
 }
 
-.jay-li,
-a {
+.jay-a{
     color: white !important;
     background-color: transparent !important;
     cursor: pointer;
@@ -132,7 +124,6 @@ a {
     border-radius: 2vh;
     box-shadow: 1px 1px 0px 1px rgba(8, 37, 105, 0.8);
     background-color: rgb(4, 92, 120);
-    /* background: radial-gradient(rgb(8, 37, 105), rgb(4, 92, 120)); */
     background: radial-gradient(rgba(8, 37, 105, 0.95), rgba(4, 92, 120, 0.92));
     display: flex;
     flex-direction: column;
@@ -184,11 +175,16 @@ a {
 
 .tagsAndMentions {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    font-size: medium;
+    max-width: 25vw;
+    color: rgb(50, 195, 164) !important;
+    cursor: pointer;
 }
-
+.tag:hover, .jay-a:hover
+{
+    text-decoration: underline;
+}
 .formlabel {
     font-size: large;
     margin-top: 1vh;
@@ -203,13 +199,6 @@ a {
     flex-wrap: wrap;
 
     min-width: 20vw;
-    max-width: 25vw;
-}
-
-.formfooterFeed {
-    font-size: small;
-    padding-bottom: 1px;
-    padding-top: 10px;
 }
 
 .formbutton,
@@ -222,59 +211,38 @@ a {
     border: none;
     padding: 4px 1vh 4px 1vh;
     cursor: pointer;
+    
 }
-
-
-
-
-
 
 input {
     text-align: center;
+    
 }
-/*****JAY SOLUTION BELOW USING TRANSITIONS****/
-.expandabletextarea
+.form-text
 {
-    background-color: transparent;
-    color: white;
-    width: 5vw;
-    height: 35px;
-    border: none;
-    -webkit-transition: background-color 1s; /* Safari */
-    transition: background-color 1s;
-    -webkit-transition: color 1s; /* Safari */
-    transition: color 1s;
-    -webkit-transition: width 1s; /*Safari*/
-    transition: width 1s;   
-}
-.expandabletextarea:hover
-{
-    background-color: white;
-    color: black;
-    width: 200px;
+    cursor: url(feathercursor48x48.png), pointer ;
 }
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    white;
+    color:    darkgray;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    white;
+   color:    darkgray;
    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    white;
+   color:    darkgray;
    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    white;
+   color:    darkgray;
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
-   color:    white;
+   color:    darkgray;
 }
 
 
 .formbuttonsmall {
     background-color: rgb(118, 53, 23);
-    /* max-width: 40px; */
     font-size: small;
     color: white;
     align-self: center;
@@ -283,11 +251,15 @@ input {
 }
 
 .jnavbutton {
-    height: 15%;
     width: 20vw;
     box-shadow: 0px 0px 0px 1px rgb(158, 75, 35) inset;
     text-align: left;
     padding-left: 1vw;
+    flex-grow: 1;
+}
+.jnavbutton:hover, .search-button:hover
+{
+    background-color: rgb(50, 195, 164);
 }
 
 .formbutton {
@@ -303,21 +275,6 @@ strong {
     text-align: right;
     color: white;
     text-shadow: #000 1px 1px 4px;
-}
-
-.sessionPanel {
-    display: flex;
-    background-color: transparent;
-    margin: 0 auto;
-    width: 100vw;
-    height: 100vh;
-    align-items: center;
-    justify-content: flex-start;
-    /* background-image: url("/img/peacock.jpg"); */
-    background-size: cover;
-    background-repeat: repeat;
-    background-position: center;
-    flex-direction: column;
 }
 
 .sidebtn {
