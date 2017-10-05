@@ -1,4 +1,4 @@
-<div class="jay-box" ng-repeat="tweet in $ctrl.tweetPool">
+<div class="jay-box" ng-repeat="tweet in $ctrl.tweetPool" ng-style="{background: $ctrl.getBackground(tweet)}">
         <div class="formtitle"> {{ tweet.author.username }}
                 <div class="formsubtitle">{{ tweet.posted | date }}</div>
         </div>
