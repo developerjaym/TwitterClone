@@ -4,12 +4,6 @@ angular.module('twitterClone').controller('userListController', ['userListServic
         // The pool of users to display in the user list state
         this.userPool = []
 
-        if (userDataService.credentials.username === undefined ||
-            userDataService.credentials.password === undefined) {
-            // User is not logged in
-            $state.go('title.login')
-        }
-
         this.switchFeed = (userListType, dependency) => {
             switch (userListType) {
                 case userDataService.userListTypeEnum.ALL:
@@ -17,18 +11,21 @@ angular.module('twitterClone').controller('userListController', ['userListServic
                     this.userPool = []
                     userListService.getAllUsers().then((succeedResponse) => {
                         this.userPool = succeedResponse.data
+                        this.configureUserFields()
                     })
                     break;
                 case userDataService.userListTypeEnum.CUSTOM:
                     // dependency is the pool of users
                     if (dependency !== undefined) {
                         this.userPool = dependency
+                        this.configureUserFields()
                     }
                     break;
                 case userDataService.userListTypeEnum.SINGLE:
                     // dependency here is the user to display
                     if (dependency !== undefined) {
                         this.userPool = [dependency]
+                        this.configureUserFields()
                     }
                     break;
                 case userDataService.userListTypeEnum.FOLLOWERS:
@@ -37,6 +34,7 @@ angular.module('twitterClone').controller('userListController', ['userListServic
                     this.userPool = []
                     userListService.getFollowers(dependency).then((succeedResponse) => {
                         this.userPool = succeedResponse.data
+                        this.configureUserFields()
                     }, (errorResponse) => {
                         if (errorResponse.status === 404) {
                             // Source user not found
@@ -49,6 +47,7 @@ angular.module('twitterClone').controller('userListController', ['userListServic
                     this.userPool = []
                     userListService.getFollowing(dependency).then((succeedResponse) => {
                         this.userPool = succeedResponse.data
+                        this.configureUserFields()
                     }, (errorResponse) => {
                         if (errorResponse.status === 404) {
                             // Source user not found
@@ -56,15 +55,51 @@ angular.module('twitterClone').controller('userListController', ['userListServic
                     })
                     break;
                 default:
-                    // Shouldn't happen unless we misspelled something
                     alert('Misspelled userListTypeEnum')
                     break;
             }
         }
 
-        if (userDataService.credentials.username !== undefined &&
-            userDataService.credentials.password !== undefined) {
+        this.configureUserFields = () => {
+            userListService.getFollowing().then((usersSourceIsFollowing) => {
+                this.userPool.forEach((user) => {
+                    user.followed = false
+                    user.followedText = 'Follow'
+
+                    usersSourceIsFollowing.data.forEach((followedUser) => {
+                        if (user.username === followedUser.username) {
+                            user.followed = true
+                            user.followedText = 'Unfollow'
+                        }
+                    })
+                })
+            })
+        }
+
+        this.followUser = (user) => {
+            if (user.followed) {
+                userListService.unfollowUser(user.username).then((succeedResponse) => {
+                    userDataService.followingNum--
+                    user.followed = false
+                    user.followedText = 'Follow'
+                })
+            } else {
+                userListService.followUser(user.username).then((succeedResponse) => {
+                    userDataService.followingNum++
+                    user.followed = true
+                    user.followedText = 'Unfollow'
+                })
+            }
+        }
+
+        this.checkIfFollowed = (user) => {
+            (user.followed) ? 'red' : 'black'
+        }
+
+        if (userDataService.loggedIn()) {
             this.switchFeed(userDataService.activeUserList, userDataService.userListDependency)
+        } else {
+            $state.go('title.login')
         }
     }
 ])

@@ -16,6 +16,9 @@ angular.module('twitterClone').controller('loginController', ['loginService', 'u
                 userDataService.setUserCredentials(this.submission.username, this.submission.password)
                 this.usernameErrorCss = "black"
                 this.passwordErrorCss = "black"
+
+                userDataService.activeFeed = userDataService.feedTypeEnum.MAIN
+                userDataService.feedDependency = undefined
                 $state.go('session.feed')
             }, (errorResponse) => {
                 console.dir(errorResponse.status)

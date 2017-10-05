@@ -177,6 +177,13 @@ a {
     min-height: 20vh;
 }
 
+.tagsAndMentions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: black;
+}
+
 .formlabel {
     font-size: large;
     margin-top: 1vh;

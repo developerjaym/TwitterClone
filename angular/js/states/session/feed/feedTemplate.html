@@ -4,17 +4,18 @@
         </div>
 
         <div class="formbody">{{ tweet.content }}</div>
+        <div class="tagsAndMentions">
+                <a ng-repeat="tag in tweet.tags" ng-click="$ctrl.findTweetsByTag(tag)">#{{tag}}&nbsp</a>
+                <a ng-repeat="user in tweet.mentions" ng-click="$ctrl.findUserByMention(user)">@{{user}}&nbsp</a>
+        </div>
         <div class="formfooter">
-                <!-- <a class="jay-li" ng-repeat="tag in $ctrl.tag(tweet)" ng-click="$ctrl.findTweetsByTag(tag)">
-                    {{tag.label}}    
-                </a> -->
-                <!-- <a class="jay-li" ng-repeat="mention in $ctrl.mentions(tweet)" ng-click="$ctrl.findTweetsByMention(mention)">
-                        {{mention.username}}    
-                </a> -->
                 <ul class="nav nav-pills formsubtitle">
 
                         <li class="jay-li">
                                 <a ng-click="$ctrl.likeTweet(tweet)" ng-style="{'color': $ctrl.checkIfLiked(tweet) }" id="likebutton" title="Liked by Greg, Thanuja, Michael, Will"> {{ $ctrl.textIfLiked(tweet) }} </a>
+                        </li>
+                        <li class="jay-li">
+                                <a ng-click="$ctrl.goToContext(tweet.id)">Context</a>
                         </li>
                         <li class="jay-li">
                                 <a editable-textarea="Reply" e-rows="7" e-cols="40">
