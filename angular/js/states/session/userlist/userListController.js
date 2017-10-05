@@ -28,7 +28,7 @@ angular.module('twitterClone').controller('userListController', ['userListServic
                     }
                     break;
                 case userDataService.userListTypeEnum.FOLLOWERS:
-                    // dependency here would be the user whose followers we want
+                    // dependency here would be the username whose followers we want
                     // if no dependency, then uses the logged in user as source
                     this.userPool = []
                     userListService.getFollowers(dependency).then((succeedResponse) => {
@@ -37,7 +37,7 @@ angular.module('twitterClone').controller('userListController', ['userListServic
                     })
                     break;
                 case userDataService.userListTypeEnum.FOLLOWING:
-                    // dependency here would be the source user
+                    // dependency here would be the source username
                     // if no dependency, then uses the logged in user as source
                     this.userPool = []
                     userListService.getFollowing(dependency).then((succeedResponse) => {
@@ -87,6 +87,12 @@ angular.module('twitterClone').controller('userListController', ['userListServic
             }
         }
 
+        this.goToUser = (user) => {
+            userDataService.userListDependency = user
+            userDataService.activeUserList = userDataService.userListTypeEnum.SINGLE
+            userDataService.reloadIfNecessary('session.userlist', user.username)
+        }
+
         this.goToFollowers = (user) => {
             userDataService.userListDependency = user.username
             userDataService.activeUserList = userDataService.userListTypeEnum.FOLLOWERS
@@ -104,6 +110,7 @@ angular.module('twitterClone').controller('userListController', ['userListServic
             userDataService.activeFeed = userDataService.feedTypeEnum.USER;
             userDataService.reloadIfNecessary('session.feed', user.username + '\'s ')
         }
+
         if (userDataService.loggedIn()) {
             this.switchFeed(userDataService.activeUserList, userDataService.userListDependency)
         } else {
