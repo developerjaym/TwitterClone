@@ -14,7 +14,9 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
 
             arrayOfSearchWords.forEach((word) => {
                 if (word.charAt(0) !== '#' && word.charAt(0) !== '@') {
-                    arrayOfUsernames.push(word)
+                    if(word !== ''){
+                        arrayOfUsernames.push(word)
+                    }
                 } else if (word.charAt(0) === '@') {
                     let username = word.slice(1)
                     arrayOfUsernames.push(username)
@@ -24,18 +26,20 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
                 }
             })
 
-            if (searchType === 'USER') {
+            if (searchType === 'USER' && arrayOfUsernames.length > 0) {
                 arrayOfUsernames.forEach((username) => {
                     // Get users matching the username
                     // Adds each user to resultPool
                     userListService.getUser(username).then((succeedResponse) => {
-                        resultPool.push(succeedResponse.data)
+                        if(succeedResponse.data) {
+                            resultPool.push(succeedResponse.data)
+                        }
                     })
                 })
 
                 this.search = ''
                 this.goToCustomUserList(resultPool)
-            } else if (searchType === 'TWEET') {
+            } else if (searchType === 'TWEET' && (arrayOfUsernames > 0 || arrayOfHashtags > 0)) {
                 arrayOfUsernames.forEach((username) => {
                     // Get tweets by mention
                     // Adds each tweet to resultPool
@@ -54,9 +58,6 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
 
                 this.search = ''
                 this.goToCustomFeed(resultPool)
-            } else {
-                // Error, binary button is not one of the two valid states
-                alert('Mispelled something or forgot a this. Probably a this. Check for a this. Greg.')
             }
         }
 
