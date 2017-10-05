@@ -18,11 +18,10 @@
                                 <a ng-click="$ctrl.goToContext(tweet.id)">Context</a>
                         </li>
                         <li class="jay-li">
-                                <a ng-click="$ctrl.replyToggle()">Reply</a>
-                                <div id="text" style="display: none">
+                                <a ng-click="$ctrl.replyToggle(tweet)">Reply</a>
+                                <div id="text" ng-hide="tweet.visibility">
                                         <input type="text" class="search" id="inputfield" ng-model="$ctrl.replyContent" />
                                         <button class="search-button" ng-click="$ctrl.replyToTweet(tweet.id)">Post</button>
-
                                 </div>
                         </li>
                         <li class="jay-li">

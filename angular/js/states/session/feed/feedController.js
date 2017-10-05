@@ -37,10 +37,6 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
                         this.tweetPool.push(succeedResponse.data.target)
                         this.tweetPool.push(...succeedResponse.data.after)
                         this.configureTweetFields()
-                    }, (errorResponse) => {
-                        if (errorResponse.status === 404) {
-                            // Tweet not found
-                        }
                     })
                     break;
                 case userDataService.feedTypeEnum.USER:
@@ -49,10 +45,6 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
                     feedService.getTweets(dependency).then((succeedResponse) => {
                         this.tweetPool = succeedResponse.data
                         this.configureTweetFields()
-                    }, (errorResponse) => {
-                        if (errorResponse.status === 404) {
-                            // Not found
-                        }
                     })
                     break;
                 case userDataService.feedTypeEnum.HASHTAG:
@@ -61,10 +53,6 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
                     feedService.getTweetsByHashtag(dependency).then((succeedResponse) => {
                         this.tweetPool = succeedResponse.data
                         this.configureTweetFields()
-                    }, (errorResponse) => {
-                        if (errorResponse.status === 404) {
-                            // Not found
-                        }
                     })
                     break;
                 default:
@@ -82,6 +70,7 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
                     tweet.liked = false
                     tweet.likedStyle = 'white'
                     tweet.likedText = 'Like'
+                    tweet.visibility = true
 
                     userLikedTweets.data.forEach((likedTweet) => {
                         if (tweet.id === likedTweet.id) {
@@ -147,25 +136,26 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
         }
 
         this.replyToTweet = (tweetId) => {
-            this.replyToggle()
-
             feedService.replyToTweet(tweetId, userDataService.buildTweet(this.replyContent)).then((succeedResponse) => {
                 this.switchFeed(userDataService.feedTypeEnum.MAIN)
                 this.replyContent = ''
+                tweet.visibility = true
             }, (errorResponse) => {
                 alert('Error: ' + errorResponse.status)
             })
         }
 
-        this.replyToggle = () => {
-            $('#text').toggle();
+        this.replyToggle = (tweet) => {
+            if(tweet.visibility) {
+                tweet.visibility = false
+            } else {
+                tweet.visibility = true
+            }
         }
 
         this.deleteTweet = (tweetId) => {
             feedService.deleteTweet(tweetId).then((succeedResponse) => {
                 this.switchFeed(userDataService.feedTypeEnum.MAIN)
-            }, (errorResponse) => {
-                alert('Error: ' + errorResponse.status)
             })
         }
 
