@@ -14,8 +14,8 @@
 
         <div class="search">
             <span><input class="search-bar" type ="text" placeholder="search" ng-model = "$ctrl.search"  />
-                                <button class="search-button glyphicon glyphicon-user" ng-click = "$ctrl.submitSearch('USER')">
-                                    </button><button class="search-button glyphicon glyphicon-send" ng-click = "$ctrl.submitSearch('TWEET')"></button></span>
+                                <button class="search-button glyphicon glyphicon-user" ng-click = "$ctrl.submitSearch('USER')" title="Search users">
+                                    </button><button class="search-button glyphicon glyphicon-send" ng-click = "$ctrl.submitSearch('TWEET')" title="Search tweets"></button></span>
         </div>
         <button type="button" class="jnavbutton" ng-click="$ctrl.goToTweet()">Compose Tweet</button>
         <button type="button" class="jnavbutton" ng-click="$ctrl.goToMeMentioned()">Am I Popular???</button>

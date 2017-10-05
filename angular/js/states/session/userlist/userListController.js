@@ -95,6 +95,23 @@ angular.module('twitterClone').controller('userListController', ['userListServic
             }
         }
 
+        this.goToFollowers = (user) => {
+            userDataService.userListDependency = user.username
+            userDataService.activeUserList = userDataService.userListTypeEnum.FOLLOWERS
+            userDataService.reloadIfNecessary('session.userlist', user.username + '\'s Followers')
+        }
+
+        this.goToFollowings = (user) => {
+            userDataService.userListDependency = user.username
+            userDataService.activeUserList = userDataService.userListTypeEnum.FOLLOWING
+            userDataService.reloadIfNecessary('session.userlist', 'Users ' + user.username + '\'s Following')
+        }
+
+        this.goToTweets = (user) => {
+            userDataService.feedDependency = user.username;
+            userDataService.activeFeed = userDataService.feedTypeEnum.USER;
+            userDataService.reloadIfNecessary('session.feed', user.username + '\'s ')
+        }
         if (userDataService.loggedIn()) {
             this.switchFeed(userDataService.activeUserList, userDataService.userListDependency)
         } else {

@@ -7,7 +7,7 @@ angular.module('twitterClone').controller('tweetController', ['tweetService', 'u
             tweetService.createNewTweet(userDataService.buildTweet(this.content)).then((succeedResponse) => {
                 userDataService.activeFeed = userDataService.feedTypeEnum.MAIN
                 userDataService.feedDependency = undefined
-                $state.go('session.feed')
+                userDataService.reloadIfNecessary('session.feed', 'My ');
             }, (errorResponse) => {
                 alert('Error: ' + errorResponse.status)
             })
