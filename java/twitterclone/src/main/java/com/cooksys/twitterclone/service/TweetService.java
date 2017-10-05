@@ -335,13 +335,15 @@ public class TweetService {
 	 * @throws TwitterException
 	 */
 	private TweetEntity storeTagsAndMentions(TweetEntity tweet) throws TwitterException {
+		List<String> specialCharacter = Arrays.asList(" !\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~".split(""));
+		
 		List<String> content = new ArrayList<String>(Arrays.asList(tweet.getContent().split("")));
 		if (content.contains(new String("@"))) {
 			StringBuffer username = new StringBuffer("");
 			Boolean newUserTrigger = false;
 
 			for (String character : content) {
-				if (character.equals(" ") && newUserTrigger) {
+				if (specialCharacter.contains(character) && newUserTrigger) {
 					newUserTrigger = false;
 					if (validateService.getUsernameExists(username.toString())) {
 						tweet.getMentionedUsers().add(userService.pullUser(username.toString()));
@@ -371,7 +373,7 @@ public class TweetService {
 			Boolean newHashtagTrigger = false;
 
 			for (String character : content) {
-				if (character.equals(" ") && newHashtagTrigger) {
+				if (specialCharacter.contains(character) && newHashtagTrigger) {
 					newHashtagTrigger = false;
 
 					HashtagEntity hashtagEntity;

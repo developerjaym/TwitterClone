@@ -7,7 +7,7 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
             else if(tweet.inReplyTo)
                 return 'radial-gradient(rgba(70, 52, 30, 0.95), rgba(135, 90, 70, 0.9))'
             else
-                return ''    
+                return ''
         }
 
         this.userListService = userListService
@@ -145,17 +145,21 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
         }
 
         this.replyToTweet = (tweetId) => {
-            feedService.replyToTweet(tweetId, userDataService.buildTweet(this.replyContent)).then((succeedResponse) => {
-                this.switchFeed(userDataService.feedTypeEnum.MAIN)
-                this.replyContent = ''
-                tweet.visibility = true
-            }, (errorResponse) => {
-                alert('Error: ' + errorResponse.status)
-            })
+            if (this.replyContent.length < 255) {
+                feedService.replyToTweet(tweetId, userDataService.buildTweet(this.replyContent)).then((succeedResponse) => {
+                    this.switchFeed(userDataService.feedTypeEnum.MAIN)
+                    this.replyContent = ''
+                    tweet.visibility = true
+                }, (errorResponse) => {
+                    alert('Error: ' + errorResponse.status)
+                })
+            } else {
+                this.replyContent = 'Your Message Is Too Long'
+            }
         }
 
         this.replyToggle = (tweet) => {
-            if(tweet.visibility) {
+            if (tweet.visibility) {
                 tweet.visibility = false
             } else {
                 tweet.visibility = true
