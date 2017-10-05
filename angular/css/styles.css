@@ -5,7 +5,7 @@
 
 body {
     height: 100vh;
-    width: 100vw;
+    width: 90vw;
     display: flex;
     background-image: url("/img/peacock.jpg");
     background-attachment: fixed;
@@ -28,6 +28,8 @@ label {
 .sessionPanel2 {
     display: flex;
     flex-direction: row;
+    /* max-width: 95vw; */
+
 }
 
 .sessionPanel3{
@@ -35,6 +37,8 @@ label {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* max-width: 78vw;
+} */
 }
 
 .changeArea {
@@ -72,7 +76,8 @@ label {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 100vh;
+    height: 98vh;
+    max-height: 98vh;
     width: 20vw;
     min-width: 100px;
     background-color: rgb(64, 108, 55);
@@ -203,7 +208,7 @@ label {
 
 .formbutton,
 .jnavbutton,
-.formbuttonsmall {
+.formbuttonsmall,.replybutton {
     font-size: large;
     color: white;
     background-color: rgb(8, 37, 105);
@@ -221,7 +226,10 @@ input {
 .form-text
 {
     cursor: url(feathercursor48x48.png), pointer ;
-    color: black;
+    color : black;
+    border-radius: 1vw;
+    border-width: 1px 1px 1px 1px;
+    max-width: 20vw;
 }
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    darkgray;
@@ -242,13 +250,17 @@ input {
 }
 
 
-.formbuttonsmall {
+.formbuttonsmall,.replybutton {
     background-color: rgb(118, 53, 23);
     font-size: small;
     color: white;
     align-self: center;
     margin-top: 2px;
     border-radius: 3px;
+}
+
+.replybutton {
+    background-color: rgb(64, 108, 55);
 }
 
 .jnavbutton {
