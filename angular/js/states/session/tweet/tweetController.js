@@ -3,20 +3,18 @@ angular.module('twitterClone').controller('tweetController', ['tweetService', 'u
 
         this.content = ''
 
-        if (userDataService.credentials.username === undefined ||
-            userDataService.credentials.password === undefined) {
-            // User is not logged in
-            $state.go('title.login')
-        }
-
         this.createNewTweet = () => {
             tweetService.createNewTweet(userDataService.buildTweet(this.content)).then((succeedResponse) => {
-                //$state.go('session.feed')
-                userDataService.reloadIfNecessary('session.feed');
+                userDataService.activeFeed = userDataService.feedTypeEnum.MAIN
+                userDataService.feedDependency = undefined
+                userDataService.reloadIfNecessary('session.feed', 'My ');
             }, (errorResponse) => {
                 alert('Error: ' + errorResponse.status)
             })
         }
 
+        if (!userDataService.loggedIn()) {
+            $state.go('title.login')
+        }
     }
 ])

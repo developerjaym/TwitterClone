@@ -3,15 +3,7 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
 
         this.userDataService = userDataService
 
-
-
         this.search = ''
-
-        if (userDataService.credentials.username === undefined ||
-            userDataService.credentials.password === undefined) {
-            // User is not logged in
-            $state.go('title.login')
-        }
 
         this.submitSearch = (searchType) => {
             // Parse search and see if we can direct the user somewhere
@@ -125,8 +117,7 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
             userDataService.reloadIfNecessary('title.login')
         }
 
-        if (userDataService.credentials.username !== undefined &&
-            userDataService.credentials.password !== undefined) {
+        if (userDataService.loggedIn()) {
             userListService.getFollowers().then((succeedResponse) => {
                 userDataService.followersNum = succeedResponse.data.length
             })
@@ -134,6 +125,8 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
             userListService.getFollowing().then((succeedResponse) => {
                 userDataService.followingNum = succeedResponse.data.length
             })
+        } else {
+            $state.go('title.login')
         }
 
     }
