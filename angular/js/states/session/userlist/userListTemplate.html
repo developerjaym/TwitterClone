@@ -1,6 +1,6 @@
 <div class="jay-box usertemplate" ng-repeat="user in $ctrl.userPool">
     <div id="tester" class="formtitle">
-        {{ user.username }}
+        <a class="jay-a" ng-click="$ctrl.goToUser(user)"> {{ user.username }}</a>
     </div>
     <div class="formsubtitle">
         Joined {{ user.joined | date }}

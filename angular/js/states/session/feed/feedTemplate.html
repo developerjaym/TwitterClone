@@ -1,12 +1,13 @@
 <div class="jay-box" ng-repeat="tweet in $ctrl.tweetPool" ng-style="{background: $ctrl.getBackground(tweet)}">
-        <div class="formtitle"> {{ tweet.author.username }}
+        <div class="formtitle">
+                <a class="jay-a" ng-click="$ctrl.goToUser(tweet.author)"> {{ tweet.author.username }}</a>
                 <div class="formsubtitle">{{ tweet.posted | date }}</div>
         </div>
 
         <div class="formbody">{{ tweet.content }}</div>
         <div class="nav nav-pills formsubtitle tagsAndMentions">
-                <div class = "tag" ng-repeat="tag in tweet.tags" ng-click="$ctrl.findTweetsByTag(tag)">#{{tag}}&nbsp</div>
-                <div class = "tag" ng-repeat="user in tweet.mentions" ng-click="$ctrl.findUserByMention(user)">@{{user}}&nbsp</div>
+                <div class="tag" ng-repeat="tag in tweet.tags" ng-click="$ctrl.findTweetsByTag(tag)">#{{tag}}&nbsp</div>
+                <div class="tag" ng-repeat="user in tweet.mentions" ng-click="$ctrl.findUserByMention(user)">@{{user}}&nbsp</div>
         </div>
         <div class="formfooter">
                 <ul class="nav nav-pills formsubtitle">
@@ -20,8 +21,8 @@
                         <li class="jay-li">
                                 <a class="jay-a" ng-click="$ctrl.replyToggle(tweet)">Reply</a>
                                 <div id="text" ng-hide="tweet.visibility">
-                                        <input type="text" class="form-text  " id="inputfield" ng-model="$ctrl.replyContent" />
-                                        <button class="replybutton" ng-click="$ctrl.replyToTweet(tweet.id)">Post</button>
+                                        <input type="text" class="search" id="inputfield" ng-model="$ctrl.replyContent" />
+                                        <button class="search-button" ng-click="$ctrl.replyToTweet(tweet)">Post</button>
                                 </div>
                         </li>
                         <li class="jay-li">
