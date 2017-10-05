@@ -2,7 +2,7 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
     function (feedService, userListService, userDataService, $state) {
 
         this.getBackground = (tweet)=>{
-            console.dir(tweet)
+            // console.dir(tweet)
             if(tweet.repostOf)
                 return 'rgba(118, 53, 23, 0.9)'
             else if(tweet.reply)
