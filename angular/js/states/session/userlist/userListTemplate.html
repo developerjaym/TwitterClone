@@ -22,7 +22,7 @@
         <ul class="nav nav-pills formsubtitle">
 
             <li class="jay-li">
-                <a ng-click="$ctrl.followUser(user)" ng-style="{'color': $ctrl.styleIfFollowed(user) }"> {{ user.followedText }}</a>
+                <a ng-click="$ctrl.followUser(user)" ng-style="{'color': user.followedStyle }"> {{ user.followedText }}</a>
             </li>
             <li class="jay-li">
                 <a ng-click="$ctrl.goToTweets(user.id)">

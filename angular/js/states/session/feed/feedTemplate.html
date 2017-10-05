@@ -12,14 +12,18 @@
                 <ul class="nav nav-pills formsubtitle">
 
                         <li class="jay-li">
-                                <a ng-click="$ctrl.likeTweet(tweet)" ng-style="{'color': $ctrl.checkIfLiked(tweet) }" id="likebutton" title="Liked by Greg, Thanuja, Michael, Will"> {{ $ctrl.textIfLiked(tweet) }} </a>
+                                <a ng-click="$ctrl.likeTweet(tweet)" ng-style="{'color': tweet.likedStyle }" id="likebutton" title="Liked by Greg, Thanuja, Michael, Will"> {{ tweet.likedText }} </a>
                         </li>
                         <li class="jay-li">
                                 <a ng-click="$ctrl.goToContext(tweet.id)">Context</a>
                         </li>
                         <li class="jay-li">
-                                <a editable-textarea="Reply" e-rows="7" e-cols="40">
-                                        Reply </a>
+                                <a ng-click="$ctrl.replyToggle()">Reply</a>
+                                <div id="text" style="display: none">
+                                        <input type="text" class="search" id="inputfield" ng-model="$ctrl.replyContent" />
+                                        <button class="search-button" ng-click="$ctrl.replyToTweet(tweet.id)">Post</button>
+
+                                </div>
                         </li>
                         <li class="jay-li">
                                 <a ng-click="$ctrl.repostTweet(tweet.id)">Repost</a>

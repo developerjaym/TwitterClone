@@ -79,10 +79,15 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
                 this.tweetPool.forEach((tweet) => {
                     tweet.mentions = []
                     tweet.tags = []
+                    tweet.liked = false
+                    tweet.likedStyle = 'white'
+                    tweet.likedText = 'Like'
 
                     userLikedTweets.data.forEach((likedTweet) => {
                         if (tweet.id === likedTweet.id) {
                             tweet.liked = true
+                            tweet.likedStyle = 'red'
+                            tweet.likedText = 'Unlike'
                         }
                     })
 
@@ -105,29 +110,15 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
             })
         }
 
-        this.styleIfLiked = (tweet) => {
-            if (tweet.liked !== undefined &&
-                tweet.liked) {
-                return 'red'
-            } else {
-                return 'white'
-            }
-        }
-
-        this.textIfLiked = (tweet) => {
-            if (tweet.liked !== undefined &&
-                tweet.liked) {
-                return 'Unlike'
-            } else {
-                return 'Like'
-            }
-        }
-
         this.likeTweet = (tweet) => {
             feedService.likeTweet(tweet.id).then((succeedResponse) => {
                 tweet.liked = true
+                tweet.likedStyle = 'red'
+                tweet.likedText = 'Unlike'
             }, (errorResponse) => {
                 tweet.liked = false
+                tweet.likedStyle = 'white'
+                tweet.likedText = 'Like'
             })
         }
 
@@ -155,13 +146,19 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
             })
         }
 
-        // TODO: Pop up input field on reply click. Ng-model this.content to it. On enter or second reply button run this method
-        this.replyToTweet = () => {
-            feedService.replyToTweet(this.content).then((succeedResponse) => {
+        this.replyToTweet = (tweetId) => {
+            this.replyToggle()
+
+            feedService.replyToTweet(tweetId, userDataService.buildTweet(this.replyContent)).then((succeedResponse) => {
                 this.switchFeed(userDataService.feedTypeEnum.MAIN)
+                this.replyContent = ''
             }, (errorResponse) => {
                 alert('Error: ' + errorResponse.status)
             })
+        }
+
+        this.replyToggle = () => {
+            $('#text').toggle();
         }
 
         this.deleteTweet = (tweetId) => {

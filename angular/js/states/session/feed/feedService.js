@@ -45,7 +45,7 @@ angular.module('twitterClone').service('feedService', ['userDataService', '$http
             return $http.get('http://localhost:8888/api/tags/' + hashtagLabel + '/')
         }
 
-        this.replyToTweet = (tweet, tweetId) => {
+        this.replyToTweet = (tweetId, tweet) => {
             return $http.post('http://localhost:8888/api/tweets/' + tweetId + '/reply/', tweet)
         }
 

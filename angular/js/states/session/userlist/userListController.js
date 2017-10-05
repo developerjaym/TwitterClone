@@ -1,7 +1,6 @@
 angular.module('twitterClone').controller('userListController', ['userListService', 'userDataService', '$state',
     function (userListService, userDataService, $state) {
 
-        // The pool of users to display in the user list state
         this.userPool = []
 
         this.switchFeed = (userListType, dependency) => {
@@ -64,11 +63,13 @@ angular.module('twitterClone').controller('userListController', ['userListServic
             userListService.getFollowing().then((usersSourceIsFollowing) => {
                 this.userPool.forEach((user) => {
                     user.followed = false
+                    user.followedStyle = 'black'
                     user.followedText = 'Follow'
 
                     usersSourceIsFollowing.data.forEach((followedUser) => {
                         if (user.username === followedUser.username) {
                             user.followed = true
+                            user.followedStyle = 'red'
                             user.followedText = 'Unfollow'
                         }
                     })
@@ -81,19 +82,17 @@ angular.module('twitterClone').controller('userListController', ['userListServic
                 userListService.unfollowUser(user.username).then((succeedResponse) => {
                     userDataService.followingNum--
                     user.followed = false
+                    user.followedStyle = 'black'
                     user.followedText = 'Follow'
                 })
             } else {
                 userListService.followUser(user.username).then((succeedResponse) => {
                     userDataService.followingNum++
                     user.followed = true
+                    user.followedStyle = 'red'
                     user.followedText = 'Unfollow'
                 })
             }
-        }
-
-        this.checkIfFollowed = (user) => {
-            (user.followed) ? 'red' : 'black'
         }
 
         if (userDataService.loggedIn()) {
