@@ -121,8 +121,6 @@ label {
 
 .jay-box,
 .tweet,
-.login,
-.createNewUser,
 .account,
 .userlist {
     color: white;
@@ -135,12 +133,12 @@ label {
     justify-content: space-around;
     align-items: center;
     margin-top: 2vh;
-    margin-bottom: 2vh;
+    /* margin-bottom: 2vh; */
     padding-left: 2vw;
     padding-right: 2vw;
     padding-top: 1vh;
     padding-bottom: 1vh;
-    font-size: large;
+    /* font-size: large; */
     overflow: auto;
 }
 
@@ -170,11 +168,11 @@ label {
     justify-content: center;
     text-align: center;
     padding-bottom: 1vh;
-    font-size: x-large;
+    font-size: large;
     border-bottom: 1px solid white;
     border-top: 1px solid white;
-    min-width: 20vw;
-    max-width: 20vw;
+    min-width: 25vw;
+    max-width: 25vw;
     min-height: 20vh;
 }
 
@@ -203,7 +201,7 @@ label {
     padding-top: 1vh;
     flex-wrap: wrap;
 
-    min-width: 20vw;
+    min-width: 25vw;
 }
 
 .formbutton,
@@ -229,7 +227,8 @@ input {
     color : black;
     border-radius: 1vw;
     border-width: 1px 1px 1px 1px;
-    max-width: 20vw;
+    max-width: 25vw;
+    margin-bottom: 2px;
 }
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    darkgray;
@@ -274,7 +273,12 @@ input {
 {
     background-color: rgb(50, 195, 164);
 }
-
+.editable
+{
+    font-size: medium;
+    margin-bottom: 1vh;
+    color: rgb(50, 195, 164) !important;
+}
 .formbutton {
     margin-top: 2vh;
     margin-left: 1vw;
