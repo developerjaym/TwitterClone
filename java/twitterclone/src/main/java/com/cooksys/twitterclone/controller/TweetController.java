@@ -116,10 +116,6 @@ public class TweetController {
 	@PostMapping("delete/{id}/")
 	public TweetGetDto deleteTweet(@PathVariable Integer id, @RequestBody CredentialsDto credentialsDto, HttpServletResponse response) {
 		try {
-//			CredentialsDto credentialsDto = new CredentialsDto();
-//			credentialsDto.setUsername("guest");
-//			credentialsDto.setPassword("guest");
-			System.out.println("Hi everyone: " + credentialsDto.getUsername());
 			TweetGetDto deletedTweet = tweetService.deleteTweet(id, credentialsDto);
 			return deletedTweet;
 		} catch (TwitterException twitterException) {

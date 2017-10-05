@@ -12,13 +12,21 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
             // Will either contain an array of users or tweets at the end
             let resultPool = []
 
+            let arrayOfUsernames = []
+            let arrayOfHashtags = []
             let arrayOfSearchWords = this.search.split(' ')
 
-            let arrayOfUsernames = arrayOfSearchWords.filter((word) => word.charAt(0) === '@')
-            arrayOfUsernames = arrayOfUsernames.map((word) => word.slice(1))
-
-            let arrayOfHashtags = arrayOfSearchWords.filter((word) => word.charAt(0) === '#')
-            arrayOfHashtags = arrayOfHashtags.map((word) => word.slice(1))
+            arrayOfSearchWords.forEach((word) => {
+                if (word.charAt(0) !== '#' && word.charAt(0) !== '@') {
+                    arrayOfUsernames.push(word)
+                } else if (word.charAt(0) === '@') {
+                    let username = word.slice(1)
+                    arrayOfUsernames.push(username)
+                } else {
+                    let label = word.slice(1)
+                    arrayOfHashtags.push(label)
+                }
+            })
 
             if (searchType === 'USER') {
                 arrayOfUsernames.forEach((username) => {
@@ -35,7 +43,7 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
                 arrayOfUsernames.forEach((username) => {
                     // Get tweets by mention
                     // Adds each tweet to resultPool
-                    userListService.getMentions(username).then((succeedResponse) => {
+                    feedService.getTweets(username).then((succeedResponse) => {
                         resultPool.push(...succeedResponse.data)
                     })
                 })
@@ -68,8 +76,6 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
             userDataService.feedDependency = resultPool
             userDataService.reloadIfNecessary('session.feed', 'Search Result ')
         }
-
-
 
         this.goToTweet = () => {
             userDataService.reloadIfNecessary('session.tweet')
