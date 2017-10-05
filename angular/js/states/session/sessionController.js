@@ -35,7 +35,7 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
                     // Get users matching the username
                     // Adds each user to resultPool
                     userListService.getUser(username).then((succeedResponse) => {
-                        resultPool.push(succeedResponse.data)
+                        resultPool.push(...succeedResponse.data)
                     })
                 })
 

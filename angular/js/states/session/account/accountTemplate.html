@@ -5,28 +5,29 @@
 
     <div class="formbody">
 
-        <div class="formlabel">First Name
+        <div class="formlabel">First Name :
 
-            <span class="formlabel" editable-text="$ctrl.submission.firstName"> {{ $ctrl.submission.firstName || "empty" }} </span>
-
-        </div>
-
-
-        <div class="formlabel">Last Name
-            <span class="formlabel" editable-text="$ctrl.submission.lastName"> {{ $ctrl.submission.lastName || "empty" }} </span>
+            <span class="formlabel jay-li" editable-text="$ctrl.submission.firstName"> {{ $ctrl.submission.firstName || "empty" }} </span>
 
         </div>
 
 
-        <div class="formlabel">Email Address
-            <span class="formlabel" editable-text="$ctrl.submission.email"> {{ $ctrl.submission.email || "empty" }}
+        <div class="formlabel">Last Name :
+            <span class="formlabel jay-li" editable-text="$ctrl.submission.lastName"> {{ $ctrl.submission.lastName || "empty" }} </span>
+
         </div>
 
-        <div class="formlabel">Phone 
-            <span class="formlabel" editable-text="$ctrl.submission.phone"> {{ $ctrl.submission.phone || "empty" }} </span>
+
+        <div class="formlabel">Email Address :
+            <span class="formlabel jay-li" editable-text="$ctrl.submission.email"> {{ $ctrl.submission.email || "empty" }}
+        </div>
+
+        <div class="formlabel">Phone :
+            <span class="formlabel jay-li" editable-text="$ctrl.submission.phone"> {{ $ctrl.submission.phone || "empty" }} </span>
         </div>
     </div>
     <div class="formfooter">
         <button class="formbutton" ng-click="$ctrl.modifyProfile()">Save</button>
+        <button class="formbutton" ng-click="$ctrl.reload()">Cancel</button>       
     </div>
 </div>
