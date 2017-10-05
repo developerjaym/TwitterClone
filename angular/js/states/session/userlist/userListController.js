@@ -34,10 +34,6 @@ angular.module('twitterClone').controller('userListController', ['userListServic
                     userListService.getFollowers(dependency).then((succeedResponse) => {
                         this.userPool = succeedResponse.data
                         this.configureUserFields()
-                    }, (errorResponse) => {
-                        if (errorResponse.status === 404) {
-                            // Source user not found
-                        }
                     })
                     break;
                 case userDataService.userListTypeEnum.FOLLOWING:
@@ -47,10 +43,6 @@ angular.module('twitterClone').controller('userListController', ['userListServic
                     userListService.getFollowing(dependency).then((succeedResponse) => {
                         this.userPool = succeedResponse.data
                         this.configureUserFields()
-                    }, (errorResponse) => {
-                        if (errorResponse.status === 404) {
-                            // Source user not found
-                        }
                     })
                     break;
                 default:
