@@ -8,8 +8,9 @@ body {
     width: 100vw;
     display: flex;
     background-image: url("/img/peacock.jpg");
-    /* background-size: cover; */
-    background-repeat: repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    /* background-repeat: repeat; */
     background-position: center;
 }
 
@@ -33,7 +34,7 @@ label {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 95%;
+    /* height: 95%; */
 }
 
 
@@ -135,6 +136,7 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     margin-top: 2vh;
     margin-bottom: 2vh;
     padding-left: 2vw;
@@ -142,6 +144,7 @@ a {
     padding-top: 1vh;
     padding-bottom: 1vh;
     font-size: large;
+    overflow: auto;
 }
 
 .formtitle {
@@ -168,6 +171,7 @@ a {
     align-content: center;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     padding-bottom: 1vh;
     font-size: x-large;
     border-bottom: 1px solid white;
@@ -188,6 +192,10 @@ a {
     justify-content: center;
     padding-bottom: 0px;
     padding-top: 1vh;
+    flex-wrap: wrap;
+
+    min-width: 20vw;
+    max-width: 25vw;
 }
 
 .formfooterFeed {
@@ -208,9 +216,53 @@ a {
     cursor: pointer;
 }
 
+
+
+
+
+
 input {
     text-align: center;
 }
+/*****JAY SOLUTION BELOW USING TRANSITIONS****/
+.expandabletextarea
+{
+    background-color: transparent;
+    color: white;
+    width: 5vw;
+    height: 35px;
+    border: none;
+    -webkit-transition: background-color 1s; /* Safari */
+    transition: background-color 1s;
+    -webkit-transition: color 1s; /* Safari */
+    transition: color 1s;
+    -webkit-transition: width 1s; /*Safari*/
+    transition: width 1s;   
+}
+.expandabletextarea:hover
+{
+    background-color: white;
+    color: black;
+    width: 200px;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    white;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    white;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    white;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    white;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    white;
+}
+
 
 .formbuttonsmall {
     background-color: rgb(118, 53, 23);
@@ -226,6 +278,8 @@ input {
     height: 15%;
     width: 20vw;
     box-shadow: 0px 0px 0px 1px rgb(158, 75, 35) inset;
+    text-align: left;
+    padding-left: 1vw;
 }
 
 .formbutton {
@@ -251,7 +305,7 @@ strong {
     height: 100vh;
     align-items: center;
     justify-content: flex-start;
-    background-image: url("/img/peacock.jpg");
+    /* background-image: url("/img/peacock.jpg"); */
     background-size: cover;
     background-repeat: repeat;
     background-position: center;

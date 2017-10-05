@@ -17,8 +17,10 @@
                                 <a ng-click="$ctrl.likeTweet(tweet)" ng-style="{'color': $ctrl.checkIfLiked(tweet) }" id="likebutton" title="Liked by Greg, Thanuja, Michael, Will"> {{ $ctrl.textIfLiked(tweet) }} </a>
                         </li>
                         <li class="jay-li">
-                                <a editable-textarea="Reply" e-rows="7" e-cols="40">
-                                        Reply </a>
+                                <!-- <input type="text" class="expandabletextarea" placeholder="Reply"/> -->
+                                <a editable-textarea="Reply" class="editabletextarea" e-rows="1" e-cols="15">
+                                        Reply 
+                                </a>
                         </li>
                         <li class="jay-li">
                                 <a ng-click="$ctrl.repostTweet(tweet.id)">Repost</a>

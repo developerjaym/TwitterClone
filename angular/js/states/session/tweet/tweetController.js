@@ -11,7 +11,8 @@ angular.module('twitterClone').controller('tweetController', ['tweetService', 'u
 
         this.createNewTweet = () => {
             tweetService.createNewTweet(userDataService.buildTweet(this.content)).then((succeedResponse) => {
-                $state.go('session.feed')
+                //$state.go('session.feed')
+                userDataService.reloadIfNecessary('session.feed');
             }, (errorResponse) => {
                 alert('Error: ' + errorResponse.status)
             })
