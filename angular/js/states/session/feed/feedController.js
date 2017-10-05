@@ -1,14 +1,13 @@
 angular.module('twitterClone').controller('feedController', ['feedService', 'userListService', 'userDataService', '$state',
     function (feedService, userListService, userDataService, $state) {
 
-        this.getBackground = (tweet)=>{
-            console.dir(tweet)
-            if(tweet.repostOf)
+        this.getBackground = (tweet) => {
+            if (tweet.repostOf)
                 return 'rgba(118, 53, 23, 0.9)'
-            else if(tweet.reply)
+            else if (tweet.reply)
                 return 'rgba(4, 92, 120, 0.9)'
             else
-                return ''    
+                return ''
         }
 
         this.userListService = userListService
@@ -146,17 +145,21 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
         }
 
         this.replyToTweet = (tweetId) => {
-            feedService.replyToTweet(tweetId, userDataService.buildTweet(this.replyContent)).then((succeedResponse) => {
-                this.switchFeed(userDataService.feedTypeEnum.MAIN)
-                this.replyContent = ''
-                tweet.visibility = true
-            }, (errorResponse) => {
-                alert('Error: ' + errorResponse.status)
-            })
+            if (this.replyContent.length < 255) {
+                feedService.replyToTweet(tweetId, userDataService.buildTweet(this.replyContent)).then((succeedResponse) => {
+                    this.switchFeed(userDataService.feedTypeEnum.MAIN)
+                    this.replyContent = ''
+                    tweet.visibility = true
+                }, (errorResponse) => {
+                    alert('Error: ' + errorResponse.status)
+                })
+            } else {
+                this.replyContent = 'Your Message Is Too Long'
+            }
         }
 
         this.replyToggle = (tweet) => {
-            if(tweet.visibility) {
+            if (tweet.visibility) {
                 tweet.visibility = false
             } else {
                 tweet.visibility = true

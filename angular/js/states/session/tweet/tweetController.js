@@ -4,13 +4,17 @@ angular.module('twitterClone').controller('tweetController', ['tweetService', 'u
         this.content = ''
 
         this.createNewTweet = () => {
-            tweetService.createNewTweet(userDataService.buildTweet(this.content)).then((succeedResponse) => {
-                userDataService.activeFeed = userDataService.feedTypeEnum.MAIN
-                userDataService.feedDependency = undefined
-                userDataService.reloadIfNecessary('session.feed', 'My ');
-            }, (errorResponse) => {
-                alert('Error: ' + errorResponse.status)
-            })
+            if (this.content.length < 255) {
+                tweetService.createNewTweet(userDataService.buildTweet(this.content)).then((succeedResponse) => {
+                    userDataService.activeFeed = userDataService.feedTypeEnum.MAIN
+                    userDataService.feedDependency = undefined
+                    userDataService.reloadIfNecessary('session.feed', 'My ');
+                }, (errorResponse) => {
+                    alert('Error: ' + errorResponse.status)
+                })
+            } else {
+                this.content = 'Your Message Is Too Long'
+            }
         }
 
         if (!userDataService.loggedIn()) {
