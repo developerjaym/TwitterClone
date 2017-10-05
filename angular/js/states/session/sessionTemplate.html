@@ -13,7 +13,7 @@
         <button type="button" class="jnavbutton" ng-click="$ctrl.goToMainFeed()">Welcome, {{ $ctrl.userDataService.credentials.username }}</button>
 
         <div class="search">
-            <span><input class="search-bar" type ="text" placeholder="search" ng-model = "$ctrl.search"  />
+            <span><input class="search-bar form-text" type ="text" placeholder="search" ng-model = "$ctrl.search"  />
                                 <button class="search-button glyphicon glyphicon-user" ng-click = "$ctrl.submitSearch('USER')" title="Search users">
                                     </button><button class="search-button glyphicon glyphicon-send" ng-click = "$ctrl.submitSearch('TWEET')" title="Search tweets"></button></span>
         </div>
