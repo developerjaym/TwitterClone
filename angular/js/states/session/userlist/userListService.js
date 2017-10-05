@@ -10,11 +10,11 @@ angular.module('twitterClone').service('userListService', ['userDataService', '$
         }
 
         this.followUser = (usernameToFollow) => {
-            return $http.post('http://localhost:8888/api/users/@' + username + '/follow/', userDataService.credentials)
+            return $http.post('http://localhost:8888/api/users/@' + usernameToFollow + '/follow/', userDataService.credentials)
         }
 
         this.unfollowUser = (usernameToUnfollow) => {
-            return $http.post('http://localhost:8888/api/users/@' + username + '/unfollow/', userDataService.credentials)
+            return $http.post('http://localhost:8888/api/users/@' + usernameToUnfollow + '/unfollow/', userDataService.credentials)
         }
 
         this.getFollowers = (username) => {

@@ -2,56 +2,41 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
     function (feedService, userListService, userDataService, $state) {
 
         this.userListService = userListService
-
-        // Pool of tweets to display in feed
         this.tweetPool = []
-
-        // Content of a reply tweet
         this.content = ''
-
-        if (userDataService.credentials.username === undefined ||
-            userDataService.credentials.password === undefined) {
-            // User is not logged in
-            $state.go('title.login')
-        }
 
         this.switchFeed = (feedType, dependency) => {
             switch (feedType) {
                 case userDataService.feedTypeEnum.MAIN:
                     // dependency isn't needed here, gets current user's feed
                     this.tweetPool = []
-                    feedService.getLikesOfUser().then((succeedResponse) => {
-                        return succeedResponse
-                    }).then((listOfTweetsAsPromiseResult) => {
-                        feedService.getFeed().then((succeedResponse) => {
-                            this.tweetPool = succeedResponse.data
-                            this.tweetPool.forEach((tweet) => {
-                                listOfTweetsAsPromiseResult.data.forEach((likedTweet) => {
-                                    if (tweet.id === likedTweet.id) {
-                                        tweet.liked = true
-                                    }
-                                })
-                            })
-                        })
+                    feedService.getFeed().then((succeedResponse) => {
+                        this.tweetPool = succeedResponse.data
+                        this.configureTweetFields()
                     })
                     break;
                 case userDataService.feedTypeEnum.CUSTOM:
                     // dependency is the pool of users
                     if (dependency !== undefined) {
                         this.tweetPool = dependency
+                        this.configureTweetFields()
                     }
                     break;
                 case userDataService.feedTypeEnum.SINGLE:
                     // dependency here would be the tweet to display
                     if (dependency !== undefined) {
                         this.tweetPool = [dependency]
+                        this.configureTweetFields()
                     }
                     break;
                 case userDataService.feedTypeEnum.CONTEXT:
                     // dependency here would be the source tweet
                     this.tweetPool = []
                     feedService.getContextOfTweet(dependency).then((succeedResponse) => {
-                        this.tweetPool = succeedResponse.data
+                        this.tweetPool.push(...succeedResponse.data.before)
+                        this.tweetPool.push(succeedResponse.data.target)
+                        this.tweetPool.push(...succeedResponse.data.after)
+                        this.configureTweetFields()
                     }, (errorResponse) => {
                         if (errorResponse.status === 404) {
                             // Tweet not found
@@ -63,6 +48,7 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
                     this.tweetPool = []
                     feedService.getTweets(dependency).then((succeedResponse) => {
                         this.tweetPool = succeedResponse.data
+                        this.configureTweetFields()
                     }, (errorResponse) => {
                         if (errorResponse.status === 404) {
                             // Not found
@@ -74,6 +60,7 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
                     this.tweetPool = []
                     feedService.getTweetsByHashtag(dependency).then((succeedResponse) => {
                         this.tweetPool = succeedResponse.data
+                        this.configureTweetFields()
                     }, (errorResponse) => {
                         if (errorResponse.status === 404) {
                             // Not found
@@ -87,50 +74,68 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
             }
         }
 
-        this.styleIfLiked = (tweet) => {
-            if (tweet.liked !== undefined &&
-                tweet.liked) {
-                return 'gray'
-            } else {
-                return 'white'
-            }
-        }
+        this.configureTweetFields = () => {
+            feedService.getLikesOfUser().then((userLikedTweets) => {
+                this.tweetPool.forEach((tweet) => {
+                    tweet.mentions = []
+                    tweet.tags = []
+                    tweet.liked = false
+                    tweet.likedStyle = 'white'
+                    tweet.likedText = 'Like'
 
-        this.textIfLiked = (tweet) => {
-            if (tweet.liked !== undefined &&
-                tweet.liked) {
-                return 'Liked'
-            } else {
-                return 'Like'
-            }
+                    userLikedTweets.data.forEach((likedTweet) => {
+                        if (tweet.id === likedTweet.id) {
+                            tweet.liked = true
+                            tweet.likedStyle = 'red'
+                            tweet.likedText = 'Unlike'
+                        }
+                    })
+
+                    feedService.getUserMentionsInTweet(tweet.id).then((succeedResponse) => {
+                        succeedResponse.data.forEach((user) => {
+                            if (user.username !== '') {
+                                tweet.mentions.push(user.username)
+                            }
+                        })
+                    })
+
+                    feedService.getTagsOfTweet(tweet.id).then((succeedResponse) => {
+                        succeedResponse.data.forEach((tag) => {
+                            if (tag.label !== '') {
+                                tweet.tags.push(tag.label)
+                            }
+                        })
+                    })
+                })
+            })
         }
 
         this.likeTweet = (tweet) => {
             feedService.likeTweet(tweet.id).then((succeedResponse) => {
                 tweet.liked = true
+                tweet.likedStyle = 'red'
+                tweet.likedText = 'Unlike'
             }, (errorResponse) => {
-                alert('Error: ' + errorResponse.status)
-            })
-        }
-
-        this.tag = (tweet) => {
-            return feedService.getTagsOfTweet(tweet.id).then((succeedResponse) => {
-                return succeedResponse.data
-            })
-        }
-
-        this.mentions = (tweet) => {
-            return feedService.getUserMentionsInTweet(tweet.id).then((succeedResponse) => {
-                return succeedResponse.data
+                tweet.liked = false
+                tweet.likedStyle = 'white'
+                tweet.likedText = 'Like'
             })
         }
 
         this.findTweetsByTag = (tag) => {
-            this.switchFeed(userDataService.feedTypeEnum.HASHTAG, tag.label)
+            this.switchFeed(userDataService.feedTypeEnum.HASHTAG, tag)
         }
 
-        this.findTweetsByMention = (mention) => {
-            this.switchFeed(userDataService.feedTypeEnum.USER, mention.username)
+        this.findUserByMention = (mention) => {
+            userListService.getUser(mention).then((succeedResponse) => {
+                userDataService.activeUserList = userDataService.userListTypeEnum.SINGLE
+                userDataService.userListDependency = succeedResponse.data
+                $state.go('session.userlist')
+            })
+        }
+
+        this.goToContext = (tweetId) => {
+            this.switchFeed(userDataService.feedTypeEnum.CONTEXT, tweetId)
         }
 
         this.repostTweet = (tweetId) => {
@@ -141,13 +146,19 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
             })
         }
 
-        // TODO: Pop up input field on reply click. Ng-model this.content to it. On enter or second reply button run this method
-        this.replyToTweet = () => {
-            feedService.replyToTweet(this.content).then((succeedResponse) => {
+        this.replyToTweet = (tweetId) => {
+            this.replyToggle()
+
+            feedService.replyToTweet(tweetId, userDataService.buildTweet(this.replyContent)).then((succeedResponse) => {
                 this.switchFeed(userDataService.feedTypeEnum.MAIN)
+                this.replyContent = ''
             }, (errorResponse) => {
                 alert('Error: ' + errorResponse.status)
             })
+        }
+
+        this.replyToggle = () => {
+            $('#text').toggle();
         }
 
         this.deleteTweet = (tweetId) => {
@@ -158,10 +169,10 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
             })
         }
 
-        if (userDataService.credentials.username !== undefined &&
-            userDataService.credentials.password !== undefined) {
+        if (userDataService.loggedIn()) {
             this.switchFeed(userDataService.activeFeed, userDataService.feedDependency)
+        } else {
+            $state.go('title.login')
         }
-
     }
 ])

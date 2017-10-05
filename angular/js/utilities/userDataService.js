@@ -1,5 +1,14 @@
 angular.module('twitterClone').service('userDataService', ['$state', function ($state) {
 
+    this.credentials = new Credentials(undefined, undefined)
+
+    this.setUserCredentials = (username, password) => {
+        this.credentials.username = username
+        this.credentials.password = password
+    }
+
+    this.loggedIn = () => (this.credentials.username !== undefined && this.credentials.password !== undefined)
+
     this.followersNum = 0
     this.followingNum = 0
 
@@ -20,14 +29,6 @@ angular.module('twitterClone').service('userDataService', ['$state', function ($
         }
 
         this.sessionTitle = optionalPrefix + sessionType;
-    }
-
-    this.credentials = new Credentials(undefined, undefined)
-    // this.credentials = new Credentials('guest', 'guest')
-
-    this.setUserCredentials = (username, password) => {
-        this.credentials.username = username
-        this.credentials.password = password
     }
 
     this.logout = () => {

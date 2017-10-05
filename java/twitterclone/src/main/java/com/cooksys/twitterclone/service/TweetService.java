@@ -191,6 +191,8 @@ public class TweetService {
 		Set<UserEntity> likes = tweetToLike.getLikes();
 		
 		if(!likes.add(user)) {
+			likes.remove(user);
+			tweetJpaRepository.save(tweetToLike);
 			throw new TwitterException(ErrorType.CONFLICT);
 		}
 		
