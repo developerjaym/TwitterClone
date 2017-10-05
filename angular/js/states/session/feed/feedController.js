@@ -1,6 +1,16 @@
 angular.module('twitterClone').controller('feedController', ['feedService', 'userListService', 'userDataService', '$state',
     function (feedService, userListService, userDataService, $state) {
 
+        this.getBackground = (tweet)=>{
+            console.dir(tweet)
+            if(tweet.repostOf)
+                return 'rgba(118, 53, 23, 0.9)'
+            else if(tweet.reply)
+                return 'rgba(4, 92, 120, 0.9)'
+            else
+                return ''    
+        }
+
         this.userListService = userListService
         this.tweetPool = []
         this.content = ''
@@ -165,4 +175,7 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
             $state.go('title.login')
         }
     }
+
+
+
 ])

@@ -12,6 +12,8 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
             // Will either contain an array of users or tweets at the end
             let resultPool = []
 
+
+
             let arrayOfUsernames = []
             let arrayOfHashtags = []
             let arrayOfSearchWords = this.search.split(' ')
