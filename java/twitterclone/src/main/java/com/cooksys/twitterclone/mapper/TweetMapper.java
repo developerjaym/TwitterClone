@@ -49,7 +49,7 @@ public interface TweetMapper {
 		for(UserEntity user : users) {
 			likedByStringB.append(user.getCredentials().getUsername());
 			if (!index.equals(numOfUsers - 1)) {
-				likedByStringB.append(", ");
+				likedByStringB.append(" ");
 			}
 			index++;
 		}
