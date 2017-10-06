@@ -168,6 +168,7 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
         }
 
         this.repostTweet = (tweetId) => {
+            new Audio('shriek.mp3').play()
             feedService.repostTweet(tweetId).then((succeedResponse) => {
                 this.switchFeed(userDataService.feedTypeEnum.MAIN)
             }, (errorResponse) => {
@@ -177,6 +178,7 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
 
         this.replyToTweet = (tweet) => {
             if (this.replyContent.length < 255) {
+                new Audio('shriek.mp3').play()
                 feedService.replyToTweet(tweet.id, userDataService.buildTweet(this.replyContent)).then((succeedResponse) => {
                     this.switchFeed(userDataService.feedTypeEnum.MAIN)
                     this.replyContent = ''
