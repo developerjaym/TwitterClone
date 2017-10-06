@@ -5,29 +5,37 @@
 
     <div class="formbody">
 
-        <div class="form-text">First Name :
-
-            <span class="form-text jay-a" editable-text="$ctrl.submission.firstName"> {{ $ctrl.submission.firstName || "empty" }} </span>
-
+        <div>
+            First Name
+        </div>
+        <div class="form-text jay-a editable" editable-text="$ctrl.submission.firstName">
+            {{ $ctrl.submission.firstName || "empty" }}
         </div>
 
-
-        <div class="form-text">Last Name :
-            <span class="form-text jay-a" editable-text="$ctrl.submission.lastName"> {{ $ctrl.submission.lastName || "empty" }} </span>
-
+        <div>
+            Last Name 
+        </div>
+        <div class="form-text jay-a editable" editable-text="$ctrl.submission.lastName">
+            {{ $ctrl.submission.lastName || "empty" }}
         </div>
 
-
-        <div class="form-text">Email Address :
-            <span class="form-text jay-a" editable-text="$ctrl.submission.email"> {{ $ctrl.submission.email || "empty" }}
+        <div>
+            Email Address
+        </div>
+        <div class="form-text jay-a editable" editable-text="$ctrl.submission.email">
+            {{ $ctrl.submission.email || "empty" }}
         </div>
 
-        <div class="form-text">Phone :
-            <span class="form-text jay-a" editable-text="$ctrl.submission.phone"> {{ $ctrl.submission.phone || "empty" }} </span>
+        <div>
+            Phone
         </div>
+        <div class="form-text jay-a editable" editable-text="$ctrl.submission.phone">
+            {{ $ctrl.submission.phone || "empty" }}
+        </div>
+
     </div>
     <div class="formfooter">
         <button class="formbutton" ng-click="$ctrl.modifyProfile()">Save</button>
-        <button class="formbutton" ng-click="$ctrl.reload()">Cancel</button>       
+        <button class="formbutton" ng-click="$ctrl.reload()">Cancel</button>
     </div>
 </div>
