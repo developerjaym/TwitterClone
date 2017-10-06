@@ -1,16 +1,16 @@
-<div class="login">
+<div class="jay-box">
         <div class="formtitle">Login
                 <div class="formsubtitle">Welcome back, friend</div>
         </div>
         
         <div class="formbody" >
                 <div >Username</div> <input autofocus type="text" class="form-text" id="content" ng-style="{'border-color': $ctrl.usernameErrorCss }" ng-model="$ctrl.submission.username">
-                <div >Password</div> <input type="password" class="form-text" id="pwd" ng-style="{'border-color': $ctrl.passwordErrorCss }" ng-model="$ctrl.submission.password">
+                <div >Password</div> <input ng-keyup="$event.keyCode == 13 && $ctrl.login()" type="password" class="form-text" id="pwd" ng-style="{'border-color': $ctrl.passwordErrorCss }" ng-model="$ctrl.submission.password">
         </div>
         <div class="formfooter" > 
                 <button class='formbutton' ng-click='$ctrl.guest()'> Guest</button>   
                 <button class='formbutton' ng-click='$ctrl.login()'>Login</button>
         </div>
-        <button class='btn btn-link' id = 'newUserButton' ui-sref = 'title.newuser' >Create New User</button>
+        <button class='btn btn-link' id = 'newUserButton' ui-sref = 'title.newuser' >Create New Account</button>
         
 </div>

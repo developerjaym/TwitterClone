@@ -26,7 +26,7 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
                 }
             })
 
-            if (searchType === 'USER' && arrayOfUsernames.length > 0) {
+            if (searchType === 'USER') {
                 arrayOfUsernames.forEach((username) => {
                     // Get users matching the username
                     // Adds each user to resultPool
@@ -39,7 +39,7 @@ angular.module('twitterClone').controller('sessionController', ['userDataService
 
                 this.search = ''
                 this.goToCustomUserList(resultPool)
-            } else if (searchType === 'TWEET' && (arrayOfUsernames > 0 || arrayOfHashtags > 0)) {
+            } else if (searchType === 'TWEET') {
                 arrayOfUsernames.forEach((username) => {
                     // Get tweets by mention
                     // Adds each tweet to resultPool
