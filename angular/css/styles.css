@@ -10,6 +10,7 @@ body {
     background-repeat: repeat;
     background-position: center;
     cursor: url('featherIcon48x48.png');
+    overflow-x: hidden;
 }
 
 div {
@@ -43,6 +44,11 @@ label {
     display: flex;
     background-color: transparent;
     flex-direction: column;
+}
+
+.welcome {
+    display: flex;
+    justify-content: center;
 }
 
 .search {
