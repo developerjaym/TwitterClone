@@ -38,7 +38,9 @@ angular.module('twitterClone').controller('accountController', ['userListService
         }
 
         this.reload = () => {
-            $state.go('session.account')
+            userDataService.feedDependency = undefined;
+            userDataService.activeFeed = userDataService.feedTypeEnum.MAIN;
+            userDataService.reloadIfNecessary('session.feed', 'My ')
         }
 
     }

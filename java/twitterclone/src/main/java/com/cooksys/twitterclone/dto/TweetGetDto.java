@@ -21,6 +21,8 @@ public class TweetGetDto implements Comparable<TweetGetDto>{
 	
 	private Integer inReplyTo;
 	
+	private String likes;
+	
 	/**
 	 * Default Constructor
 	 */
@@ -122,6 +124,20 @@ public class TweetGetDto implements Comparable<TweetGetDto>{
 	 */
 	public void setInReplyTo(Integer inReplyTo) {
 		this.inReplyTo = inReplyTo;
+	}
+
+	/**
+	 * @return the likes
+	 */
+	public String getLikes() {
+		return likes;
+	}
+
+	/**
+	 * @param likes the likes to set
+	 */
+	public void setLikes(String likes) {
+		this.likes = likes;
 	}
 
 	/* (non-Javadoc)
