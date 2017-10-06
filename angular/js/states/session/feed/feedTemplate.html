@@ -13,7 +13,7 @@
                 <ul class="nav nav-pills formsubtitle">
 
                         <li class="jay-li">
-                                <a class="jay-a" ng-click="$ctrl.likeTweet(tweet)" ng-style="{'color': tweet.likedStyle }" id="likebutton" title="Liked by Greg, Thanuja, Michael, Will"> {{ tweet.likedText }} </a>
+                                <a class="jay-a" ng-click="$ctrl.likeTweet(tweet)" ng-style="{'color': tweet.likedStyle }" id="likebutton" title="{{ tweet.likes }}" > {{ tweet.likedText }} </a>
                         </li>
                         <li class="jay-li">
                                 <a class="jay-a" ng-click="$ctrl.goToContext(tweet.id)">Context</a>

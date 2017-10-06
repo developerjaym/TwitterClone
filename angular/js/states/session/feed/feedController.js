@@ -131,10 +131,26 @@ angular.module('twitterClone').controller('feedController', ['feedService', 'use
                 tweet.liked = true
                 tweet.likedStyle = 'red'
                 tweet.likedText = 'Unlike'
+                if(tweet.likes.charAt(tweet.likes.length - 1) === '!') {
+                    tweet.likes = tweet.likes.slice(0, 10) + userDataService.credentials.username
+                } else {
+                    tweet.likes += ' ' + userDataService.credentials.username
+                }
             }, (errorResponse) => {
                 tweet.liked = false
                 tweet.likedStyle = 'white'
                 tweet.likedText = 'Like'
+                if(tweet.likes.includes(userDataService.credentials.username)) {
+                    let indexOfName = tweet.likes.indexOf(userDataService.credentials.username)
+                    let newLikes 
+                    if(indexOfName === 10) {
+                        newLikes = tweet.likes.slice(0, indexOfName)
+                    } else {
+                        newLikes = tweet.likes.slice(0, indexOfName - 1)
+                    }
+                    newLikes += tweet.likes.slice(indexOfName + userDataService.credentials.username.length, -1)
+                    tweet.likes = newLikes
+                }
             })
         }
 
