@@ -24,11 +24,8 @@ import com.cooksys.twitterclone.entity.UserEntity;
 @Mapper(componentModel = "spring", uses = UserMapper.class)
 public interface TweetMapper {
 
-	@Mappings({ 
-		@Mapping(source = "inReplyTo.id", target = "inReplyTo"),
-		@Mapping(source = "repostOf.id", target = "repostOf"),
-		@Mapping(source = "likes", target = "likes") 
-	})
+	@Mappings({ @Mapping(source = "inReplyTo.id", target = "inReplyTo"),
+			@Mapping(source = "repostOf.id", target = "repostOf"), @Mapping(source = "likes", target = "likes") })
 	TweetGetDto toDtoGet(TweetEntity tweet);
 
 	TweetEntity fromDtoSave(TweetSaveDto tweetGetDto);
@@ -42,21 +39,12 @@ public interface TweetMapper {
 	}
 
 	default String likedUsersToString(Set<UserEntity> users) {
-		Integer numOfUsers = users.size();
 		StringBuffer likedByStringB = new StringBuffer("Liked by: ");
 
-		Integer index = 0;
-		for(UserEntity user : users) {
+		users.forEach((user) -> {
 			likedByStringB.append(user.getCredentials().getUsername());
-			if (!index.equals(numOfUsers - 1)) {
-				likedByStringB.append(" ");
-			}
-			index++;
-		}
-		
-		if(numOfUsers == 0) {
-			likedByStringB.append("No One!");
-		}
+			likedByStringB.append(" ");
+		});
 
 		return likedByStringB.toString();
 	}
