@@ -74,7 +74,7 @@ angular.module('twitterClone').service('userDataService', ['$state', function ($
 
         switch (stateName) {
             case 'session.tweet':
-                this.setSessionTitle('Compose Tweet')
+                this.setSessionTitle('Compose Shriek')
                 break;
             case 'session.account':
                 this.setSessionTitle('My Account')
